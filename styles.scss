@@ -1,0 +1,46 @@
+body {font: 300 1em sans-serif;}
+ul {
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "\f0c9";
+    padding: .15em .25em;
+    font: 2.5em fontAwesome;
+    text-align: center;
+    background: #ea764b;
+    color: #f8d4c6;
+  }
+  &:hover:before {
+    content: "";
+    padding: 0;
+    background: none;
+  }
+}
+ul:hover > li {display: block;}
+li {
+  display: none;
+  width: 100%;
+}
+li a {
+  display: block;
+  padding: .5em 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #ea764b;
+  color: #f8d4c6;
+  border-bottom: .1em solid lighten(#ea764b, 5%);
+  transition: background .25s;
+  &:hover {background: #e76534;}
+}
+@media screen and (min-width: 481px) {
+  ul {
+    display: flex;
+    &:before {
+      content: "";
+      padding: 0;
+    }
+  }
+  li {display: block;}
+}
