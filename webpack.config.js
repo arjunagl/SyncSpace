@@ -17,9 +17,8 @@ module.exports = {
             }
         ]
     },
-    watch: true,
-    inline: true,
+    watch: true,    
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json', '.es6']
+        extensions: ['', '.js', '.jsx', '.json', '.es6', '.scss']
     },
 };
