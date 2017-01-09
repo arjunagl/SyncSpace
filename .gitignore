@@ -42,6 +42,7 @@ Thumbs.db
 
 # Dist #
 /dist
+/build
 /config/my-account/dist
 /config/vas/dist
 /public/__build__/
