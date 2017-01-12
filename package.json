@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "lite-server",
-    "devwebpack": "webpack-dev-server --inline",
+    "devwebpack": "webpack-dev-server --inline -d",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --progress"
   },

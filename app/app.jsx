@@ -1,12 +1,13 @@
 var fonts = require('./stylesheets/fonts.scss');
 var css = require('./stylesheets/styles.scss');
 var React = require('react');
-var App = require('./App/app');
+var App = require('./App/App');
+var ReactDom = require('react-dom');
 
 // alert('hello world');
 document.write("Webpack for the wins!");
-
-React.render(
+alert(document.getElementById('syncspace'));
+ReactDom.render(
   <App />,
   document.getElementById('syncspace')
 );
