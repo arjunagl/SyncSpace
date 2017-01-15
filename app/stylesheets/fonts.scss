@@ -3,6 +3,8 @@
   url("../fonts/7cc6719bd5f0310be3150ba33418e72e.woff") format("woff"), /* chrome、firefox */  
 }
 
+$navigation-font : "SyncSpace-Standard Font";
+
 .nav{
-  font-family:"SyncSpace-Standard Font";
+  font-family : $navigation-font;
 }

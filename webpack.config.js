@@ -12,6 +12,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.scss$/,
+                exclude: /node_modules/,
                 loaders: ["style-loader", "css-loader", "sass-loader"]
             },
             {
@@ -23,6 +24,14 @@ module.exports = {
                 test: /\.(svg|woff|woff2|png|jpg|ttf|eot)$/,
                 exclude: /node_modules/,
                 loader: 'url-loader?limit=10000'
+            },
+            {
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    presets: ['react', 'es2015']
+                }
             }
         ]
     },

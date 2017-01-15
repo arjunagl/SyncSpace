@@ -1,11 +1,7 @@
-body {font: 300 1em "MyComicSansMS";}
-ul {
-  position: relative;
-  &:before {
-    position: absolute;
-    content: "Menu";
-    padding: .15em .25em;
-    font: 2.5em fontAwesome;
+ul {  
+  &:before {    
+    content: "☰";
+    padding: .15em .25em;    
     text-align: center;
     background: #ea764b;
     color: #f8d4c6;
@@ -16,11 +12,16 @@ ul {
     background: none;
   }
 }
-ul:hover > li {display: block;}
+
+ul:hover > li {
+  display: block;  
+}
+
 li {
   display: none;
   width: 100%;
 }
+
 li a {
   display: block;
   padding: .5em 0;
@@ -31,9 +32,9 @@ li a {
   background: #ea764b;
   color: #f8d4c6;
   border-bottom: .1em solid lighten(#ea764b, 5%);
-  transition: background .25s;
   &:hover {background: #e76534;}
 }
+
 @media screen and (min-width: 481px) {
   ul {
     display: flex;
