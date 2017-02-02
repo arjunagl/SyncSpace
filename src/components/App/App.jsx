@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {TopMenuComponent} from '../components/TopMenu/topMenuIndex';
+import TopMenuComponent from '../TopMenu/topMenuIndex';
 
 const App = () => (
     <div>
         <TopMenuComponent/>
     </div>
-
 );
+
+export default App;

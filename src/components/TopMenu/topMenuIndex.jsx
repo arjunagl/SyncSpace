@@ -13,6 +13,6 @@ const TopMenuComponent = () => (
             </nav>
         </header>
     </div>
-)
+);
 
 export default TopMenuComponent;
