@@ -1,11 +1,10 @@
 {
-  "name": "SyncSpace",
+  "name": "sync-space",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "lite-server",
-    "devwebpack": "webpack-dev-server --inline -d",
+    "start": "webpack-dev-server --inline -d",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --progress"
   },
@@ -13,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/arjunagl/SyncSpace.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "redux"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -25,7 +27,6 @@
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
-    "lite-server": "^2.2.2",
     "node-sass": "^4.1.1",
     "sass-loader": "^4.1.1",
     "webpack": "^1.14.0"
@@ -35,6 +36,8 @@
     "file-loader": "^0.9.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0",
