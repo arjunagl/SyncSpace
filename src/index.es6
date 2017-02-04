@@ -5,13 +5,15 @@ import React from 'react';
 import {render} from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import App from  './components/App/App';
+import App from  './components/app/App';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
+import './stylesheets/fonts.scss';
+import './stylesheets/styles.scss';
 
 const store = createStore(syncSpaceReducer);
 
 render(
-    <Provider store="{store}">
+    <Provider store={store}>
         <App/>
     </Provider>,
     document.getElementById('syncspace')
