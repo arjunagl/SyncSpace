@@ -1,4 +1,5 @@
-var path = require('path');
+const path = require('path');
+var combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
     context: path.resolve('src'),
@@ -11,7 +12,7 @@ module.exports = {
     module: {
         loaders: [{
             test: /\.scss$/,
-            loaders: ["style-loader", "css-loader", "sass-loader"]
+            loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!resolve-url!sass?outputStyle=expanded&sourceMap'
         }, {
             test: /\.es6?$/,
             exclude: /node_modules/,
@@ -31,3 +32,9 @@ module.exports = {
         extensions: ['', '.js', '.jsx', '.json', '.es6', '.scss']
     },
 };
+
+
+// {
+//     test: /\.scss$/,
+//         loaders: ["style-loader", "css-loader", "sass-loader"]
+// }

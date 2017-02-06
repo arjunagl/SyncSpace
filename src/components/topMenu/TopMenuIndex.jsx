@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
+import styles from './TopMenuIndex.scss';
 
 const TopMenuComponent = () => (
-    <div className="nav">
+    <div className={styles.topMenuIndex}>
         <header role="banner">
             <nav role='navigation'>
                 <ul>
