@@ -1,5 +1,4 @@
 const path = require('path');
-const combineLoaders = require('webpack-combine-loaders');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -25,7 +24,24 @@ module.exports = {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract('style', '!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!sass?sourceMap')
             }, {
-                test: /\.(woff2?|ttf|eot|svg)$/, loader: 'file?name=fonts/[name].[ext]'
+                test: /\.svg$/,
+                loader: 'url?limit=65000&mimetype=image/svg+xml&name=public/fonts/[name].[ext]'
+            },
+            {
+                test: /\.woff$/,
+                loader: 'url?limit=65000&mimetype=application/font-woff&name=public/assets/fonts/[name].[ext]'
+            },
+            {
+                test: /\.woff2$/,
+                loader: 'url?limit=65000&mimetype=application/font-woff2&name=public/assets/fonts/[name].[ext]'
+            },
+            {
+                test: /\.[ot]tf$/,
+                loader: 'url?limit=65000&mimetype=application/octet-stream&name=public/assets/fonts/[name].[ext]'
+            },
+            {
+                test: /\.eot$/,
+                loader: 'url?limit=65000&mimetype=application/vnd.ms-fontobject&name=public/assets/fonts/[name].[ext]'
             }]
     },
     plugins: [
