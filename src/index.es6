@@ -7,8 +7,8 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import App from  './components/app/App';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
-import './stylesheets/fonts.scss';
-import './stylesheets/styles.scss';
+import './components/stylesheets/fonts.scss';
+import './components/stylesheets/styles.scss';
 
 const store = createStore(syncSpaceReducer);
 

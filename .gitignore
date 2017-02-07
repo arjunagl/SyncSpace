@@ -67,3 +67,5 @@ test-results.xml
 
 pact/**
 .vscode/**
+src/actions/
+src/topNavigation/

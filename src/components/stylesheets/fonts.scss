@@ -1,0 +1,13 @@
+@font-face {
+  font-family: SyncSpaceStandard;
+  src: url('../fonts/7cc6719bd5f0310be3150ba33418e72e.eot');
+  src: url('../fonts/7cc6719bd5f0310be3150ba33418e72e.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/7cc6719bd5f0310be3150ba33418e72e.svg#Comic Sans MS') format('svg'),
+  url('../fonts/7cc6719bd5f0310be3150ba33418e72e.woff') format('woff'),
+  url('../fonts/7cc6719bd5f0310be3150ba33418e72e.woff2') format('woff2'),
+  url('../fonts/7cc6719bd5f0310be3150ba33418e72e.ttf') format('truetype');
+}
+
+$standard-font: 'SyncSpaceStandard';
+$navigation-font: $standard-font;
+$text-transform: uppercase;

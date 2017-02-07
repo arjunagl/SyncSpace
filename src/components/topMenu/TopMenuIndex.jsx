@@ -7,12 +7,16 @@ const TopMenuComponent = () => (
             <nav role='navigation'>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Catalog</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    {/*<li><a href="#">About</a></li>*/}
+                    {/*<li><a href="#">Catalog</a></li>*/}
+                    {/*<li><a href="#">Contact Us</a></li>*/}
                 </ul>
             </nav>
         </header>
+
+        <div className={styles.checkFont}>
+            ABCDEFGH
+        </div>
     </div>
 );
 

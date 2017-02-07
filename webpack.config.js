@@ -1,5 +1,6 @@
 const path = require('path');
-var combineLoaders = require('webpack-combine-loaders');
+const combineLoaders = require('webpack-combine-loaders');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     context: path.resolve('src'),
@@ -10,23 +11,26 @@ module.exports = {
         publicPath: '/public/assets',
     },
     module: {
-        loaders: [{
-            test: /\.scss$/,
-            loader: 'style!css?modules&sourceMap&localIdentName=[local]___[hash:base64:5]!resolve-url!sass?outputStyle=expanded&sourceMap'
-        }, {
-            test: /\.es6?$/,
-            exclude: /node_modules/,
-            loaders: ["babel-loader"]
-        }, {
-            test: /\.(svg|woff|woff2|png|jpg|ttf|eot)$/,
-            exclude: /node_modules/,
-            loader: 'url-loader?limit=10000'
-        }, {
-            test: /\.jsx?/,
-            exclude: /node_modules/,
-            loader: 'babel'
-        }]
+        loaders: [
+            {
+                test: /\.es6?$/,
+                exclude: /node_modules/,
+                loaders: ["babel-loader"]
+            }, {
+                test: /\.jsx?/,
+                exclude: /node_modules/,
+                loader: 'babel'
+            },
+            {
+                test: /\.scss$/,
+                loader: ExtractTextPlugin.extract('style', '!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!sass?sourceMap')
+            }, {
+                test: /\.(woff2?|ttf|eot|svg)$/, loader: 'file?name=fonts/[name].[ext]'
+            }]
     },
+    plugins: [
+        new ExtractTextPlugin("styles.css")
+    ],
     watch: false,
     resolve: {
         extensions: ['', '.js', '.jsx', '.json', '.es6', '.scss']
@@ -34,7 +38,7 @@ module.exports = {
 };
 
 
-// {
-//     test: /\.scss$/,
-//         loaders: ["style-loader", "css-loader", "sass-loader"]
-// }
+// loader: ExtractTextPlugin.extract({
+//     fallbackLoader: 'style-loader',
+//     loader: 'style!css?modules&localIdentName=[local]___[hash:base64:5]!resolve-url!sass?outputStyle=expanded&sourceMap'
+// }),
