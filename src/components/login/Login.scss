@@ -1,5 +1,9 @@
 .loginDiv {
   display: flex;
   flex-direction: column;
-  background-color: aqua;
+}
+
+.loginRegisterButton {
+  display: flex;
+  flex-direction: row;
 }

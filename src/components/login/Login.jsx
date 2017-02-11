@@ -1,10 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import styles from './Login.scss';
+import standardStyles from '../../stylesheets/styles.scss';
 
 const LoginComponent = ( { onLoginClick, onRegisterClick } ) => (
-    <div className={styles.loginDiv}>
-        <a href="#" onClick={onLoginClick}>{loginText}</a>
-        <a href="#" onClick={onRegisterClick}>{registerText}</a>
+    <div className = {styles.loginDiv}>
+        <div className = {styles.loginRegisterButton}>
+            <p className = {standardStyles.std_bold_Text}>Login</p>
+            <button className = {standardStyles.std_blue_Button} onClick = {onRegisterClick}>Register</button>
+        </div>
+        <button className = {standardStyles.std_blue_Button} onClick = {onLoginClick}>Next</button>
     </div>
 );
 
