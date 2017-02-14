@@ -1,0 +1,55 @@
+@import "../../stylesheets/variables";
+
+div.topMenuIndex ul {
+  &:before {
+    content: "☰";
+    padding: .15em .25em;
+    text-align: center;
+    background: #ea764b;
+    color: #f8d4c6;
+  }
+  &:hover:before {
+    content: "";
+    padding: 0;
+    background: none;
+  }
+}
+
+div.topMenuIndex ul:hover > li {
+  display: block;
+}
+
+div.topMenuIndex li {
+  display: none;
+  width: 100%;
+}
+
+div.topMenuIndex li a {
+  font-family: $standard-font;
+  display: block;
+  padding: .5em 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #ea764b;
+  color: #f8d4c6;
+  border-bottom: .1em solid lighten(#ea764b, 5%);
+  &:hover {
+    background: #e76534;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  div.topMenuIndex ul {
+    display: flex;
+    &:before {
+      content: "";
+      padding: 0;
+    }
+  }
+  div.topMenuIndex li {
+    display: block;
+  }
+}
+
