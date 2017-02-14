@@ -6,8 +6,8 @@ import LoginContainer from '../login/LoginContainer';
 
 const App = () => (
     <div>
-        <TopMenuComponent/>
-        <LoginContainer/>
+        {/*<TopMenuComponent/>*/}
+        <LoginContainer></LoginContainer>
     </div>
 );
 
