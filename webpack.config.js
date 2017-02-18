@@ -1,11 +1,11 @@
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require( 'path' );
+const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 
 module.exports = {
-    context: path.resolve('src'),
+    context: path.resolve( 'src' ),
     entry: "./index.es6",
     output: {
-        path: path.resolve('build'),
+        path: path.resolve( 'build' ),
         filename: "bundle.js",
         publicPath: '/public/assets',
     },
@@ -14,7 +14,7 @@ module.exports = {
             {
                 test: /\.es6?$/,
                 exclude: /node_modules/,
-                loaders: ["babel-loader"]
+                loaders: [ "babel-loader" ]
             }, {
                 test: /\.jsx?/,
                 exclude: /node_modules/,
@@ -22,7 +22,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', '!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!sass?sourceMap')
+                loader: ExtractTextPlugin.extract( 'style', '!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!sass?sourceMap' )
             }, {
                 test: /\.svg$/,
                 loader: 'url?limit=65000&mimetype=image/svg+xml&name=public/fonts/[name].[ext]'
@@ -42,14 +42,14 @@ module.exports = {
             {
                 test: /\.eot$/,
                 loader: 'url?limit=65000&mimetype=application/vnd.ms-fontobject&name=public/assets/fonts/[name].[ext]'
-            }]
+            } ]
     },
     plugins: [
-        new ExtractTextPlugin("styles.css")
+        new ExtractTextPlugin( "styles.css" )
     ],
     watch: false,
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json', '.es6', '.scss']
+        extensions: [ '', '.js', '.jsx', '.json', '.es6', '.scss' ]
     },
 };
 

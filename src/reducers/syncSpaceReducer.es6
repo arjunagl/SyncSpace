@@ -1,5 +1,5 @@
-const syncSpaceReducer = (state = [], action) => {
-    switch (action.type) {
+const syncSpaceReducer = ( state = [], action ) => {
+    switch ( action.type ) {
         default:
             return state
     }
