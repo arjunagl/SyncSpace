@@ -6,10 +6,7 @@ export class LoginContainerComponent extends React.Component {
 
     constructor( props ) {
         super( props );
-        this.abcd = 'abcd';
-        this.onLoginClick = props.onLoginClick;
-
-        // props.onLoginClick();
+        this.login = this.login.bind( this );
     }
 
     /**
@@ -26,10 +23,7 @@ export class LoginContainerComponent extends React.Component {
      */
     login( username, password ) {
         alert( username + password );
-        alert( this.abcd );
-        this.onLoginClick();
-        // this.props.onLoginClick();
-        // this.props.onLoginClick();
+        alert( this.props.currentState );
     }
 
     render() {
