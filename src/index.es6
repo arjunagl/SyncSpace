@@ -5,16 +5,17 @@ import React from "react";
 import { render } from "react-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import App from "./components/app/App";
+import { Router, browserHistory } from "react-router";
 import syncSpaceReducer from "./reducers/syncSpaceReducer";
 import "./stylesheets/fonts.scss";
 import "./stylesheets/styles.scss";
+import routes from "./routes/routes";
 
 const store = createStore( syncSpaceReducer );
 
 render(
     <Provider store = {store}>
-        <App />
+        <Router history = {browserHistory} routes = {routes} />
     </Provider>,
     document.getElementById( 'syncspace' )
 );

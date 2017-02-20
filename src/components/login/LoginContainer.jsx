@@ -47,5 +47,5 @@ const mapDispatchToProps = function ( dispatch ) {
         }
     }
 };
-
-export default connect( mapStateToProps, mapDispatchToProps )( LoginContainerComponent );
+const LoginContainer = connect( mapStateToProps, mapDispatchToProps )( LoginContainerComponent );
+export default LoginContainer;
