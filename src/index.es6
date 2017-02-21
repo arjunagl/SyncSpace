@@ -1,17 +1,18 @@
-/**
- * Created by A136836 on 3/02/2017.
- */
 import React from "react";
 import { render } from "react-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { Router, browserHistory } from "react-router";
 import syncSpaceReducer from "./reducers/syncSpaceReducer";
 import "./stylesheets/fonts.scss";
 import "./stylesheets/styles.scss";
 import routes from "./routes/routes";
+import thunkMiddleware from "redux-thunk";
+import createLogger from "redux-logger";
 
-const store = createStore( syncSpaceReducer );
+
+const loggerMiddleware = createLogger();
+const store = createStore( syncSpaceReducer, applyMiddleware( thunkMiddleware, loggerMiddleware ) );
 
 render(
     <Provider store = {store}>

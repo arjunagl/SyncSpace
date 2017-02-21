@@ -1,9 +1,14 @@
 import { connect } from "react-redux";
 import LoginComponent from "./Login";
 import React from "react";
+import { performLogin } from "./LoginActions";
 
 export class LoginContainerComponent extends React.Component {
 
+    /**
+     *
+     * @param props
+     */
     constructor( props ) {
         super( props );
         this.login = this.login.bind( this );
@@ -13,7 +18,6 @@ export class LoginContainerComponent extends React.Component {
      *
      */
     register() {
-        alert( 'registering user' );
     }
 
     /**
@@ -22,30 +26,41 @@ export class LoginContainerComponent extends React.Component {
      * @param password
      */
     login( username, password ) {
-        alert( username + password );
-        alert( this.props.currentState );
+        //Perform the actual login, but for the moment we will just mock this
+        this.props.onPerformLogin( username, password );
     }
 
     render() {
+        console.log( 'Rendering the login container' );
         return (<LoginComponent onRegisterClick = {this.register} onLoginClick = {this.login} />);
     };
 }
 
+/**
+ *
+ * @param state
+ * @returns {{currentState: string}}
+ */
 const mapStateToProps = function ( state ) {
     return {
-        currentState: 'Logged Out'
+        currentState: state.LoginStatus
     }
 };
 
+/**
+ *
+ * @param dispatch
+ * @returns {{onLoginClick: (function()), onRegisterClick: (function())}}
+ */
 const mapDispatchToProps = function ( dispatch ) {
     return {
-        onLoginClick: () => {
-            alert( 'login clicked' );
+        onPerformLogin: () => {
+            dispatch( performLogin( 'testUser', 'testpassword' ) );
         },
         onRegisterClick: () => {
-            alert( 'register clicked' );
         }
     }
 };
+
 const LoginContainer = connect( mapStateToProps, mapDispatchToProps )( LoginContainerComponent );
 export default LoginContainer;
