@@ -40,6 +40,10 @@ div.topMenuIndex li a {
   }
 }
 
+div.LoginStatus {
+  background-color: azure;
+}
+
 @media screen and (min-width: 481px) {
   div.topMenuIndex ul {
     display: flex;
