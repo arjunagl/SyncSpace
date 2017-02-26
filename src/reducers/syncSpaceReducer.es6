@@ -1,5 +1,5 @@
-const syncSpaceReducer = ( state = [], action ) => {
-    switch ( action.type ) {
+const syncSpaceReducer = (state = [], action) => {
+    switch (action.type) {
         case 'LOGIN_SUCCEEDED':
             return { ...state, LoginStatus: true, LoginDisplayName: action.UserDisplayName };
         default:
@@ -7,4 +7,4 @@ const syncSpaceReducer = ( state = [], action ) => {
     }
 };
 
-export default syncSpaceReducer
+export default syncSpaceReducer;
