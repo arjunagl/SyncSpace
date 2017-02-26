@@ -1,6 +1,6 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import LoginComponent from './Login';
-import React from 'react';
 import { performLogin } from './LoginActions';
 
 export class LoginContainerComponent extends React.Component {
@@ -44,7 +44,6 @@ export class LoginContainerComponent extends React.Component {
             <LoginComponent
                 onRegisterClick={this.register}
                 onLoginClick={this.login}
-                userDisplayName={this.userDisplayName}
             />
         );
     }
@@ -57,8 +56,7 @@ export class LoginContainerComponent extends React.Component {
  */
 const mapStateToProps = function (state) {
     return {
-        currentState: state.LoginStatus,
-        userDisplayName: state.LoginDisplayName
+        currentState: state.LoginStatus
     };
 };
 

@@ -35,7 +35,8 @@ export function performLogin(userName, password) {
     return function (dispatch) {
         dispatch(performingLogin());
 
-        //TODO: Will have to make an actual call to do the authentication, but for the moment we will just mock it
+        //TODO: Will have to make an actual call 
+        //to do the authentication, but for the moment we will just mock it
         const loginResult = Promise.resolve(true);
         loginResult.then((res) => {
             if (res) {
@@ -43,7 +44,6 @@ export function performLogin(userName, password) {
             } else {
                 dispatch(loginFailed());
             }
-
-        }).catch(res);
+        });
     };
 }
