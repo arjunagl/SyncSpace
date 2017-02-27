@@ -1,7 +1,7 @@
 const syncSpaceReducer = (state = [], action) => {
     switch (action.type) {
         case 'LOGIN_SUCCEEDED':
-            return { ...state, LoginStatus: true, LoginDisplayName: action.UserDisplayName };
+            return { ...state, LoginStatus: true, displayName: action.UserDisplayName };
         default:
             return state;
     }

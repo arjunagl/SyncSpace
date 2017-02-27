@@ -4,7 +4,8 @@
  */
 function loginSucceeded() {
     return {
-        type: 'LOGIN_SUCCEEDED'
+        type: 'LOGIN_SUCCEEDED',
+        UserDisplayName: 'tim tam'
     };
 }
 

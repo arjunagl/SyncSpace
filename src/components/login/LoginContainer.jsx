@@ -12,7 +12,6 @@ export class LoginContainerComponent extends React.Component {
     constructor(props) {
         super(props);
         this.login = this.login.bind(this);
-        this.userDisplayName = props.userDisplayName;
     }
 
     /**
@@ -27,7 +26,6 @@ export class LoginContainerComponent extends React.Component {
      * @param password
      */
     login(username, password) {
-        //Perform the actual login, but for the moment we will just mock this
         this.props.onPerformLogin(username, password);
     }
 
@@ -54,26 +52,22 @@ export class LoginContainerComponent extends React.Component {
  * @param state
  * @returns {{currentState: string}}
  */
-const mapStateToProps = function (state) {
-    return {
-        currentState: state.LoginStatus
-    };
-};
+const mapStateToProps = (state) => ({
+    currentState: state.LoginStatus
+});
 
 /**
  *
  * @param dispatch
  * @returns {{onLoginClick: (function()), onRegisterClick: (function())}}
  */
-const mapDispatchToProps = function (dispatch) {
-    return {
-        onPerformLogin: () => {
-            dispatch(performLogin('testUser', 'testpassword'));
-        },
-        onRegisterClick: () => {
-        }
-    };
-};
+const mapDispatchToProps = (dispatch) => ({
+    onPerformLogin: () => {
+        dispatch(performLogin('testUser', 'testpassword'));
+    },
+    onRegisterClick: () => {
+    }
+});
 
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(LoginContainerComponent);
 export default LoginContainer;

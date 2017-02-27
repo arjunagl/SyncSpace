@@ -1,5 +1,6 @@
 import React from 'react';
-import LoginStatus from './LoginStatus';
+// import LoginStatus from './LoginStatus';
+import LoginStatusContainer from './LoginStatusContainer';
 import styles from './TopMenuIndex.scss';
 
 const TopMenuComponent = () => (
@@ -11,7 +12,7 @@ const TopMenuComponent = () => (
                     <li><a href="#2">About</a></li>
                     <li><a href="#3">Catalog</a></li>
                     <li><a href="#4">Contact Us</a></li>
-                    <li><LoginStatus /></li>
+                    <li><LoginStatusContainer /></li>
                 </ul>
             </nav>
         </header>
