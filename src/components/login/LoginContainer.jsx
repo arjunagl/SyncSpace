@@ -37,7 +37,6 @@ export class LoginContainerComponent extends React.Component {
      * @memberOf LoginContainerComponent
      */
     render() {
-        console.log('Rendering the login container');
         return (
             <LoginComponent
                 onRegisterClick={this.register}

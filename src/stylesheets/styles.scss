@@ -5,7 +5,7 @@
   background-color: cornflowerblue;
   text-align: center;
   font-family: $standard-font;
-  font-size: 18px;
+  font-size: $button-font-size;
   color: #FFF;
   border-radius: 25px;
   padding: 10px 40px;
@@ -16,7 +16,7 @@
   background-color: cadetblue;
   text-align: center;
   font-family: $standard-font;
-  font-size: 18px;
+  font-size: $button-font-size;
   color: #FFF;
   border-radius: 25px;
   padding: 10px 40px;

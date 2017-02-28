@@ -1,3 +1,7 @@
+import {
+    browserHistory
+} from 'react-router';
+
 /**
  *
  * @returns {{type: string}}
@@ -42,6 +46,7 @@ export function performLogin(userName, password) {
         loginResult.then((res) => {
             if (res) {
                 dispatch(loginSucceeded());
+                browserHistory.push('/landing');
             } else {
                 dispatch(loginFailed());
             }

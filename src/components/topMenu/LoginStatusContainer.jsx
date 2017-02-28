@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import LoginStatus from './LoginStatus';
 
 const mapStateToProps = (state) => ({
-    displayName: state.displayName
+    displayName: state.syncSpaceReducer.displayName
 });
 
-const LoginStatusContainer = (state) =>
-    (
-        <LoginStatus displayName={state.displayName} />
+const LoginStatusContainer = ({ displayName }) => {
+    let welcomeMessage = 'Sign In';
+    if (displayName) {
+        welcomeMessage = `Welcome ${displayName}`;
+    }
+    return (
+        <LoginStatus displayName={welcomeMessage} />
     );
-
+};
 
 export default connect(mapStateToProps)(LoginStatusContainer);

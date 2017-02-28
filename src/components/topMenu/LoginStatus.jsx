@@ -2,10 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './TopMenuIndex.scss';
 
-const LoginStatus = (props) => {
+/**
+ * Using object deconstructors here.
+ */
+const LoginStatus = ({ displayName }) => {
     const loginStatusClass = classNames(styles.LoginStatus, styles.topMenuIndex);
     return (
-        <a className={loginStatusClass}>{props.displayName}</a>
+        <a className={loginStatusClass}>{displayName}</a>
     );
 };
 

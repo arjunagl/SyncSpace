@@ -1,18 +1,16 @@
 @import "../../stylesheets/variables";
-
 .topMenuIndex {
   ul {
-    &:before {
+    padding-left: 0;
+    &::before {
       content: "☰";
       padding: .15em .25em;
       text-align: center;
-      background: #ea764b;
-      color: #f8d4c6;
+      background: cadetblue;
+      font-size: 200%
     }
-    &:hover:before {
-      content: "";
-      padding: 0;
-      background: none;
+    &:hover::before {
+      display: none
     }
     li {
       display: none;
@@ -25,22 +23,20 @@
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
-        background: #ea764b;
-        color: #f8d4c6;
-        border-bottom: .1em solid lighten(#ea764b, 5%);
+        background: cadetblue;
+        color: white;
         &:hover {
-          background: #e76534;
+          background: darkolivegreen;
         }
       }
     }
-    &:hover > li {
+    &:hover>li {
       display: block;
     }
     @media screen and (min-width: 481px) {
       display: flex;
-      &:before {
-        content: "";
-        padding: 0;
+      &::before {
+        display: none;
       }
       li {
         display: block;
@@ -48,8 +44,6 @@
     }
   }
   &.LoginStatus {
-    background: azure;
+    background: cornflowerblue;
   }
 }
-
-
