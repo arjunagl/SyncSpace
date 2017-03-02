@@ -8,5 +8,6 @@ export default (
     <Route path='/' component={App}>
         <IndexRoute component={LoginContainer} />
         <Route path='landing' component={LandingComponent} />
+        <Route path='login' component={LoginContainer} />
     </Route>
 );
