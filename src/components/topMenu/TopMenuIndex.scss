@@ -13,7 +13,8 @@
       display: none
     }
     li {
-      display: none;
+      max-height: 0px;
+      opacity: 0;
       width: 100%;
       a {
         font-family: $standard-font;
@@ -26,12 +27,15 @@
         background: cadetblue;
         color: white;
         &:hover {
-          background: darkolivegreen;
+          // background: darkolivegreen;
+          text-decoration: underline;
         }
       }
     }
     &:hover>li {
-      display: block;
+      max-height: 800px;
+      opacity: 1;
+      transition: max-height 2s ease-in, opacity 2s ease-in, ;
     }
     @media screen and (min-width: 481px) {
       display: flex;
@@ -40,6 +44,8 @@
       }
       li {
         display: block;
+        height: auto;
+        opacity: 1;
       }
     }
   }
