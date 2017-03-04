@@ -2,20 +2,11 @@
 .topMenuIndex {
   ul {
     padding-left: 0;
-    &::before {
-      content: "☰";
-      padding: .15em .25em;
-      text-align: center;
-      background: cadetblue;
-      font-size: 200%
-    }
-    &:hover::before {
-      display: none
-    }
     li {
-      max-height: 0px;
-      opacity: 0;
-      width: 100%;
+      &.expando {
+        opacity: 1;
+        max-height: 800px;
+      }
       a {
         font-family: $standard-font;
         display: block;
@@ -27,15 +18,9 @@
         background: cadetblue;
         color: white;
         &:hover {
-          // background: darkolivegreen;
           text-decoration: underline;
         }
       }
-    }
-    &:hover>li {
-      max-height: 800px;
-      opacity: 1;
-      transition: max-height 2s ease-in, opacity 2s ease-in, ;
     }
     @media screen and (min-width: 481px) {
       display: flex;
@@ -46,10 +31,26 @@
         display: block;
         height: auto;
         opacity: 1;
+        &.expando {
+          display: none;
+        }
       }
     }
   }
   &.LoginStatus {
     background: cornflowerblue;
   }
+}
+
+.Expanded {
+  width: 100%;
+  max-height: 800px;
+  opacity: 1;
+  transition: max-height 2s ease-in, opacity 2s ease-in, ;
+}
+
+.Hidden {
+  width: 100%;
+  max-height: 0px;
+  opacity: 0;
 }
