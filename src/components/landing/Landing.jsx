@@ -8,7 +8,7 @@ const LandingComponent = () => (
             <StoreComponent />
         </div>
         <div className={styles.recentList}>
-            this is the recent list
+            this is the recent list that should come here...
         </div>
     </div>
 );

@@ -9,6 +9,11 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/public/assets',
     },
+    devServer: {
+        historyApiFallback: {
+            index: 'index.html'
+        },
+    },
     module: {
         loaders: [{
                 test: [/\.es6?$/, /\.jsx?/],
