@@ -1,5 +1,4 @@
 @import "./variables";
-
 .std_Button {
   border-radius: 3px;
   background-color: cornflowerblue;
@@ -24,6 +23,14 @@
 
 .pageTitleText {
   font-size: 36px;
+}
+
+.componentTitle {
+  font-size: 18px;
+}
+
+.pageTitle {
+  font-size: 24px;
 }
 
 body {
