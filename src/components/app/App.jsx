@@ -5,7 +5,9 @@ import TopMenuComponent from '../topMenu/TopMenuIndex';
 const App = ({ children }) => (
     <div>
         <TopMenuComponent />
-        The children should come here
+        <div>
+            The children should come here
+            </div>
         {children}
     </div>
 );

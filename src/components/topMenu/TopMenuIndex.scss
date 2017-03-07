@@ -29,7 +29,7 @@
       }
       li {
         display: block;
-        height: auto;
+        max-height: inherit;
         opacity: 1;
         &.expando {
           display: none;
