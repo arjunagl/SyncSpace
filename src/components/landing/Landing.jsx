@@ -3,7 +3,7 @@ import styles from './Landing.scss';
 import StoreComponent from '../store/Store';
 
 const LandingComponent = () => (
-    <div className={styles.landingPageWrapper}>
+    <div className={styles.landingPageWrapper}>        
         <StoreComponent />
         <div>
             Your recent shopping list

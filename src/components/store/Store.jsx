@@ -1,9 +1,10 @@
 import React from 'react';
-import commonStyles from '../../stylesheets/styles';
+import commonStyles from '../../stylesheets/styles.scss';
+import storeStyles from './Store.scss';
 
 const StoreComponent = () => (
     <div className={commonStyles.componentWrapper}>
-        <p className={commonStyles.componentTitle}>
+        <p className={storeStyles.storeTitle}>
             Available stores
         </p>
     </div>
