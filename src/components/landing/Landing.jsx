@@ -5,9 +5,9 @@ import StoreComponent from '../store/Store';
 const LandingComponent = () => (
     <div className={styles.landingPageWrapper}>        
         <StoreComponent />
-        <div>
+        {/*<div>
             Your recent shopping list
-        </div>
+        </div>*/}
     </div>
 );
 

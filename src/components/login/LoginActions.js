@@ -49,6 +49,7 @@ export function performLogin(userName, password) {
                 browserHistory.push('/landing');
             } else {
                 dispatch(loginFailed());
+                browserHistory.push('/login');
             }
         });
     };
