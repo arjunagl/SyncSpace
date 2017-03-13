@@ -42,10 +42,10 @@
   //When a component is positioned absolute it will position itself relative to its parent ancestor 
   //which is not static positioned (which is the default), this is why we are setting the .componentWrapper position to relative
   position: absolute; 
-  width: 15%;
+  // width: 15%;
   background-color: $background-color;
   top: -35px;
-  padding-left: 2em;
+  // padding-left: 2em;
 }
 
 body {
