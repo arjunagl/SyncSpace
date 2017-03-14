@@ -1,13 +1,17 @@
-const syncSpaceReducer = (state = [], action) => {
+const initialState = {
+    Stores: []
+};
+
+const syncSpaceReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'LOGIN_SUCCEEDED':
             return { ...state,
                 LoginStatus: true,
                 displayName: action.UserDisplayName
             };
-        case 'FETCH_STORES':
+        case 'FETCHED_STORES':
             return { ...state,
-                stores: action.stores
+                Stores: action.Stores
             };
         default:
             return state;

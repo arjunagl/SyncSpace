@@ -21,7 +21,6 @@ class TopMenuComponent extends React.Component {
 
     isExpanded() {
         const isExpanded = (this.state.isExpanded) ? styles.Expanded : styles.Hidden;
-        console.log(isExpanded);
         return isExpanded;
     }
 

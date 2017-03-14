@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import LoginComponent from './Login';
 import { performLogin } from './LoginActions';
 
-export class LoginContainerComponent extends React.Component {
+class LoginContainerComponent extends React.Component {
 
     /**
      *
