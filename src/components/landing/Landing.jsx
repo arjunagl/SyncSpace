@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './Landing.scss';
-import StoreContainer from '../store/Store';
+import StoresComponentContainer from '../store/StoresComponentContainer';
 
 const LandingComponent = () => (
     <div className={styles.landingPageWrapper}>
-        <StoreContainer />
+        <StoresComponentContainer />
         {/*<div>
             Your recent shopping list
         </div>*/}

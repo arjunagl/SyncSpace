@@ -1,50 +1,20 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import commonStyles from '../../stylesheets/styles.scss';
-import { fetchStores } from './storeActions';
+import React, { PropTypes } from 'react';
+
+/**
+ * 
+ * @param {*} param0 
+ */
+const StoreComponent = ({ Name }) => (
+    <div >
+        This is a single store {Name}
+    </div>
+);
 
 /**
  * 
  */
-class StoreComponent extends React.Component {
+StoreComponent.PropTypes = {
+    Name: PropTypes.string.isRequired
+};
 
-    /**
-     * 
-     */
-    componentDidMount() {
-        this.props.fetchStores();
-    }
-
-    /**
-     * 
-     */
-    render() {
-        const stores = this.props.Stores;
-        let storesToRender = null;
-        storesToRender = stores.map((store) =>
-            <div>{store.Name}</div>
-        );
-
-        return (
-            <div className={commonStyles.componentWrapper}>
-                <p className={commonStyles.componentTitle}>
-                    Available stores
-                </p>
-                {storesToRender}
-            </div>);
-    }
-
-}
-
-const mapDispatchToProps = (dispatch) => ({
-    fetchStores: () => {
-        dispatch(fetchStores());
-    }
-});
-
-const mapStateToProps = (state) => ({
-    Stores: state.syncSpaceReducer.Stores
-});
-
-const StoreContainer = connect(mapStateToProps, mapDispatchToProps)(StoreComponent);
-export default StoreContainer;
+export default StoreComponent;

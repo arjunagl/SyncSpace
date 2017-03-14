@@ -15,6 +15,9 @@ const LoginComponent = ({ onLoginClick, onRegisterClick }) => (
     </div>
 );
 
+/**
+ * 
+ */
 LoginComponent.propTypes = {
     onLoginClick: PropTypes.func.isRequired,
     onRegisterClick: PropTypes.func.isRequired
