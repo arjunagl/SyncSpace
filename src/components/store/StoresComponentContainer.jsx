@@ -23,7 +23,7 @@ class StoresComponent extends React.Component {
         const stores = this.props.Stores;
         let storesToRender = null;
         storesToRender = stores.map((store) =>
-            <StoreComponent Name={store.Name} />
+            <StoreComponent Name={store.Name} Description={store.Description} Image={store.Image} />
         );
 
         return (

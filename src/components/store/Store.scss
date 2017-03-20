@@ -1,8 +1,10 @@
 @import "../../stylesheets/styles";
-
-// .storeTitle {
-//     composes: componentTitle;
-//     // width: 160px;
-//     // min-width: 160px;
-//     //  background-color: blue;
-// }
+.Store {
+    clear: left;
+    margin: 3em 1em 1em 1em;
+    img.storeImage {
+        float: left;
+        max-width: 356px;
+        max-height: 69px;
+    }
+}
