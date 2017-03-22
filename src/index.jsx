@@ -11,12 +11,14 @@ import routes from './routes/routes';
 import DevTools from './components/devTools/DevTools';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
 import { storeEpic } from './components/store/storeEpic';
+import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import './stylesheets/fonts.scss';
 import './stylesheets/styles.scss';
 
 //Combine the Epics
 const rootEpic = combineEpics(
-    storeEpic
+    storeEpic,
+    shoppingListEpic
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

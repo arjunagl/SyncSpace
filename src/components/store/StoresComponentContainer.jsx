@@ -26,7 +26,8 @@ class StoresComponent extends React.Component {
             <StoreComponent
                 key={store.Id}
                 Name={store.Name}
-                Description={store.Description}
+                Location={store.Location}
+                Hours={store.Hours}
                 Image={store.Image}
             />
         );
