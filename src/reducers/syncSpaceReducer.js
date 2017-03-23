@@ -1,5 +1,6 @@
 const initialState = {
-    Stores: []
+    Stores: [],
+    ShoppingLists: []
 };
 
 const syncSpaceReducer = (state = initialState, action) => {
@@ -12,6 +13,10 @@ const syncSpaceReducer = (state = initialState, action) => {
         case 'FETCHED_STORES':
             return { ...state,
                 Stores: action.Stores
+            };
+        case 'FETCHED_SHOPPING_LISTS':
+            return { ...state,
+                ShoppingLists: action.ShoppingLists
             };
         default:
             return state;

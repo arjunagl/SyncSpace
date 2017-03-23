@@ -2,11 +2,12 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchShoppingLists } from './shoppingListActions';
 import commonStyles from '../../stylesheets/styles.scss';
+import ShoppingListComponent from './ShoppingList';
 
 /**
  * 
  */
-class ShoppingListComponent extends React.Component {
+class ShoppingListsComponent extends React.Component {
 
     /**
      * 
@@ -19,11 +20,19 @@ class ShoppingListComponent extends React.Component {
      * 
      */
     render() {
+        const shoppingLists = this.props.ShoppingLists;
+        const shoppingListsToRener = shoppingLists.map((shoppingList) =>
+            <ShoppingListComponent
+                key={shoppingList.Id}
+                Name={shoppingList.Name}
+            />
+        );
         return (
             <div className={commonStyles.componentWrapper}>
                 <p className={commonStyles.componentTitle}>
                     Shopping lists
-                </p>                
+                </p>
+                {shoppingListsToRener}
             </div>);
     }
 }
@@ -55,5 +64,5 @@ const mapStateToProps = (state) => ({
 });
 
 const ShoppingListsComponentContainer =
-    connect(mapStateToProps, mapDispatchToProps)(ShoppingListComponent);
+    connect(mapStateToProps, mapDispatchToProps)(ShoppingListsComponent);
 export default ShoppingListsComponentContainer;

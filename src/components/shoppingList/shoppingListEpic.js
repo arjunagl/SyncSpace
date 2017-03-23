@@ -4,7 +4,7 @@ export const shoppingListEpic = action$ =>
     action$.ofType('FETCH_SHOPPING_LISTS')
     .mapTo({
         type: 'FETCHED_SHOPPING_LISTS',
-        Stores: [{
+        ShoppingLists: [{
             Id: '1',
             Name: 'Groceries',
         }, {
