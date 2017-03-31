@@ -11,8 +11,10 @@ const StoreComponent = ({ Name, Location, Hours, Image }) => {
     return (
         <div className={storeStyles.Store} >
             <img className={storeStyles.storeImage} src={storeImage} alt={Name} />
-            <p >{Name} - ({Location})</p>
-            <p >{Hours}</p>
+            <div className={storeStyles.storeDetails}>
+                <p className={storeStyles.itemSeparation}>{Name} - ({Location})</p>
+                <p >{Hours}</p>
+            </div>
         </div>
     );
 };

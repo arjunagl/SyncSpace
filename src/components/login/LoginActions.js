@@ -9,7 +9,7 @@ import {
 function loginSucceeded() {
     return {
         type: 'LOGIN_SUCCEEDED',
-        UserDisplayName: 'tim tam'
+        UserDisplayName: 'tim'
     };
 }
 
