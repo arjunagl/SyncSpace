@@ -1,6 +1,5 @@
 @import "./variables";
 .std_Button {
-  border-radius: 3px;
   background-color: cornflowerblue;
   text-align: center;
   font-family: $standard-font;
@@ -11,7 +10,6 @@
 }
 
 .std_Button_Secondary {
-  border-radius: 3px;
   background-color: cadetblue;
   text-align: center;
   font-family: $standard-font;
@@ -19,6 +17,16 @@
   color: #FFF;
   border-radius: 25px;
   padding: 10px 40px;
+}
+
+.secondary_Button{
+  background-color: cadetblue;
+  text-align: center;
+  font-family: $standard-font;
+  font-size: $secondary-button-font-size;
+  color: #FFF;
+  border-radius: 25px;
+  padding: 10px 10px;
 }
 
 .pageTitleText {

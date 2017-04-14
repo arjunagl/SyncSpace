@@ -11,7 +11,6 @@ const LoginComponent = ({ onLoginClick, onRegisterClick }) => (
             <button className={styles.loginButton} onClick={onLoginClick}>Login</button>
             <button className={styles.registerButton} onClick={onRegisterClick}>Register</button>
         </div>
-
     </div>
 );
 

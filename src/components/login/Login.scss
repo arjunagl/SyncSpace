@@ -1,41 +1,40 @@
 @import "../../stylesheets/styles";
-
 .loginDiv {
-  display: flex;
-  flex-direction: column;
-  margin: 50px 0px 0px 0px;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0px 0px 0px;
+    align-items: center;
 }
 
 .loginRegisterDiv {
-  composes: loginDiv;
-  margin: 0px;
-  width: 100%;
+    composes: loginDiv;
+    margin: 0px;
+    width: 100%;
 }
 
 .loginButton {
-  composes: std_Button;
-  margin: 1em 2em;
-  width: 100%;
-  max-width: 400px;
+    composes: std_Button;
+    margin: 1em 2em;
+    width: 100%;
+    max-width: 400px;
 }
 
 .registerButton {
-  composes: std_Button_Secondary;
-  margin: 1em 2em;
-  width: 100%;
-  max-width: 400px;
+    composes: std_Button_Secondary;
+    margin: 1em 2em;
+    width: 100%;
+    max-width: 400px;
 }
 
 .loginDiv input[type="text"],
 .loginDiv input[type="password"] {
-  max-width: 400px;
-  width: 100%;
-  line-height: 3em;
-  font-family: inherit;
-  margin: 1em 2em;
-  border-radius: 5px;
-  border: 2px solid #f2f2f2;
-  outline: none;
-  padding-left: 10px;
+    max-width: 400px;
+    width: 100%;
+    line-height: 3em;
+    font-family: inherit;
+    margin: 1em 2em;
+    border-radius: 5px;
+    border: 2px solid #f2f2f2;
+    outline: none;
+    padding-left: 10px;
 }

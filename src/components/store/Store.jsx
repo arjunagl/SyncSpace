@@ -1,7 +1,7 @@
 import React from 'react';
 import storeStyles from './Store.scss';
 import defaultStoreImage from '../../stylesheets/images/Shop.svg';
-import ApplyShoppingListComponent from './appShoppingList/ApplyShoppingList';
+import ApplyShoppingListContainer from './appShoppingList/ApplyShoppingList';
 /**
  * 
  * @param {*} param0 
@@ -17,7 +17,7 @@ const StoreComponent = ({ Name, Location, Hours, Image }) => {
                 <p >{Hours}</p>
             </div>
             <div className={storeStyles.applyShoppingList}>
-                <ApplyShoppingListComponent />
+                <ApplyShoppingListContainer />
             </div>
         </div>
     );
