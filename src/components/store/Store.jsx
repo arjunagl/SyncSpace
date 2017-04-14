@@ -1,6 +1,7 @@
 import React from 'react';
 import storeStyles from './Store.scss';
 import defaultStoreImage from '../../stylesheets/images/Shop.svg';
+import ApplyShoppingListComponent from './appShoppingList/ApplyShoppingList';
 /**
  * 
  * @param {*} param0 
@@ -14,6 +15,9 @@ const StoreComponent = ({ Name, Location, Hours, Image }) => {
             <div className={storeStyles.storeDetails}>
                 <p className={storeStyles.itemSeparation}>{Name} - ({Location})</p>
                 <p >{Hours}</p>
+            </div>
+            <div className={storeStyles.applyShoppingList}>
+                <ApplyShoppingListComponent />
             </div>
         </div>
     );

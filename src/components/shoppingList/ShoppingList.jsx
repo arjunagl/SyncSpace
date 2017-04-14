@@ -1,15 +1,12 @@
-import React, { PropTypes } from 'react';
-// import shoppingListStyles from './Store.scss';
+import React from 'react';
 /**
  * 
  * @param {*} param0 
  */
-const ShoppingListComponent = ({ Name }) => {
-    return (
-        <div>
-            <p>{Name}</p>
-        </div>
-    );
-};
+const ShoppingListComponent = ({ Name }) => (
+    <div>
+        <p>{Name}</p>
+    </div>
+);
 
 export default ShoppingListComponent;
