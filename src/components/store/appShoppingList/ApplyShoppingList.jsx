@@ -5,16 +5,23 @@ import standardStyles from '../../../stylesheets/styles.scss';
  * 
  * @param {*} param0 
  */
-const ApplyShoppingListComponent = ({ onApplyShoppingListClick }) => (
-    <button className={standardStyles.secondary_Button} onClick={onApplyShoppingListClick}>
+const ApplyShoppingListComponent = ({ onApplyShoppingListClick, storeKey }) => (
+    <button
+        className={standardStyles.secondary_Button}
+        onClick={() => onApplyShoppingListClick(storeKey)}
+    >
         Apply Shopping List
     </button>
 );
 
 const mapDispatchToProps = (dispatch) => ({
-    onApplyShoppingListClick: () => {
-        console.log('Applying shopping list');
+    onApplyShoppingListClick: (storeKey) => {
+        console.log(`Applying shopping list ${storeKey}`);
     }
+});
+
+const mapStateToProps = (state) => ({
+    currentState: state.LoginStatus
 });
 
 const ApplyShoppingListContainer = connect(null, mapDispatchToProps)(ApplyShoppingListComponent);
