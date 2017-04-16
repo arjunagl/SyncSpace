@@ -5,18 +5,18 @@ import standardStyles from '../../../stylesheets/styles.scss';
  * 
  * @param {*} param0 
  */
-const ApplyShoppingListComponent = ({ onApplyShoppingListClick, storeKey }) => (
+const ApplyShoppingListComponent = ({ onApplyShoppingListClick, StoreKey }) => (
     <button
         className={standardStyles.secondary_Button}
-        onClick={() => onApplyShoppingListClick(storeKey)}
+        onClick={() => onApplyShoppingListClick(StoreKey)}
     >
         Apply Shopping List
     </button>
 );
 
 const mapDispatchToProps = (dispatch) => ({
-    onApplyShoppingListClick: (storeKey) => {
-        console.log(`Applying shopping list ${storeKey}`);
+    onApplyShoppingListClick: (StoreKey) => {
+        console.log(`Applying shopping list ${StoreKey}`);
     }
 });
 

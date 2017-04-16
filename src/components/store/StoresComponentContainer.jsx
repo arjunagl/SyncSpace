@@ -24,7 +24,8 @@ class StoresComponent extends React.Component {
         let storesToRender = null;
         storesToRender = stores.map((store) =>
             <StoreComponent
-                storeKey={store.Id}
+                key={store.Id}
+                StoreKey={store.Id}
                 Name={store.Name}
                 Location={store.Location}
                 Hours={store.Hours}
