@@ -24,7 +24,10 @@ class ShoppingListsComponent extends React.Component {
         const shoppingListsToRener = shoppingLists.map((shoppingList) =>
             <ShoppingListComponent
                 key={shoppingList.Id}
+                ShoppingListId={shoppingList.Id}
                 Name={shoppingList.Name}
+                onShoppingListClicked={this.props.onShoppingListClicked}
+                onShoppingListUnclicked={this.props.onShoppingListUnclicked}
             />
         );
         return (
