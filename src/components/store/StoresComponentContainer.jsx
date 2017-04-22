@@ -30,6 +30,7 @@ class StoresComponent extends React.Component {
                 Location={store.Location}
                 Hours={store.Hours}
                 Image={store.Image}
+                onApplyShoppingListClicked={this.props.onApplyShoppingListClicked}
             />
         );
 

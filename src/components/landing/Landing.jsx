@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styles from './Landing.scss';
 import StoresComponentContainer from '../store/StoresComponentContainer';
 import ShoppingListsComponentContainer from '../shoppingList/ShoppingListComponentContainer';
@@ -62,7 +63,9 @@ class LandingComponent extends React.Component {
     render() {
         return (<div className={styles.landingPageWrapper}>
             <div className={styles.landingPageSeparation}>
-                <StoresComponentContainer />
+                <StoresComponentContainer
+                    onApplyShoppingListClicked={this.props.onApplyShoppingLists}
+                />
             </div>
             <div className={styles.landingPageSeparation}>
                 <ShoppingListsComponentContainer
@@ -74,4 +77,23 @@ class LandingComponent extends React.Component {
     }
 }
 
-export default LandingComponent;
+/**
+ * 
+ * @param {*} dispatch 
+ */
+const mapDispatchToProps = (dispatch) => ({
+    onApplyShoppingLists: (storeId) => {
+        // dispatch(performLogin('testUser', 'testpassword'));
+        console.log(`Applying shopping lists on store ${storeId}`);
+    }
+});
+
+/**
+ * 
+ * @param {*} state 
+ */
+const mapStateToProps = (state) => ({
+});
+
+const LandingContainer = connect(mapStateToProps, mapDispatchToProps)(LandingComponent);
+export default LandingContainer;

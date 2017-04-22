@@ -6,7 +6,7 @@ import ApplyShoppingListContainer from './appShoppingList/ApplyShoppingList';
  * 
  * @param {*} param0 
  */
-const StoreComponent = ({ StoreKey, Name, Location, Hours, Image }) => {
+const StoreComponent = ({ StoreKey, Name, Location, Hours, Image, onApplyShoppingListClicked }) => {
     const storeImage = Image || defaultStoreImage;
     return (
         <div className={storeStyles.Store} >
@@ -16,7 +16,10 @@ const StoreComponent = ({ StoreKey, Name, Location, Hours, Image }) => {
                 <p >{Hours}</p>
             </div>
             <div className={storeStyles.applyShoppingList}>
-                <ApplyShoppingListContainer StoreKey={StoreKey} />
+                <ApplyShoppingListContainer
+                    StoreKey={StoreKey}
+                    onApplyShoppingListClicked={onApplyShoppingListClicked}
+                />
             </div>
         </div>
     );
