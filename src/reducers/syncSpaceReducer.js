@@ -4,6 +4,7 @@ const initialState = {
 };
 
 const syncSpaceReducer = (state = initialState, action) => {
+    console.log(action.type);
     switch (action.type) {
         case 'LOGIN_SUCCEEDED':
             return { ...state,

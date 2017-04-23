@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styles from './Landing.scss';
+import { applyShoppingLists } from './landingActions';
 import StoresComponentContainer from '../store/StoresComponentContainer';
 import ShoppingListsComponentContainer from '../shoppingList/ShoppingListComponentContainer';
 
@@ -23,6 +24,7 @@ class LandingComponent extends React.Component {
         this.state = { selectedShoppingLists: [] };
         this.onShoppingListClicked = this.onShoppingListClicked.bind(this);
         this.onShoppingListUnclicked = this.onShoppingListUnclicked.bind(this);
+        this.onApplyShoppingListsClicked = this.onApplyShoppingListsClicked.bind(this);
     }
 
     /**
@@ -56,6 +58,17 @@ class LandingComponent extends React.Component {
     /**
      * 
      * 
+     * @param {any} storeId 
+     * 
+     * @memberOf LandingComponent
+     */
+    onApplyShoppingListsClicked(storeId) {
+        this.props.onApplyShoppingLists(storeId, this.state.selectedShoppingLists);
+    }
+
+    /**
+     * 
+     * 
      * @returns 
      * 
      * @memberOf LandingComponent
@@ -64,7 +77,7 @@ class LandingComponent extends React.Component {
         return (<div className={styles.landingPageWrapper}>
             <div className={styles.landingPageSeparation}>
                 <StoresComponentContainer
-                    onApplyShoppingListClicked={this.props.onApplyShoppingLists}
+                    onApplyShoppingListClicked={this.onApplyShoppingListsClicked}
                 />
             </div>
             <div className={styles.landingPageSeparation}>
@@ -82,9 +95,8 @@ class LandingComponent extends React.Component {
  * @param {*} dispatch 
  */
 const mapDispatchToProps = (dispatch) => ({
-    onApplyShoppingLists: (storeId) => {
-        // dispatch(performLogin('testUser', 'testpassword'));
-        console.log(`Applying shopping lists on store ${storeId}`);
+    onApplyShoppingLists: (storeId, shoppingLists) => {
+        dispatch(applyShoppingLists(shoppingLists, storeId));
     }
 });
 
