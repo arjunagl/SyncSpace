@@ -4,6 +4,7 @@ import styles from './Landing.scss';
 import { applyShoppingLists } from './landingActions';
 import StoresComponentContainer from '../store/StoresComponentContainer';
 import ShoppingListsComponentContainer from '../shoppingList/ShoppingListComponentContainer';
+import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
 
 /**
  * 
@@ -74,19 +75,26 @@ class LandingComponent extends React.Component {
      * @memberOf LandingComponent
      */
     render() {
-        return (<div className={styles.landingPageWrapper}>
-            <div className={styles.landingPageSeparation}>
-                <StoresComponentContainer
-                    onApplyShoppingListClicked={this.onApplyShoppingListsClicked}
-                />
+        return (
+            <div>
+                <div className={styles.landingPageWrapper}>
+                    <div className={styles.landingPageSeparation}>
+                        <StoresComponentContainer
+                            onApplyShoppingListClicked={this.onApplyShoppingListsClicked}
+                        />
+                    </div>
+                    <div className={styles.landingPageSeparation}>
+                        <ShoppingListsComponentContainer
+                            onShoppingListClicked={this.onShoppingListClicked}
+                            onShoppingListUnclicked={this.onShoppingListUnclicked}
+                        />
+                    </div>
+                </div >
+                <div>
+                    <ProcessingMessageContainer />
+                </div>
             </div>
-            <div className={styles.landingPageSeparation}>
-                <ShoppingListsComponentContainer
-                    onShoppingListClicked={this.onShoppingListClicked}
-                    onShoppingListUnclicked={this.onShoppingListUnclicked}
-                />
-            </div>
-        </div >);
+        );
     }
 }
 

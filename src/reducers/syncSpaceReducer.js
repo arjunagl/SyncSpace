@@ -1,10 +1,13 @@
 const initialState = {
     Stores: [],
-    ShoppingLists: []
+    ShoppingLists: [],
+    Processing: {
+        State: 'Idle',
+        Message: ''
+    }
 };
 
 const syncSpaceReducer = (state = initialState, action) => {
-    console.log(action.type);
     switch (action.type) {
         case 'LOGIN_SUCCEEDED':
             return {

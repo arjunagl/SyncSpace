@@ -52,7 +52,7 @@ class LoginContainerComponent extends React.Component {
  * @returns {{currentState: string}}
  */
 const mapStateToProps = (state) => ({
-    currentState: state.LoginStatus
+    currentState: state.syncSpaceReducer.LoginStatus
 });
 
 /**
