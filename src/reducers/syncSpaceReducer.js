@@ -1,3 +1,6 @@
+/**
+ * Initial state of the store, used to set default values
+ */
 const initialState = {
     Stores: [],
     ShoppingLists: [],
@@ -30,6 +33,8 @@ const syncSpaceReducer = (state = initialState, action) => {
                 ...state,
                 AppliedShoppingLists: action.AppliedShoppingLists
             };
+        case 'APPLYING_SHOPPING_LISTS':
+            return state;
         default:
             return state;
     }
