@@ -1,6 +1,5 @@
 @import "../../stylesheets/styles";
-
-.landingPageWrapper{
+.landingPageWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +9,7 @@
     }
 }
 
-.landingPageSeparation{
-    width: 50%;
+.landingPageSeparation {
+    width: 100%;
     margin: 0 2rem 0 2rem;
 }

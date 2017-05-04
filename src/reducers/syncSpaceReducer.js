@@ -31,10 +31,20 @@ const syncSpaceReducer = (state = initialState, action) => {
         case 'APPLIED_SHOPPING_LISTS':
             return {
                 ...state,
-                AppliedShoppingLists: action.AppliedShoppingLists
+                AppliedShoppingLists: action.AppliedShoppingLists,
+                Processing: {
+                    State: 'Idle',
+                    Message: ''
+                }
             };
         case 'APPLYING_SHOPPING_LISTS':
-            return state;
+            return {
+                ...state,
+                Processing: {
+                    State: 'Processing',
+                    Message: 'Applying shopping lists...'
+                }
+            };
         default:
             return state;
     }

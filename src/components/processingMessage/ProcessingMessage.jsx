@@ -9,12 +9,17 @@ import styles from './Processing.scss';
  */
 const ProcessingMessageComponent = ({ processingState, processingMessage }) => {
     let snackBarStyleclassName = styles.snackbar;
+    let snackBarDisableBackground = styles.disableBackGround;
     if (processingState !== 'Idle') {
         snackBarStyleclassName = `${snackBarStyleclassName} ${styles.show}`;
+        snackBarDisableBackground = `${snackBarDisableBackground} ${styles.show}`;
     }
     return (
-        <div className={snackBarStyleclassName} >
-            <b>Processing please wait...{processingMessage}</b>
+        <div>
+            <div className={snackBarDisableBackground} />
+            <div className={snackBarStyleclassName} >
+                <b>{processingMessage}</b>
+            </div>
         </div>
     );
 };

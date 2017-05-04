@@ -90,9 +90,7 @@ class LandingComponent extends React.Component {
                         />
                     </div>
                 </div >
-                <div>
-                    <ProcessingMessageContainer />
-                </div>
+                <ProcessingMessageContainer />
             </div>
         );
     }
