@@ -54,7 +54,10 @@ export const landingEpic = action$ => {
                             Description: 'Next to Oranges'
                         }
                     }]
-                }, browserHistory.push('/shopping')).delay(5000)
+                }).delay(5000).map(shoppingList => {
+                    browserHistory.push('/shopping'); 
+                    return shoppingList;
+                })
             )
         );
 };
