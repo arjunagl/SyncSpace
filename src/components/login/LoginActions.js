@@ -44,7 +44,7 @@ export function performLogin(userName, password) {
         loginResult.then((res) => {
             if (res) {
                 dispatch(loginSucceeded());
-                browserHistory.push('/landing'); //I dont think this is the ideal place to do this, this should be done from somewhere else
+                browserHistory.push('/landing'); 
             } else {
                 dispatch(loginFailed());
                 browserHistory.push('/login');

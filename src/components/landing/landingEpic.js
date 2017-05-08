@@ -5,6 +5,8 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Rx';
+import { push } from 'react-router-redux';
+import { browserHistory } from 'react-router';
 
 /**
  * 
@@ -51,13 +53,8 @@ export const landingEpic = action$ => {
                             Isle: '1',
                             Description: 'Next to Oranges'
                         }
-                    }],
-                    meta: {
-                        transition: (prevState, nextState, action) => ({
-                            pathname: '/shopping',
-                        }),
-                    },
-                }).delay(5000)
+                    }]
+                }, browserHistory.push('/shopping')).delay(5000)
             )
         );
 };
