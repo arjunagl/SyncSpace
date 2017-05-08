@@ -3,11 +3,14 @@ import { Route, IndexRoute } from 'react-router';
 import App from '../components/app/App';
 import LoginContainer from '../components/login/LoginContainer';
 import LandingComponent from '../components/landing/Landing';
+import ShoppingPathComponent from '../components/shoppingPath/ShoppingPath';
+
 
 export default (
     <Route path='/' component={App}>
         <IndexRoute component={LoginContainer} />
-        <Route path='landing' component={LandingComponent} />
         <Route path='login' component={LoginContainer} />
+        <Route path='landing' component={LandingComponent} />
+        <Route path='shopping' component={ShoppingPathComponent} />
     </Route>
 );

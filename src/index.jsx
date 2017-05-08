@@ -6,6 +6,8 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import handleTransitions from 'redux-history-transitions';
+import createHistory from 'history/createBrowserHistory';
 import routes from './routes/routes';
 import DevTools from './components/devTools/DevTools';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
@@ -31,8 +33,12 @@ const reducer = combineReducers({
     routing: routerReducer
 });
 
+// const enhancer = 
+const transitionHistory = createHistory();
+
 const enhancer = compose(
     applyMiddleware(thunkMiddleware, epicMiddleware),
+    handleTransitions(transitionHistory),
     DevTools.instrument()
 );
 

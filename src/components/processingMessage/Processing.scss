@@ -27,24 +27,20 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #000;
-    animation: fadeout 0.5s;
+    background-color: #000; // animation: fadeout 0.5s;
     &.show {
         visibility: visible;
         z-index: 2;
-        animation: fadein 0.5s;
+        animation: fadein 1s;
     }
 }
 
-
-/* Animations to fade the snackbar in and out */
-
 @keyframes fadein {
     from {
-        visibility: hidden;
+        opacity: 0;
     }
     to {
-        visibility: visible;
+        opacity: 1;
     }
 }
 

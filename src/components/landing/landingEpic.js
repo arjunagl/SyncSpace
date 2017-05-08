@@ -11,7 +11,6 @@ import { Observable } from 'rxjs/Rx';
  * @param {*} action$ 
  */
 export const landingEpic = action$ => {
-    console.log('generating epic...');
     return action$.ofType('APPLY_SHOPPING_LISTS')
         .flatMap(() =>
             Observable.concat(
@@ -52,7 +51,12 @@ export const landingEpic = action$ => {
                             Isle: '1',
                             Description: 'Next to Oranges'
                         }
-                    }]
+                    }],
+                    meta: {
+                        transition: (prevState, nextState, action) => ({
+                            pathname: '/shopping',
+                        }),
+                    },
                 }).delay(5000)
             )
         );

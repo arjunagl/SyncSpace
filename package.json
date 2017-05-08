@@ -42,6 +42,8 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "history": "^4.6.1",
+    "redux-history-transitions": "^2.2.0",
     "babel-preset-stage-2": "^6.22.0",
     "classnames": "^2.2.5",
     "extract-text-webpack-plugin": "^1.0.1",
