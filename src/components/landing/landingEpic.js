@@ -35,8 +35,8 @@ export const landingEpic = action$ => {
                     }, {
                         ShoppingListId: '1',
                         Item: {
-                            Id: '1',
-                            Name: 'Apples'
+                            Id: '2',
+                            Name: 'Pears'
                         },
                         Location: {
                             Isle: '1',
@@ -46,8 +46,8 @@ export const landingEpic = action$ => {
                     {
                         ShoppingListId: '1',
                         Item: {
-                            Id: '1',
-                            Name: 'Apples'
+                            Id: '3',
+                            Name: 'Oranges'
                         },
                         Location: {
                             Isle: '1',

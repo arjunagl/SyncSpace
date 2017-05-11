@@ -7,7 +7,39 @@ const initialState = {
     Processing: {
         State: 'Idle',
         Message: ''
-    }
+    },
+    AppliedShoppingLists: [{
+        ShoppingListId: '1',
+        Item: {
+            Id: '1',
+            Name: 'Apples'
+        },
+        Location: {
+            Isle: '1',
+            Description: 'Next to Oranges'
+        },
+    }, {
+        ShoppingListId: '1',
+        Item: {
+            Id: '2',
+            Name: 'Pears'
+        },
+        Location: {
+            Isle: '1',
+            Description: 'Next to Oranges'
+        }
+    },
+    {
+        ShoppingListId: '1',
+        Item: {
+            Id: '3',
+            Name: 'Oranges'
+        },
+        Location: {
+            Isle: '1',
+            Description: 'Next to Oranges'
+        }
+    }]
 };
 
 const syncSpaceReducer = (state = initialState, action) => {
