@@ -5,8 +5,8 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Rx';
-import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
+import { AppliedShoppingListsSampleData } from '../../data/sampleData';
 
 /**
  * 
@@ -22,40 +22,9 @@ export const landingEpic = action$ => {
                 }),
                 Observable.of({
                     type: 'APPLIED_SHOPPING_LISTS',
-                    AppliedShoppingLists: [{
-                        ShoppingListId: '1',
-                        Item: {
-                            Id: '1',
-                            Name: 'Apples'
-                        },
-                        Location: {
-                            Isle: '1',
-                            Description: 'Next to Oranges'
-                        },
-                    }, {
-                        ShoppingListId: '1',
-                        Item: {
-                            Id: '2',
-                            Name: 'Pears'
-                        },
-                        Location: {
-                            Isle: '1',
-                            Description: 'Next to Oranges'
-                        }
-                    },
-                    {
-                        ShoppingListId: '1',
-                        Item: {
-                            Id: '3',
-                            Name: 'Oranges'
-                        },
-                        Location: {
-                            Isle: '1',
-                            Description: 'Next to Oranges'
-                        }
-                    }]
+                    AppliedShoppingLists: AppliedShoppingListsSampleData
                 }).delay(5000).map(shoppingList => {
-                    browserHistory.push('/shopping'); 
+                    browserHistory.push('/shopping');
                     return shoppingList;
                 })
             )

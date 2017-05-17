@@ -42,11 +42,13 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "history": "^4.6.1",
-    "redux-history-transitions": "^2.2.0",
     "babel-preset-stage-2": "^6.22.0",
     "classnames": "^2.2.5",
     "extract-text-webpack-plugin": "^1.0.1",
+    "history": "^4.6.1",
+    "lodash": "^4.17.4",
+    "lodash.groupby": "^4.6.0",
+    "lodash.sortby": "^4.7.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
@@ -56,6 +58,7 @@
     "redux-devtools": "^3.3.2",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.2.0",
+    "redux-history-transitions": "^2.2.0",
     "redux-observable": "^0.14.1",
     "redux-thunk": "^2.2.0",
     "rxjs": "^5.2.0"
