@@ -9,9 +9,7 @@
 }
 
 .ShoppingPathLocation {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: block;
     border-radius: 25px;
     border: solid;
     padding: 1rem;
@@ -19,7 +17,6 @@
 }
 
 .ItemLocationHint{
-    // font-size: .75rem ;
     font-size: $small-font-size;
     display: block;
 }

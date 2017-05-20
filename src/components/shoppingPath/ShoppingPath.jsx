@@ -24,21 +24,29 @@ const ShoppingPathComponent = ({ AppliedShoppingLists }) => {
     const shoppingPathToRender = Object.keys(sortedAndGroupedShoppingPathOnLocation).map(locationKey => {
         return (
             <div key={locationKey} className={styles.ShoppingPathLocation}>
-                Location: {locationKey}
+                {locationKey}
                 {
-                    // eslint-disable-next-line arrow-body-style
-                    sortedAndGroupedShoppingPathOnLocation[locationKey].map(shoppingItem => {
-                        return (
-                            <div>
-                                <div className={styles.ShoppingItem} key={shoppingItem.Item.Id}>
-                                    {shoppingItem.Item.Name}
-                                    <span className={styles.ItemLocationHint}>
-                                        {shoppingItem.Location.Description}
-                                    </span>
-                                </div>
-                            </div>
-                        );
-                    })
+                    <div>
+                        {
+                            // eslint-disable-next-line arrow-body-style, max-len
+                            sortedAndGroupedShoppingPathOnLocation[locationKey].map(shoppingItem => {
+                                return (
+                                    <div
+                                        className={styles.ShoppingItem}
+                                        key={shoppingItem.Item.Id}
+                                    >
+                                        <input type='checkbox' id={shoppingItem.Item.id} />
+                                        <label htmlFor={shoppingItem.Item.id}>
+                                            {shoppingItem.Item.Name}
+                                            <span className={styles.ItemLocationHint}>
+                                                {shoppingItem.Location.Description}
+                                            </span>
+                                        </label>
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
                 }
             </div>);
     });
