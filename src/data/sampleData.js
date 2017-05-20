@@ -56,7 +56,7 @@ export const AppliedShoppingListsSampleData = [
     {
         ShoppingListId: '1',
         Item: {
-            Id: '4',
+            Id: '6',
             Name: 'Apricots'
         },
         Location: {

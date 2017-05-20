@@ -30,13 +30,14 @@ const ShoppingPathComponent = ({ AppliedShoppingLists }) => {
                         {
                             // eslint-disable-next-line arrow-body-style, max-len
                             sortedAndGroupedShoppingPathOnLocation[locationKey].map(shoppingItem => {
+                                console.log(shoppingItem);
                                 return (
                                     <div
                                         className={styles.ShoppingItem}
                                         key={shoppingItem.Item.Id}
                                     >
-                                        <input type='checkbox' id={shoppingItem.Item.id} />
-                                        <label htmlFor={shoppingItem.Item.id}>
+                                        <input type='checkbox' id={`${shoppingItem.Item.Id}`} />
+                                        <label htmlFor={`${shoppingItem.Item.Id}`}>
                                             {shoppingItem.Item.Name}
                                             <span className={styles.ItemLocationHint}>
                                                 {shoppingItem.Location.Description}
