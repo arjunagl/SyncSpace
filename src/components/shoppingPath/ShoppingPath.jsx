@@ -20,16 +20,22 @@ const ShoppingPathComponent = ({ AppliedShoppingLists }) => {
         (shoppingPathItem) => (shoppingPathItem.Location.Name));
 
 
-    // eslint-disable-next-line max-len
+    // eslint-disable-next-line max-len, arrow-body-style
     const shoppingPathToRender = Object.keys(sortedAndGroupedShoppingPathOnLocation).map(locationKey => {
         return (
             <div key={locationKey} className={styles.ShoppingPathLocation}>
                 Location: {locationKey}
                 {
+                    // eslint-disable-next-line arrow-body-style
                     sortedAndGroupedShoppingPathOnLocation[locationKey].map(shoppingItem => {
                         return (
-                            <div className={styles.ShoppingItem} key={shoppingItem.Item.Id}>
-                                {shoppingItem.Item.Name}
+                            <div>
+                                <div className={styles.ShoppingItem} key={shoppingItem.Item.Id}>
+                                    {shoppingItem.Item.Name}
+                                    <span className={styles.ItemLocationHint}>
+                                        {shoppingItem.Location.Description}
+                                    </span>
+                                </div>
                             </div>
                         );
                     })

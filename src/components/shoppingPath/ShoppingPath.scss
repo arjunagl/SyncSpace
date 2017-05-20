@@ -1,3 +1,5 @@
+@import "../../stylesheets/variables";
+
 .ShoppingItem {
     display: inline-block;
     border-radius: 25px;
@@ -14,4 +16,10 @@
     border: solid;
     padding: 1rem;
     margin: 1rem;
+}
+
+.ItemLocationHint{
+    // font-size: .75rem ;
+    font-size: $small-font-size;
+    display: block;
 }
