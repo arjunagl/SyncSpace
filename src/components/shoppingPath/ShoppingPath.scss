@@ -1,5 +1,4 @@
 @import "../../stylesheets/variables";
-
 .ShoppingItem {
     display: inline-block;
     border-radius: 25px;
@@ -16,7 +15,11 @@
     margin: 1rem;
 }
 
-.ItemLocationHint{
+.ItemLocationHint {
     font-size: $small-font-size;
     display: block;
+}
+
+.CompleteShopping {
+    margin: 1rem;
 }
