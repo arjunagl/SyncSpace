@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import groupby from 'lodash.groupby';
 import sortby from 'lodash.sortby';
 import styles from './ShoppingPath.scss';
-import CompleteShoppingComponent from './completeShopping/Completeshopping';
 import ButtonContainer from '../common/Button';
 import commonStyles from '../../stylesheets/styles.scss';
 
@@ -63,12 +62,10 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
             </div>
         );
     });
-
     return (
         <div>
             {shoppingPathToRender}
             <div className={styles.CompleteShopping}>
-                <CompleteShoppingComponent width='100%' />
                 <ButtonContainer
                     className={commonStyles.std_Button}
                     onClick={onCompleteShoppingClicked}
