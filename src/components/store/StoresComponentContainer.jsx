@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import commonStyles from '../../stylesheets/styles.scss';
 import { fetchStores } from './storeActions';
 import StoreComponent from './Store';
+import IncrementalSearchComponent from '../common/incrementalSearch/IncrementalSearch';
 
 /**
  * 
@@ -39,6 +40,7 @@ class StoresComponent extends React.Component {
                 <p className={commonStyles.componentTitle}>
                     Available stores
                 </p>
+                <IncrementalSearchComponent />
                 {storesToRender}
             </div>);
     }

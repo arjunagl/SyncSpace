@@ -3,7 +3,7 @@ import styles from './ShoppingList.scss';
 
 const ShoppingListComponent = ({ ShoppingListId, Name,
     onShoppingListClicked, onShoppingListUnclicked }) => (
-        <div className={styles.ShoppingList}>
+        <div className={styles.ShoppingList}>            
             <input
                 type='checkbox' id={ShoppingListId} value={Name}
                 onChange={(event) => {
