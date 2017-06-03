@@ -14,6 +14,7 @@ import syncSpaceReducer from './reducers/syncSpaceReducer';
 import { storeEpic } from './components/store/storeEpic';
 import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
+import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
 
 import './stylesheets/fonts.scss';
 import './stylesheets/styles.scss';
@@ -22,7 +23,8 @@ import './stylesheets/styles.scss';
 const rootEpic = combineEpics(
     storeEpic,
     shoppingListEpic,
-    landingEpic
+    landingEpic,
+    incrementalSearchEpic
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

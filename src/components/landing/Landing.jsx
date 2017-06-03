@@ -78,15 +78,15 @@ class LandingComponent extends React.Component {
         return (
             <div>
                 <div className={styles.landingPageWrapper}>
-                    <div className={styles.landingPageSeparation}>                        
-                        <StoresComponentContainer
-                            onApplyShoppingListClicked={this.onApplyShoppingListsClicked}
-                        />
-                    </div>
                     <div className={styles.landingPageSeparation}>
                         <ShoppingListsComponentContainer
                             onShoppingListClicked={this.onShoppingListClicked}
                             onShoppingListUnclicked={this.onShoppingListUnclicked}
+                        />
+                    </div>
+                    <div className={styles.landingPageSeparation}>                        
+                        <StoresComponentContainer
+                            onApplyShoppingListClicked={this.onApplyShoppingListsClicked}
                         />
                     </div>
                 </div >

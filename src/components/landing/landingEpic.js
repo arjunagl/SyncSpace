@@ -12,6 +12,8 @@ import { AppliedShoppingListsSampleData } from '../../data/sampleData';
  * 
  * @param {*} action$ 
  */
+
+// eslint-disable-next-line arrow-body-style
 export const landingEpic = action$ => {
     return action$.ofType('APPLY_SHOPPING_LISTS')
         .flatMap(() =>
