@@ -94,5 +94,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const IncrementalSearchComponent = connect(mapDispatchToProps)(IncrementalSearch);
+const IncrementalSearchComponent = connect(null, mapDispatchToProps)(IncrementalSearch);
 export default IncrementalSearchComponent;

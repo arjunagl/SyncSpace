@@ -48,6 +48,10 @@ const syncSpaceReducer = (state = initialState, action) => {
                     Message: 'Applying shopping lists...'
                 }
             };
+        case 'FILTERED_STORE':
+            return {
+                ...state
+            };
         default:
             return state;
     }

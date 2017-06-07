@@ -106,12 +106,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-/**
- * 
- * @param {*} state 
- */
-const mapStateToProps = (state) => ({
-});
-
-const LandingContainer = connect(mapStateToProps, mapDispatchToProps)(LandingComponent);
+const LandingContainer = connect(null, mapDispatchToProps)(LandingComponent);
 export default LandingContainer;
