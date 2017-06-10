@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs/Rx';
+import { interval } from 'rxjs/add/observable/interval';
 import { SampleStores } from '../../../data/sampleData';
+
 
 // eslint-disable-next-line arrow-body-style
 export const incrementalSearchEpic = action$ => {
@@ -15,6 +17,8 @@ export const incrementalSearchEpic = action$ => {
                 store: sampleStore
             }));
 
-        return Observable.of(...incrementalSearchResults).delay(1500);
+        //Create the interval to emit an item every second
+        return Observable.interval(1000)
+            .take(incrementalSearchResults.length).map(t => incrementalSearchResults[t]);
     });
 };
