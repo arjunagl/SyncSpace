@@ -9,12 +9,12 @@ export const incrementalSearchEpic = action$ => {
             SampleStores.filter(sampleStore =>
                 (sampleStore.Name.toLowerCase().includes(action.SearchText.toLowerCase().trim())) ||
                 // eslint-disable-next-line max-len
-                (sampleStore.Location.toLowerCase().includes(action.SearchText.toLowerCase().trim())) 
+                (sampleStore.Location.toLowerCase().includes(action.SearchText.toLowerCase().trim()))
             ).map(sampleStore => ({
                 type: 'FILTERED_STORE',
                 store: sampleStore
             }));
 
-        return Observable.of(...incrementalSearchResults);
+        return Observable.of(...incrementalSearchResults).delay(1500);
     });
 };

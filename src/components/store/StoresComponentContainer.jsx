@@ -4,6 +4,7 @@ import commonStyles from '../../stylesheets/styles.scss';
 import { fetchStores } from './storeActions';
 import StoreComponent from './Store';
 import IncrementalSearchComponent from '../common/incrementalSearch/IncrementalSearch';
+import IncrementalSearchResultsComponent from '../common/incrementalSearchResults/IncrementalSearchResults';
 
 /**
  * 
@@ -41,6 +42,7 @@ class StoresComponent extends React.Component {
                     Available stores
                 </p>
                 <IncrementalSearchComponent />
+                <IncrementalSearchResultsComponent />
                 {storesToRender}
             </div>);
     }

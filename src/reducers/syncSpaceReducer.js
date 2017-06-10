@@ -10,6 +10,7 @@ const initialState = {
         State: 'Idle',
         Message: ''
     },
+    FilteredStores: [],
     AppliedShoppingLists: AppliedShoppingListsSampleData
 };
 
@@ -48,10 +49,14 @@ const syncSpaceReducer = (state = initialState, action) => {
                     Message: 'Applying shopping lists...'
                 }
             };
-        case 'FILTERED_STORE':
+        case 'FILTERED_STORE': {
+            const combinedStores = Array.of(...state.FilteredStores);
+            combinedStores.push(action.store);
             return {
-                ...state
+                ...state,
+                FilteredStores: combinedStores
             };
+        }
         default:
             return state;
     }
