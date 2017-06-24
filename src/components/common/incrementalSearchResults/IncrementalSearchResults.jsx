@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styles from './IncrementalSearchResults.scss';
+import StoreComponent from '../../store/Store';
 
 /**
  * 
@@ -17,13 +19,19 @@ class IncrementalSearchResults extends React.Component {
      * @memberof IncrementalSearchResults
      */
     render() {
-        const filteredStoresToRender = this.props.filteredStores.map((filteredStore) =>
-            <div key={filteredStore.Id}>
-                {filteredStore.Name} - {filteredStore.Location}
-            </div>
+        const filteredStoresToRender = this.props.filteredStores.map((store) =>
+            <StoreComponent
+                key={`inc_${store.Id}`}
+                StoreKey={store.Id}
+                Name={store.Name}
+                Location={store.Location}
+                Hours={store.Hours}
+                Image={store.Image}
+                onApplyShoppingListClicked={this.props.onApplyShoppingListClicked}
+            />
         );
         return (
-            <div>
+            <div className={styles.searchResultsContainer}>
                 {filteredStoresToRender}
             </div>
         );

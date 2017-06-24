@@ -9,7 +9,7 @@ import ApplyShoppingListContainer from './appShoppingList/ApplyShoppingList';
 const StoreComponent = ({ StoreKey, Name, Location, Hours, Image, onApplyShoppingListClicked }) => {
     const storeImage = Image || defaultStoreImage;
     return (
-        <div className={storeStyles.Store} >
+        <div className={storeStyles.Store}>
             <img className={storeStyles.storeImage} src={storeImage} alt={Name} />
             <div className={storeStyles.storeDetails}>
                 <p className={storeStyles.itemSeparation}>{Name} - ({Location})</p>

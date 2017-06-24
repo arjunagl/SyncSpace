@@ -1,6 +1,9 @@
 {
-    "extends": "rallycoding", 
+    "extends": "rallycoding",
     "globals": {
         "document": true
+    },
+    "env": {
+        "jest": true
     }
 }

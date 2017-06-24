@@ -9,8 +9,9 @@ import { performIncrementalStoreSearch } from './IncrementalSearchActions';
  * 
  * @class IncrementalSearch
  * @extends {React.Component}
+ * We are exporting this class just to make it unit testable, thats all.
  */
-class IncrementalSearch extends React.Component {
+export class IncrementalSearch extends React.Component {
 
     /**
      * Creates an instance of IncrementalSearch.

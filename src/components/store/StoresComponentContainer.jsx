@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import commonStyles from '../../stylesheets/styles.scss';
+import storeStyles from './Store.scss';
 import { fetchStores } from './storeActions';
 import StoreComponent from './Store';
 import IncrementalSearchComponent from '../common/incrementalSearch/IncrementalSearch';
@@ -42,7 +43,11 @@ class StoresComponent extends React.Component {
                     Available stores
                 </p>
                 <IncrementalSearchComponent />
-                <IncrementalSearchResultsComponent />
+                {/*<div className={storeStyles.incSearchResultsContainer}>
+                    <div className={storeStyles.incSearchResults}>
+                        <IncrementalSearchResultsComponent />
+                    </div>
+                </div>*/}
                 {storesToRender}
             </div>);
     }
@@ -50,7 +55,7 @@ class StoresComponent extends React.Component {
 }
 
 /**
- * 
+ *
  */
 StoresComponent.PropTypes = {
     fetchStores: PropTypes.func.isRequired,
@@ -58,8 +63,8 @@ StoresComponent.PropTypes = {
 };
 
 /**
- * 
- * @param {*} dispatch 
+ *
+ * @param {*} dispatch
  */
 const mapDispatchToProps = (dispatch) => ({
     fetchStores: () => {
@@ -68,8 +73,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 /**
- * 
- * @param {*} state 
+ *
+ * @param {*} state
  */
 const mapStateToProps = (state) => ({
     Stores: state.syncSpaceReducer.Stores

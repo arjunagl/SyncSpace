@@ -15,6 +15,8 @@ import { storeEpic } from './components/store/storeEpic';
 import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
 import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
+import IncrementalSearchServiceMock
+    from './components/common/incrementalSearch/incrementalSearchServiceMock';
 
 import './stylesheets/fonts.scss';
 import './stylesheets/styles.scss';
@@ -27,7 +29,11 @@ const rootEpic = combineEpics(
     incrementalSearchEpic
 );
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const epicMiddleware = createEpicMiddleware(rootEpic, {
+    dependencies: {
+        incrementalSearchService: IncrementalSearchServiceMock
+    }
+});
 
 //Combine the reducers
 const reducer = combineReducers({

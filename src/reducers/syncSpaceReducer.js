@@ -10,7 +10,11 @@ const initialState = {
         State: 'Idle',
         Message: ''
     },
-    FilteredStores: [],
+    Search: {
+        SearchText: '',
+        FilteredStores: []
+    },
+    // FilteredStores: [],
     AppliedShoppingLists: AppliedShoppingListsSampleData
 };
 
@@ -50,11 +54,22 @@ const syncSpaceReducer = (state = initialState, action) => {
                 }
             };
         case 'FILTERED_STORE': {
-            const combinedStores = Array.of(...state.FilteredStores);
-            combinedStores.push(action.store);
+            //If the searchtext is different that means this is a 
+            //new search therefore we filter out the stores, and display the new ones
+            let combinedStores;
+            if (state.Search.SearchText.toLowerCase().trim() === action.searchText.toLowerCase().trim()) {
+                combinedStores = Array.of(...state.Search.FilteredStores);
+                combinedStores.push(action.store);
+            } else {
+                combinedStores = Array.of(action.store);
+            }
             return {
                 ...state,
-                FilteredStores: combinedStores
+                Stores: combinedStores,
+                Search: {
+                    SearchText: action.searchText,
+                    FilteredStores: combinedStores
+                }
             };
         }
         default:
