@@ -1,5 +1,6 @@
 import React from 'react';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
 import { connect } from 'react-redux';
 import styles from './IncrementalSearch.scss';
 import { performIncrementalStoreSearch } from './IncrementalSearchActions';
@@ -32,10 +33,10 @@ export class IncrementalSearch extends React.Component {
      * @memberof IncrementalSearch
      */
     componentDidMount() {
+        console.log(this.simpleText);
         this.subscription = this.onSearch$
             .debounceTime(300)
             .subscribe(debounced => {
-                console.log(`Search Text ${debounced}`);
                 this.props.onPerformIncrementalSearch(debounced);
             });
     }

@@ -1,25 +1,23 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
+import sinon from 'sinon';
+import toJson from 'enzyme-to-json';
 import { IncrementalSearch } from './IncrementalSearch';
 
-function setup() {
-    const props = {
-        addTodo: jest.fn()
-    };
+describe('<IncrementalSearch />', () => {
+    afterEach(() => {
+        //    this.constructorSpy.restore();
+    });
 
-    const enzymeWrapper = mount(<IncrementalSearch {...props} />);
+    it('renders the component properly', () => {
+        const component = shallow(<IncrementalSearch />);
+        expect(toJson(component)).toMatchSnapshot();
+    });
 
-    return {
-        props,
-        enzymeWrapper
-    };
-}
-
-describe('Components', () => {
-    describe('Incremental Search', () => {
-        it('should render itself and subcomponents', () => {
-            const { enzymeWrapper } = setup();
-            expect(enzymeWrapper.find('IncrementalSearch').hasClass('srchBoxContaner')).toBe(true);
-        });
+    it('calls componentDidMount', () => {
+        const componentDidMountSpy = sinon.spy(IncrementalSearch.prototype, 'componentDidMount');
+        mount(<IncrementalSearch />);
+        expect(IncrementalSearch.prototype.componentDidMount.calledOnce).toEqual(true);
+        componentDidMountSpy.restore();
     });
 });

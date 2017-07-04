@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --inline -d",
     "webpack": "webpack --progress",
     "build": "webpack --progress",
-    "test": "jest --coverage",
+    "test": "jest --watch",
     "test:watch": "npm test -- --watch"
   },
   "repository": {
@@ -32,7 +32,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.22.0",
     "css-loader": "^0.26.1",
-    "enzyme": "^2.9.0",
+    "enzyme-to-json": "^1.5.1",
     "eslint-config-rallycoding": "^3.2.0",
     "file-loader": "^0.9.0",
     "jest": "^20.0.4",
@@ -48,6 +48,8 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "sinon": "^2.3.5",
+    "enzyme": "^2.9.0",
     "babel-preset-stage-2": "^6.22.0",
     "classnames": "^2.2.5",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -68,5 +70,14 @@
     "redux-observable": "^0.14.1",
     "redux-thunk": "^2.2.0",
     "rxjs": "^5.2.0"
+  },
+  "jest": {
+    "verbose": true,
+    "bail": true,
+    "watch": true,
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "<rootDir>/jest/styleMock.js",
+      "^.+\\.(gif|ttf|eot|svg|png)$": "<rootDir>/jest/fileMock.js"
+    }
   }
 }

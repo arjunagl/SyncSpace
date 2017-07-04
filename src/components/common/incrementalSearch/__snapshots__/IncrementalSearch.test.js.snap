@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IncrementalSearch /> renders the component properly 1`] = `
+<div>
+  <input
+    name="search"
+    onChange={[Function]}
+    placeholder="Search.."
+    type="text"
+  />
+</div>
+`;

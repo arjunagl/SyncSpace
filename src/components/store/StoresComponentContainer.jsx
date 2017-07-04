@@ -42,12 +42,7 @@ class StoresComponent extends React.Component {
                 <p className={commonStyles.componentTitle}>
                     Available stores
                 </p>
-                <IncrementalSearchComponent />
-                {/*<div className={storeStyles.incSearchResultsContainer}>
-                    <div className={storeStyles.incSearchResults}>
-                        <IncrementalSearchResultsComponent />
-                    </div>
-                </div>*/}
+                <IncrementalSearchComponent />                
                 {storesToRender}
             </div>);
     }
