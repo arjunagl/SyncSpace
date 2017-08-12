@@ -5,23 +5,13 @@ import storeStyles from './Store.scss';
 import { fetchStores } from './storeActions';
 import StoreComponent from './Store';
 import IncrementalSearchComponent from '../common/incrementalSearch/IncrementalSearch';
-import IncrementalSearchResultsComponent from '../common/incrementalSearchResults/IncrementalSearchResults';
 
-/**
- * 
- */
 class StoresComponent extends React.Component {
 
-    /**
-     * 
-     */
     componentDidMount() {
         this.props.fetchStores();
     }
 
-    /**
-     * 
-     */
     render() {
         const stores = this.props.Stores;
         let storesToRender = null;
@@ -49,28 +39,17 @@ class StoresComponent extends React.Component {
 
 }
 
-/**
- *
- */
 StoresComponent.PropTypes = {
     fetchStores: PropTypes.func.isRequired,
     Stores: PropTypes.array.isRequired
 };
 
-/**
- *
- * @param {*} dispatch
- */
 const mapDispatchToProps = (dispatch) => ({
     fetchStores: () => {
         dispatch(fetchStores());
     }
 });
 
-/**
- *
- * @param {*} state
- */
 const mapStateToProps = (state) => ({
     Stores: state.syncSpaceReducer.Stores
 });
