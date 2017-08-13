@@ -1,19 +1,8 @@
 import { SampleStores } from '../../../data/sampleData';
 import { Observable } from 'rxjs/Rx';
-/**
- * 
- * 
- * @class IncrementalSearchServiceMock
- */
+
 export default class IncrementalSearchServiceMock {
 
-    /**
-     * 
-     * 
-     * @static
-     * @param {any} searchText 
-     * @memberof IncrementalSearchServiceMock
-     */
     static performIncrementalSearch(action) {
         const incrementalSearchResults =
             // eslint-disable-next-line max-len

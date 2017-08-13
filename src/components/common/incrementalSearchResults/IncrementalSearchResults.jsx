@@ -3,21 +3,8 @@ import { connect } from 'react-redux';
 import styles from './IncrementalSearchResults.scss';
 import StoreComponent from '../../store/Store';
 
-/**
- * 
- * 
- * @class IncrementalSearchResults
- * @extends {React.Component}
- */
 class IncrementalSearchResults extends React.Component {
 
-    /**
-     * 
-     * 
-     * @returns 
-     * 
-     * @memberof IncrementalSearchResults
-     */
     render() {
         const filteredStoresToRender = this.props.filteredStores.map((store) =>
             <StoreComponent
@@ -38,10 +25,6 @@ class IncrementalSearchResults extends React.Component {
     }
 }
 
-/**
- * 
- * @param {*} state 
- */
 const mapStateToProps = (state) => ({
     filteredStores: state.syncSpaceReducer.FilteredStores
 });
