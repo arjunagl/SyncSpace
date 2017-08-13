@@ -37,7 +37,11 @@ describe('<IncrementalSearch />', () => {
     });
 
     it('calls \'onPerformIncrementalSearch\' when the user types in something', () => {
+        //    _this.getState = _this.store.getState.bind(_this.store);
+        // https://github.com/caljrimmer/isomorphic-redux-app/blob/master/test/behaviour/Sidebar.spec.js
         const mockStore = configureStore();
+        const getState = {}; // initial state of the store 
+        const store = mockStore(getState);
 
         const onPerformIncrementalSearchSpy = sinon.spy();
         const mapStateToProps = null;
@@ -52,7 +56,7 @@ describe('<IncrementalSearch />', () => {
                 <IncrementalSearchComponent
                     onPerformIncrementalSearch={onPerformIncrementalSearchSpy}
                     props={mappedProps}
-                    store={mockStore}
+                    store={store}
                 />
             );
 

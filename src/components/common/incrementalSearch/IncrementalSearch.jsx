@@ -6,7 +6,6 @@ import styles from './IncrementalSearch.scss';
 import { performIncrementalStoreSearch } from './IncrementalSearchActions';
 
 export class IncrementalSearch extends React.Component {
-
     constructor(props) {
         super(props);
         this.onSearch$ = new Subject();
