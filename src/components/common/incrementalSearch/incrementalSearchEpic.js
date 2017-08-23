@@ -1,6 +1,3 @@
-// import { Observable } from 'rxjs/Rx';
-// import { SampleStores } from '../../../data/sampleData';
-
 
 // eslint-disable-next-line arrow-body-style
 export const incrementalSearchEpic = (action$, store, { incrementalSearchService }) => {

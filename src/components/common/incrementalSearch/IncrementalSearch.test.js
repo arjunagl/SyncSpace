@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { Provider } from 'react-redux';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
@@ -8,9 +7,13 @@ import IncrementalSearchComponent, { IncrementalSearch } from './IncrementalSear
 
 
 describe('<IncrementalSearch />', () => {
-    afterEach(() => {
-        //    this.constructorSpy.restore();
-    });
+    let store;
+
+    beforeEach(() => {
+        const mockStore = configureStore();
+        const getState = {}; // initial state of the store         
+        store = mockStore(getState);
+    });    
 
     it('renders the component properly', () => {
         const component = shallow(<IncrementalSearch />);
@@ -38,11 +41,10 @@ describe('<IncrementalSearch />', () => {
 
     // eslint-disable-next-line max-len
     it('calls \'onPerformIncrementalSearch\' when the user types in something and more than 3 seconds have passed', () => {
-        //    _this.getState = _this.store.getState.bind(_this.store);
-        // https://github.com/caljrimmer/isomorphic-redux-app/blob/master/test/behaviour/Sidebar.spec.js
+        jest.useFakeTimers();
         const mockStore = configureStore();
         const getState = {}; // initial state of the store 
-        const store = mockStore(getState);
+        store = mockStore(getState);
 
         const onPerformIncrementalSearchSpy = sinon.spy();
         const mapStateToProps = null;
@@ -54,7 +56,7 @@ describe('<IncrementalSearch />', () => {
 
         const incrementalSearchWrapper =
             mount(
-                <IncrementalSearchComponent
+                <IncrementalSearch
                     onPerformIncrementalSearch={onPerformIncrementalSearchSpy}
                     props={mappedProps}
                     store={store}
@@ -68,22 +70,15 @@ describe('<IncrementalSearch />', () => {
         searchInput.simulate('change', searchInput);
 
         //We want to fastfoward all timers and check if the method was called
-        //jest.runAllTimers(); this does not work, we will have to check why later on.
-        // expect(onPerformIncrementalSearchSpy.called).toEqual(true);
-
-        setTimeout(() => {
-            console.log('TIME IS UP');
-            expect(onPerformIncrementalSearchSpy.called).toEqual(true);
-        }, 4000);
+        jest.runAllTimers();
+        expect(onPerformIncrementalSearchSpy.called).toEqual(true);
     });
 
     // eslint-disable-next-line max-len
     it('does not call \'onPerformIncrementalSearch\' when the user types in something and less than 3 seconds have passed', () => {
-        //    _this.getState = _this.store.getState.bind(_this.store);
-        // https://github.com/caljrimmer/isomorphic-redux-app/blob/master/test/behaviour/Sidebar.spec.js
         const mockStore = configureStore();
         const getState = {}; // initial state of the store 
-        const store = mockStore(getState);
+        store = mockStore(getState);
 
         const onPerformIncrementalSearchSpy = sinon.spy();
         const mapStateToProps = null;
@@ -95,7 +90,7 @@ describe('<IncrementalSearch />', () => {
 
         const incrementalSearchWrapper =
             mount(
-                <IncrementalSearchComponent
+                <IncrementalSearch
                     onPerformIncrementalSearch={onPerformIncrementalSearchSpy}
                     props={mappedProps}
                     store={store}
@@ -108,13 +103,32 @@ describe('<IncrementalSearch />', () => {
         searchInput.node.value = 'David';
         searchInput.simulate('change', searchInput);
 
-        //We want to fastfoward all timers and check if the method was called
-        //jest.runAllTimers(); this does not work, we will have to check why later on.
-        // expect(onPerformIncrementalSearchSpy.called).toEqual(true);
+        expect(onPerformIncrementalSearchSpy.called).toEqual(false);
+    });
 
-        setTimeout(() => {
-            console.log('TIME IS UP');
-            expect(onPerformIncrementalSearchSpy.called).toEqual(false);
-        }, 1500);
+    it('Dispatches the action to the store when the user types in something', () => {
+        jest.useFakeTimers();
+        const mockStore = configureStore();
+        const getState = {}; // initial state of the store 
+        store = mockStore(getState);
+
+        const onPerformIncrementalSearchSpy = sinon.spy();
+
+        const incrementalSearchWrapper =
+            mount(
+                <IncrementalSearchComponent
+                    onPerformIncrementalSearch={onPerformIncrementalSearchSpy}
+                    store={store}
+                />
+            );
+
+
+        //find the input element
+        const searchInput = incrementalSearchWrapper.find('#searchInput');
+        searchInput.node.value = 'David';
+        searchInput.simulate('change', searchInput);
+        jest.runAllTimers();
+        const actions = store.getActions();
+        expect(actions[0]).toEqual(JSON.parse('{"type":"SEARCH_STORES","SearchText":"David"}'));
     });
 });

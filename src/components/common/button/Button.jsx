@@ -18,7 +18,7 @@ class ButtonComponent extends React.Component {
     render() {
         return (
             <button
-                className={this.props.className} onClick={this.props.onClick}
+                id={this.props.id} className={this.props.className} onClick={this.props.onClick}
                 style={this.props.style}
             >
                 {this.props.content}

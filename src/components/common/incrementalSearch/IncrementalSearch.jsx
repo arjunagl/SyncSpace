@@ -13,6 +13,7 @@ export class IncrementalSearch extends React.Component {
     }
 
     componentDidMount() {
+        //Acting as the Observer
         this.subscription = this.onSearch$
             .debounceTime(300)
             .subscribe(debounced => {
@@ -29,7 +30,7 @@ export class IncrementalSearch extends React.Component {
 
     onChange(e) {
         const newText = e.target.value;
-        this.onSearch$.next(newText);
+        this.onSearch$.next(newText); //Acts as the Observable
     }
 
     render() {

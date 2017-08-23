@@ -8,7 +8,7 @@
     "webpack": "webpack --progress",
     "build": "webpack --progress",
     "test": "jest --watch",
-    "test-debug": "node --debug-brk ./node_modules/.bin/jest --runInBand",
+    "test-debug": "node --debug-brk --inspect ./node_modules/.bin/jest -i",
     "test:watch": "npm test -- --watch"
   },
   "repository": {

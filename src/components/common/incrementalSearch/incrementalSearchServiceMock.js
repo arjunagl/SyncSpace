@@ -1,5 +1,5 @@
-import { SampleStores } from '../../../data/sampleData';
 import { Observable } from 'rxjs/Rx';
+import { SampleStores } from '../../../data/sampleData';
 
 export default class IncrementalSearchServiceMock {
 
@@ -20,5 +20,7 @@ export default class IncrementalSearchServiceMock {
         //Create the interval to emit an item every second
         return Observable.interval(1000)
             .take(incrementalSearchResults.length).map(t => incrementalSearchResults[t]);
+
+        // return Observable.from(incrementalSearchResults);
     }
 }

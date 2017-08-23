@@ -6,13 +6,9 @@ import styles from './ShoppingPath.scss';
 import ButtonContainer from '../common/button/Button';
 import commonStyles from '../../stylesheets/styles.scss';
 
-/**
- * 
- * @param {*} param0 
- */
 const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked }) => {
     const buttonStyle = {
-        width: '100%'
+        margin: '10px 10px 0px 0px'
     };
 
     if (AppliedShoppingLists === undefined) {
@@ -21,7 +17,6 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
 
     //First sort and then group based on the location
     const sortedShoppingPathOnLocation = sortby(AppliedShoppingLists, (shoppingPathItem) => {
-        console.log(shoppingPathItem);
         return shoppingPathItem.Location.Name;
     });
 
@@ -67,32 +62,38 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
             {shoppingPathToRender}
             <div className={styles.CompleteShopping}>
                 <ButtonContainer
+                    id='completeShoppingbutton'
                     className={commonStyles.std_Button}
                     onClick={onCompleteShoppingClicked}
                     style={buttonStyle}
-                    content='Complete Shopping'
+                    content='Complete shopping'
+                />
+                <ButtonContainer
+                    id='saveShoppingbutton'
+                    className={commonStyles.std_Button}
+                    onClick={onCompleteShoppingClicked}
+                    style={buttonStyle}
+                    content='Save for later'
                 />
             </div>
         </div>
     );
 };
 
-/**
- *
- * @param {*} state
- */
+export { ShoppingPathComponent };
+
 const mapStateToProps = (state) => ({
     AppliedShoppingLists: state.syncSpaceReducer.AppliedShoppingLists
 });
 
-/**
- * 
- * @param {*} dispatch 
- */
+
 const mapDispatchToProps = (dispatch) => ({
     onCompleteShoppingClicked: () => {
-        alert('clicked');
+        alert('clicked complete');
     },
+    onSaveShoppingClicked: () => {
+        alert('clicked save');
+    }
 });
 
 const ShoppingPathComponentContainer =
