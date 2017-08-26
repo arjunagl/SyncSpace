@@ -13,7 +13,7 @@ describe('<IncrementalSearch />', () => {
         const mockStore = configureStore();
         const getState = {}; // initial state of the store         
         store = mockStore(getState);
-    });    
+    });
 
     it('renders the component properly', () => {
         const component = shallow(<IncrementalSearch />);
@@ -47,18 +47,11 @@ describe('<IncrementalSearch />', () => {
         store = mockStore(getState);
 
         const onPerformIncrementalSearchSpy = sinon.spy();
-        const mapStateToProps = null;
-        const mapDispatchToProps = {
-            onPerformIncrementalSearch: onPerformIncrementalSearchSpy
-        };
-
-        const mappedProps = { mapStateToProps, mapDispatchToProps };
 
         const incrementalSearchWrapper =
             mount(
                 <IncrementalSearch
                     onPerformIncrementalSearch={onPerformIncrementalSearchSpy}
-                    props={mappedProps}
                     store={store}
                 />
             );

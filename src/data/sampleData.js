@@ -4,7 +4,7 @@ export const AppliedShoppingListsSampleData = [
         Item: {
             Id: '1',
             Name: 'Apples'
-        },
+        },        
         Location: {
             Name: 'Isle 1',
             Description: 'Next to Oranges'

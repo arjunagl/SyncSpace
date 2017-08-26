@@ -1,3 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ShoppingPathComponent /> renders the component properly 1`] = `<div />`;
+exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
+<div>
+  <div>
+    <div>
+      Isle 1
+      <div>
+        <div>
+          <input
+            id="1"
+            type="checkbox"
+          />
+          <label
+            htmlFor="1"
+          >
+            Apples
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+        <div>
+          <input
+            id="2"
+            type="checkbox"
+          />
+          <label
+            htmlFor="2"
+          >
+            Pears
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+        <div>
+          <input
+            id="4"
+            type="checkbox"
+          />
+          <label
+            htmlFor="4"
+          >
+            Grapes
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      Isle 2
+      <div>
+        <div>
+          <input
+            id="3"
+            type="checkbox"
+          />
+          <label
+            htmlFor="3"
+          >
+            Oranges
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      Isle 3
+      <div>
+        <div>
+          <input
+            id="6"
+            type="checkbox"
+          />
+          <label
+            htmlFor="6"
+          >
+            Apricots
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      Isle 4
+      <div>
+        <div>
+          <input
+            id="5"
+            type="checkbox"
+          />
+          <label
+            htmlFor="5"
+          >
+            Carrots
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <Connect(ButtonComponent)
+      content="Complete shopping"
+      id="completeShoppingbutton"
+      style={
+        Object {
+          "margin": "10px 10px 0px 0px",
+        }
+      }
+    />
+    <Connect(ButtonComponent)
+      content="Save for later"
+      id="saveShoppingbutton"
+      style={
+        Object {
+          "margin": "10px 10px 0px 0px",
+        }
+      }
+    />
+  </div>
+</div>
+`;
