@@ -55,7 +55,7 @@ describe('<ShoppingPathComponent />', () => {
         const onCompleteShoppingClickedSpy = sinon.spy();
         const onSaveShoppingClickedSpy = sinon.spy();
 
-        const shppingPathWrapper =
+        const shppongPathWrapper =
             mount(
                 <Provider store={store}>
                     <ShoppingPathComponent
@@ -66,7 +66,7 @@ describe('<ShoppingPathComponent />', () => {
                 </Provider>
             );
 
-        const completeShoppingbutton = shppingPathWrapper.find('#saveShoppingbutton');
+        const completeShoppingbutton = shppongPathWrapper.find('#saveShoppingbutton');
         completeShoppingbutton.simulate('click');
         expect(onSaveShoppingClickedSpy.called).toEqual(true);
     });
@@ -82,10 +82,10 @@ describe('<ShoppingPathComponent />', () => {
         const completeShoppingbutton = shoppingPathContainerWrapper.find('#completeShoppingbutton');
         completeShoppingbutton.simulate('click');
         const actions = store.getActions();
-        expect(actions[0]).toEqual(completeShoppingPathAction());
+        expect(actions[0]).toEqual(completeShoppingPathAction(AppliedShoppingListsSampleData));
     });
 
-    it('selects registers the shopping list item when the user checks the item', () => {
+    it('marks an item as picked up when the user selects an item', () => {
         const onCompleteShoppingClickedSpy = sinon.spy();
         const onSaveShoppingClickedSpy = sinon.spy();
 
@@ -101,8 +101,33 @@ describe('<ShoppingPathComponent />', () => {
             );
 
         //Select a shopping list item
-        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#1');
-        shoppingItem.simulate('click');
-        console.log('abcd');
+        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#4');
+        shoppingItem.simulate('change', { target: { checked: true, id: '4' } });
+
+        const markedItem = AppliedShoppingListsSampleData.find(si => si.Item.Id === '4');
+        expect(markedItem.PickedUp).toBe(true);
+    });
+
+    it('marks an item as not picked up when the user delselects an item', () => {
+        const onCompleteShoppingClickedSpy = sinon.spy();
+        const onSaveShoppingClickedSpy = sinon.spy();
+
+        const shoppingPathWrapper =
+            mount(
+                <Provider store={store}>
+                    <ShoppingPathComponent
+                        AppliedShoppingLists={AppliedShoppingListsSampleData}
+                        onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
+                        onSaveShoppingClicked={onSaveShoppingClickedSpy}
+                    />
+                </Provider>
+            );
+
+        //Select a shopping list item
+        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#4');
+        shoppingItem.simulate('change', { target: { checked: false, id: '4' } });
+
+        const markedItem = AppliedShoppingListsSampleData.find(si => si.Item.Id === '4');
+        expect(markedItem.PickedUp).toBe(false);
     });
 });

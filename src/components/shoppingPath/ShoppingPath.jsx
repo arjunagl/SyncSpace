@@ -15,12 +15,11 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
 
     const onClickedShoppingItem = (event) => {
         const isSelected = event.target.checked;
-        // const shoppingItemId = even
-        // if (isSelected) {
-        //     onShoppingListClicked(ShoppingListId);
-        // } else {
-        //     onShoppingListUnclicked(ShoppingListId);
-        // }
+        const shoppingListitemId = event.target.id;
+
+        //Select the item from the shopping list and mark the chcecked state
+        const shoppingItem = AppliedShoppingLists.find(si => si.Item.Id === shoppingListitemId);
+        shoppingItem.PickedUp = isSelected;
     };
 
     if (AppliedShoppingLists === undefined) {
@@ -77,7 +76,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
                 <ButtonContainer
                     id='completeShoppingbutton'
                     className={commonStyles.std_Button}
-                    onClick={onCompleteShoppingClicked}
+                    onClick={() => onCompleteShoppingClicked(AppliedShoppingLists)}
                     style={buttonStyle}
                     content='Complete shopping'
                 />
@@ -101,8 +100,8 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = (dispatch) => ({
-    onCompleteShoppingClicked: () => {
-        dispatch(completeShoppingPathAction());
+    onCompleteShoppingClicked: (appliedShoppingList) => {
+        dispatch(completeShoppingPathAction(appliedShoppingList));
     },
     onSaveShoppingClicked: () => {
         alert('clicked save');

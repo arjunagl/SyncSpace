@@ -1,4 +1,5 @@
-export const completeShoppingPathAction = () => ({
-    type: 'COMPLETE_SHOPPING'
+export const completeShoppingPathAction = (appliedShoppingList) => ({
+    type: 'COMPLETE_SHOPPING',
+    appliedShoppingList
 });
 

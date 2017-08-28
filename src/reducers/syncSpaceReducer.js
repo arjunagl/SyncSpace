@@ -14,7 +14,7 @@ const initialState = {
         SearchText: '',
         FilteredStores: []
     },
-    // FilteredStores: [],
+    CompletedShoppingLists: [],
     AppliedShoppingLists: AppliedShoppingListsSampleData
 };
 
@@ -70,6 +70,14 @@ const syncSpaceReducer = (state = initialState, action) => {
                     SearchText: action.searchText,
                     FilteredStores: combinedStores
                 }
+            };
+        }
+        case 'COMPLETE_SHOPPING': {
+            const completedShoppingLists = Array.of(...state.CompletedShoppingLists);
+            completedShoppingLists.push(action.appliedShoppingList);
+            return {
+                ...state,
+                CompletedShoppingLists: completedShoppingLists
             };
         }
         default:

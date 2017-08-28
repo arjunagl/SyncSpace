@@ -9,6 +9,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
         <div>
           <input
             id="1"
+            onChange={[Function]}
             type="checkbox"
           />
           <label
@@ -23,6 +24,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
         <div>
           <input
             id="2"
+            onChange={[Function]}
             type="checkbox"
           />
           <label
@@ -37,6 +39,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
         <div>
           <input
             id="4"
+            onChange={[Function]}
             type="checkbox"
           />
           <label
@@ -58,6 +61,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
         <div>
           <input
             id="3"
+            onChange={[Function]}
             type="checkbox"
           />
           <label
@@ -79,6 +83,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
         <div>
           <input
             id="6"
+            onChange={[Function]}
             type="checkbox"
           />
           <label
@@ -100,6 +105,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
         <div>
           <input
             id="5"
+            onChange={[Function]}
             type="checkbox"
           />
           <label
@@ -118,6 +124,7 @@ exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
     <Connect(ButtonComponent)
       content="Complete shopping"
       id="completeShoppingbutton"
+      onClick={[Function]}
       style={
         Object {
           "margin": "10px 10px 0px 0px",
