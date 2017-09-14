@@ -1,4 +1,4 @@
-import { AppliedShoppingListsSampleData } from '../data/sampleData';
+import { AppliedShoppingListsSampleData, CompletedShoppingListsSampleData, SavedShoppingListsSampleData } from '../data/sampleData';
 
 /**
  * Initial state of the store, used to set default values
@@ -14,7 +14,8 @@ const initialState = {
         SearchText: '',
         FilteredStores: []
     },
-    CompletedShoppingLists: [],
+    CompletedShoppingLists: CompletedShoppingListsSampleData,
+    SavedShoppingLists: SavedShoppingListsSampleData,
     AppliedShoppingLists: AppliedShoppingListsSampleData
 };
 
@@ -78,6 +79,14 @@ const syncSpaceReducer = (state = initialState, action) => {
             return {
                 ...state,
                 CompletedShoppingLists: completedShoppingLists
+            };
+        }
+        case 'SAVE_SHOPPING': {
+            const savedShoppingLists = Array.of(...state.SavedShoppingLists);
+            savedShoppingLists.push(action.appliedShoppingList);
+            return {
+                ...state,
+                SavedShoppingLists: savedShoppingLists
             };
         }
         default:

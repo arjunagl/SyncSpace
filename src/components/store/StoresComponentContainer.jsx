@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import commonStyles from '../../stylesheets/styles.scss';
-import storeStyles from './Store.scss';
 import { fetchStores } from './storeActions';
 import StoreComponent from './Store';
 import IncrementalSearchComponent from '../common/incrementalSearch/IncrementalSearch';

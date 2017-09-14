@@ -1,0 +1,15 @@
+@import "../../stylesheets/styles";
+.completedSavedShoppingWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (min-width: 481px) {
+        flex-direction: row;
+        align-items: initial;
+    }
+}
+
+.completedSavedShoppingSeparation {
+    width: 100%;
+    margin: 0 2rem 0 2rem;
+}

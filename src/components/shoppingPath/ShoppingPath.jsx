@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import groupby from 'lodash.groupby';
 import sortby from 'lodash.sortby';
 import styles from './ShoppingPath.scss';
 import ButtonContainer from '../common/button/Button';
 import commonStyles from '../../stylesheets/styles.scss';
-import { completeShoppingPathAction } from './ShoppingPathActions';
+import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPathActions';
 
 // eslint-disable-next-line max-len
 const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked }) => {
@@ -101,10 +102,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onCompleteShoppingClicked: (appliedShoppingList) => {
+        browserHistory.push('/landing');
         dispatch(completeShoppingPathAction(appliedShoppingList));
     },
-    onSaveShoppingClicked: () => {
-        alert('clicked save');
+    onSaveShoppingClicked: (appliedShoppingList) => {
+        browserHistory.push('/landing');
+        dispatch(saveShoppingPathAction(appliedShoppingList));
     }
 });
 

@@ -3,3 +3,8 @@ export const completeShoppingPathAction = (appliedShoppingList) => ({
     appliedShoppingList
 });
 
+export const saveShoppingPathAction = (appliedShoppingList) => ({
+    type: 'SAVE_SHOPPING',
+    appliedShoppingList
+});
+
