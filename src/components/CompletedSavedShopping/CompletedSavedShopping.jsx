@@ -4,9 +4,21 @@ import commonStyles from '../../stylesheets/styles.scss';
 import styles from './CompletedSavedShopping.scss';
 
 const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShoppingLists }) => {
-    let savedShoppingPaths;
+    //Completed shopping lists
+    const completedShoppingPaths = CompletedShoppingLists.map(
+        completedShoppingPath =>
+            <div>
+                {completedShoppingPath.Name} - {completedShoppingPath.UpdateDate}
+            </div>
+    );
 
-    const completedShoppingPaths = CompletedShoppingLists.map(completedShoppingPath => completedShoppingPath.ShoppingListId);
+    //Saved shopping lists
+    const savedShoppingPaths = SavedShoppingLists.map(
+        savedShoppingPath =>
+            <div>
+                {savedShoppingPath.Name} - {savedShoppingPath.UpdateDate}
+            </div>
+    );
     return (
         <div className={styles.completedSavedShoppingWrapper}>
             <div className={styles.completedSavedShoppingSeparation}>
@@ -22,7 +34,7 @@ const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShop
                     <p className={commonStyles.componentTitle}>
                         Saved Shoppings
                     </p>
-                    {completedShoppingPaths}
+                    {savedShoppingPaths}
                 </div>
             </div>
         </div>
