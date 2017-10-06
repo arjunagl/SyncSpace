@@ -9,7 +9,8 @@ import commonStyles from '../../stylesheets/styles.scss';
 import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPathActions';
 
 // eslint-disable-next-line max-len
-const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked }) => {
+const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked }) => {    
+
     const buttonStyle = {
         margin: '10px 10px 0px 0px'
     };
@@ -99,7 +100,6 @@ const mapStateToProps = (state) => ({
     AppliedShoppingLists: state.syncSpaceReducer.AppliedShoppingLists
 });
 
-
 const mapDispatchToProps = (dispatch) => ({
     onCompleteShoppingClicked: (appliedShoppingList) => {
         browserHistory.push('/landing');
@@ -113,4 +113,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const ShoppingPathComponentContainer =
     connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
+    
 export default ShoppingPathComponentContainer;
