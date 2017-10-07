@@ -15,6 +15,7 @@ import { storeEpic } from './components/store/storeEpic';
 import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
 import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
+import { completedSavedShoppingEpic } from './components/CompletedSavedShopping/CompletedSavedShoppingEpic';
 import IncrementalSearchServiceMock
     from './components/common/incrementalSearch/incrementalSearchServiceMock';
 
@@ -26,7 +27,8 @@ const rootEpic = combineEpics(
     storeEpic,
     shoppingListEpic,
     landingEpic,
-    incrementalSearchEpic
+    incrementalSearchEpic,
+    completedSavedShoppingEpic
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic, {

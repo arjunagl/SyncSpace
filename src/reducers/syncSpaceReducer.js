@@ -46,6 +46,15 @@ const syncSpaceReducer = (state = initialState, action) => {
                     Message: ''
                 }
             };
+        case 'COMPLETED_SAVED_SHOPPING_LIST_LOADED':
+            return {
+                ...state,
+                AppliedShoppingLists: action.AppliedShoppingList.ShoppingItems,
+                Processing: {
+                    State: 'Idle',
+                    Message: ''
+                }
+            };
         case 'APPLYING_SHOPPING_LISTS':
             return {
                 ...state,
