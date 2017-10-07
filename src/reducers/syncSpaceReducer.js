@@ -49,7 +49,7 @@ const syncSpaceReducer = (state = initialState, action) => {
         case 'COMPLETED_SAVED_SHOPPING_LIST_LOADED':
             return {
                 ...state,
-                AppliedShoppingLists: action.AppliedShoppingList.ShoppingItems,
+                AppliedShoppingLists: action.AppliedShoppingList,
                 Processing: {
                     State: 'Idle',
                     Message: ''

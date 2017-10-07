@@ -29,7 +29,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
     }
 
     //First sort and then group based on the location    
-    const sortedShoppingPathOnLocation = sortby(AppliedShoppingLists, (shoppingPathItem) => shoppingPathItem.Location.Name);
+    const sortedShoppingPathOnLocation = sortby(AppliedShoppingLists.ShoppingItems, (shoppingPathItem) => shoppingPathItem.Location.Name);
 
     //Group based on the location
     const sortedAndGroupedShoppingPathOnLocation = groupby(sortedShoppingPathOnLocation,
