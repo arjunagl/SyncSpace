@@ -40,18 +40,6 @@ class ShoppingListsComponent extends React.Component {
     }
 }
 
-/**
- * 
- */
-ShoppingListComponent.PropTypes = {
-    fetchShoppingLists: PropTypes.func.isRequired,
-    ShoppingLists: PropTypes.array.isRequired
-};
-
-/**
- * 
- * @param {*} dispatch 
- */
 const mapDispatchToProps = (dispatch) => ({
     fetchShoppingLists: () => {
         dispatch(fetchShoppingLists());

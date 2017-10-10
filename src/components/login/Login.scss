@@ -1,4 +1,4 @@
-@import "../../stylesheets/styles";
+@import "../../stylesheets/styles.scss";
 .loginDiv {
     display: flex;
     flex-direction: column;
@@ -13,14 +13,14 @@
 }
 
 .loginButton {
-    composes: std_Button;
+    composes: std_Button from '../../stylesheets/styles.scss';
     margin: 1em 2em;
     width: 100%;
     max-width: 400px;
 }
 
 .registerButton {
-    composes: std_Button_Secondary;
+    composes: std_Button_Secondary from '../../stylesheets/styles.scss';;
     margin: 1em 2em;
     width: 100%;
     max-width: 400px;

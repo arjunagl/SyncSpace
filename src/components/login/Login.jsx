@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styles from './Login.scss';
 import standardStyles from '../../stylesheets/styles.scss';
 
@@ -13,13 +13,5 @@ const LoginComponent = ({ onLoginClick, onRegisterClick }) => (
         </div>
     </div>
 );
-
-/**
- * 
- */
-LoginComponent.propTypes = {
-    onLoginClick: PropTypes.func.isRequired,
-    onRegisterClick: PropTypes.func.isRequired
-};
 
 export default LoginComponent;

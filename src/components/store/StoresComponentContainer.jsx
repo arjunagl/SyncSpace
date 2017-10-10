@@ -38,11 +38,6 @@ class StoresComponent extends React.Component {
 
 }
 
-StoresComponent.PropTypes = {
-    fetchStores: PropTypes.func.isRequired,
-    Stores: PropTypes.array.isRequired
-};
-
 const mapDispatchToProps = (dispatch) => ({
     fetchStores: () => {
         dispatch(fetchStores());
