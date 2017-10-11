@@ -17,23 +17,12 @@ function loginFailed() {
     };
 }
 
-
-/**
- *
- * @returns {{type: string}}
- */
 function performingLogin() {
     return {
         type: 'LOGIN_PROGRESS'
     };
 }
 
-/**
- *
- * @param userName
- * @param password
- * @returns {Function}
- */
 export function performLogin(userName, password) {
     return function (dispatch) {
         dispatch(performingLogin());

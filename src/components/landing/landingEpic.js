@@ -5,13 +5,7 @@ import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/concat';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Rx';
-import { browserHistory } from 'react-router';
 import { AppliedShoppingListsSampleData } from '../../data/sampleData';
-
-/**
- * 
- * @param {*} action$ 
- */
 
 // eslint-disable-next-line arrow-body-style
 export const landingEpic = action$ => {
@@ -25,10 +19,7 @@ export const landingEpic = action$ => {
                 Observable.of({
                     type: 'APPLIED_SHOPPING_LISTS',
                     AppliedShoppingLists: AppliedShoppingListsSampleData
-                }).delay(5000).map(shoppingList => {
-                    browserHistory.push('/shopping');
-                    return shoppingList;
-                })
+                }).delay(5000).map(shoppingList => shoppingList)
             )
         );
 };

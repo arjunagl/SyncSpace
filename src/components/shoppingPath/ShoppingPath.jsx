@@ -9,7 +9,7 @@ import commonStyles from '../../stylesheets/styles.scss';
 import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPathActions';
 
 // eslint-disable-next-line max-len
-const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked }) => {    
+const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked, history }) => {
 
     const buttonStyle = {
         margin: '10px 10px 0px 0px'
@@ -78,14 +78,20 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
                 <ButtonContainer
                     id='completeShoppingbutton'
                     className={commonStyles.std_Button}
-                    onClick={() => onCompleteShoppingClicked(AppliedShoppingLists)}
+                    onClick={() => {
+                        onCompleteShoppingClicked();
+                        history.push('/landing');
+                    }}
                     style={buttonStyle}
                     content='Complete shopping'
                 />
                 <ButtonContainer
                     id='saveShoppingbutton'
                     className={commonStyles.std_Button}
-                    onClick={onSaveShoppingClicked}
+                    onClick={() => {
+                        onSaveShoppingClicked(AppliedShoppingLists);
+                        history.push('/landing');
+                    }}
                     style={buttonStyle}
                     content='Save for later'
                 />
@@ -102,16 +108,14 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onCompleteShoppingClicked: (appliedShoppingList) => {
-        browserHistory.push('/landing');
         dispatch(completeShoppingPathAction(appliedShoppingList));
     },
     onSaveShoppingClicked: (appliedShoppingList) => {
-        browserHistory.push('/landing');
         dispatch(saveShoppingPathAction(appliedShoppingList));
     }
 });
 
 const ShoppingPathComponentContainer =
     connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
-    
+
 export default ShoppingPathComponentContainer;

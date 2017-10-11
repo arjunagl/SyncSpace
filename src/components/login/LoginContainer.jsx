@@ -14,7 +14,8 @@ class LoginContainerComponent extends React.Component {
     }
 
     login(username, password) {
-        this.props.onPerformLogin(username, password);
+        // this.props.onPerformLogin(username, password);
+        this.props.history.push('/landing');
     }
 
     render() {
@@ -41,4 +42,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(LoginContainerComponent);
 export default LoginContainer;
-    

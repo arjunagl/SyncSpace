@@ -14,12 +14,6 @@ import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
  */
 class LandingComponent extends React.Component {
 
-    /**
-     * Creates an instance of LandingComponent.
-     * @param {any} props 
-     * 
-     * @memberOf LandingComponent
-     */
     constructor(props) {
         super(props);
         this.state = { selectedShoppingLists: [] };
@@ -28,13 +22,12 @@ class LandingComponent extends React.Component {
         this.onApplyShoppingListsClicked = this.onApplyShoppingListsClicked.bind(this);
     }
 
-    /**
-     * 
-     * 
-     * @param {any} shoppingListId 
-     * 
-     * @memberOf LandingComponent
-     */
+    componentWillReceiveProps({ history, completedActionCode }) {
+        if (completedActionCode === 'APPLIED_SHOPPING_LISTS') {
+            history.push('/shopping');
+        }
+    }
+
     onShoppingListClicked(shoppingListId) {
         const index = this.state.selectedShoppingLists.indexOf(shoppingListId);
         if (index === -1) { //Item does not exist
@@ -42,13 +35,6 @@ class LandingComponent extends React.Component {
         }
     }
 
-    /**
-     * 
-     * 
-     * @param {any} shoppingListId 
-     * 
-     * @memberOf LandingComponent
-     */
     onShoppingListUnclicked(shoppingListId) {
         const index = this.state.selectedShoppingLists.indexOf(shoppingListId);
         if (index !== -1) { //Item does not exist
@@ -56,24 +42,10 @@ class LandingComponent extends React.Component {
         }
     }
 
-    /**
-     * 
-     * 
-     * @param {any} storeId 
-     * 
-     * @memberOf LandingComponent
-     */
     onApplyShoppingListsClicked(storeId) {
         this.props.onApplyShoppingLists(storeId, this.state.selectedShoppingLists);
     }
 
-    /**
-     * 
-     * 
-     * @returns 
-     * 
-     * @memberOf LandingComponent
-     */
     render() {
         return (
             <div>
@@ -84,7 +56,7 @@ class LandingComponent extends React.Component {
                             onShoppingListUnclicked={this.onShoppingListUnclicked}
                         />
                     </div>
-                    <div className={styles.landingPageSeparation}>                        
+                    <div className={styles.landingPageSeparation}>
                         <StoresComponentContainer
                             onApplyShoppingListClicked={this.onApplyShoppingListsClicked}
                         />
@@ -106,5 +78,9 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const LandingContainer = connect(null, mapDispatchToProps)(LandingComponent);
+const mapStateToProps = (state) => ({
+    completedActionCode: state.syncSpaceReducer.Processing.CompletedActionCode
+});
+
+const LandingContainer = connect(mapStateToProps, mapDispatchToProps)(LandingComponent);
 export default LandingContainer;

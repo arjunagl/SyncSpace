@@ -1,14 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import thunkMiddleware from 'redux-thunk';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import handleTransitions from 'redux-history-transitions';
 import createHistory from 'history/createBrowserHistory';
-import routes from './routes/routes';
+
 import DevTools from './components/devTools/DevTools';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
 import { storeEpic } from './components/store/storeEpic';
@@ -18,6 +17,7 @@ import { incrementalSearchEpic } from './components/common/incrementalSearch/inc
 import { completedSavedShoppingEpic } from './components/CompletedSavedShopping/CompletedSavedShoppingEpic';
 import IncrementalSearchServiceMock
     from './components/common/incrementalSearch/incrementalSearchServiceMock';
+import App from './components/app/App';
 
 import './stylesheets/fonts.scss';
 import './stylesheets/styles.scss';
@@ -37,13 +37,6 @@ const epicMiddleware = createEpicMiddleware(rootEpic, {
     }
 });
 
-//Combine the reducers
-const reducer = combineReducers({
-    syncSpaceReducer,
-    routing: routerReducer
-});
-
-// const enhancer = 
 const transitionHistory = createHistory();
 
 const enhancer = compose(
@@ -52,14 +45,19 @@ const enhancer = compose(
     DevTools.instrument()
 );
 
+//Combine the reducers
+const reducer = combineReducers({
+    syncSpaceReducer    
+});
+
 const store = createStore(reducer, enhancer);
-const history = syncHistoryWithStore(browserHistory, store);
 
 render(
     <Provider store={store}>
         <div>
-            <Router history={history} routes={routes} />
-            <DevTools />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </div>
     </Provider>,
     document.getElementById('syncspace')

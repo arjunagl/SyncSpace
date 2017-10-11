@@ -25,22 +25,14 @@ module.exports = {
         },
         {
             test: /\.scss$/,
-            // eslint-disable-next-line max-len
-            // use: ExtractTextPlugin.extract('style-loader', '!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]&sourceMap!sass-loader?sourceMap')
             use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
-            })
-            // use: ExtractTextPlugin.extract({
-            //     fallback: 'style-loader',
-            //     use: [{
-            //         loader: 'style-loader' // creates style nodes from JS strings
-            //     }, {
-            //         loader: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"&sourceMap' // translates CSS into CommonJS
-            //     }, {
-            //         loader: 'sass-loader?sourceMap' // compiles Sass to CSS
-            //     }]
-            // })
+                use: [{
+                    loader: 'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:6]&sourceMap'
+                }, {
+                    loader: 'sass-loader?sourceMap'
+                }]
+
+            })            
         }, {
             test: /\.svg$/,
             loader: 'url-loader',
@@ -52,7 +44,6 @@ module.exports = {
         },
         {
             test: /\.woff$/,
-            // eslint-disable-next-line max-len
             loader: 'url-loader',
             options: {
                 limit: 65000,
@@ -62,7 +53,6 @@ module.exports = {
         },
         {
             test: /\.woff2$/,
-            // eslint-disable-next-line max-len
             loader: 'url-loader',
             options: {
                 limit: 65000,
@@ -72,7 +62,6 @@ module.exports = {
         },
         {
             test: /\.[ot]tf$/,
-            // eslint-disable-next-line max-len
             loader: 'url-loader',
             options: {
                 limit: 65000,
@@ -82,7 +71,6 @@ module.exports = {
         },
         {
             test: /\.eot$/,
-            // eslint-disable-next-line max-len
             loader: 'url-loader',
             options: {
                 limit: 65000,

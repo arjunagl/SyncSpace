@@ -8,6 +8,7 @@ const initialState = {
     ShoppingLists: [],
     Processing: {
         State: 'Idle',
+        CompletedActionCode: '',
         Message: ''
     },
     Search: {
@@ -43,6 +44,7 @@ const syncSpaceReducer = (state = initialState, action) => {
                 AppliedShoppingLists: action.AppliedShoppingLists,
                 Processing: {
                     State: 'Idle',
+                    CompletedActionCode: 'APPLIED_SHOPPING_LISTS',
                     Message: ''
                 }
             };
