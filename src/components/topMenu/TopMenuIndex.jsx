@@ -14,7 +14,7 @@ class TopMenuComponent extends React.Component {
 
     onMenuItemSelected(e) {
         console.log(e);
-        browserHistory.push(e.target.dataset.href);
+        this.props.history.push(e.target.dataset.href);
     }
 
     expandMenu(e) {
@@ -44,7 +44,7 @@ class TopMenuComponent extends React.Component {
                             <li className={this.isExpanded()}><a href="#1">Home</a></li>
                             <li className={this.isExpanded()}><a href="#2">About</a></li>
                             <li className={this.isExpanded()}>
-                                <a href="#3" onClick={this.onMenuItemSelected} data-href='completedsavedshopping'>Saved Items</a>
+                                <a href="#3" onClick={this.onMenuItemSelected} data-href='/completedsavedshopping'>Saved Items</a>
                             </li>
                             <li className={this.isExpanded()}><LoginStatusContainer /></li>
                         </ul>

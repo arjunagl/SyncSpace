@@ -1,12 +1,18 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount, shallow, configure } from 'enzyme';
 import { Provider } from 'react-redux';
 import sinon from 'sinon';
+import Adapter from 'enzyme-adapter-react-16';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import ShoppingPathComponentContainer, { ShoppingPathComponent } from './ShoppingPath';
 import { AppliedShoppingListsSampleData } from '../../data/sampleData';
 import { completeShoppingPathAction } from './ShoppingPathActions';
+
+
+// setup file
+
+configure({ adapter: new Adapter() });
 
 describe('<ShoppingPathComponent />', () => {
     let store;
