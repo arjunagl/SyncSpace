@@ -8,6 +8,7 @@ import configureStore from 'redux-mock-store';
 import ShoppingPathComponentContainer, { ShoppingPathComponent } from './ShoppingPath';
 import { AppliedShoppingListsSampleData } from '../../data/sampleData';
 import { completeShoppingPathAction } from './ShoppingPathActions';
+import HistoryMock from '../../../jest/historyMock';
 
 
 // setup file
@@ -48,11 +49,13 @@ describe('<ShoppingPathComponent />', () => {
                         AppliedShoppingLists={AppliedShoppingListsSampleData}
                         onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
                         onSaveShoppingClicked={onSaveShoppingClickedSpy}
+                        history={HistoryMock}
                     />
                 </Provider>
             );
 
-        const completeShoppingbutton = shppingPathWrapper.find('#completeShoppingbutton');
+        shppingPathWrapper.hostNodes();
+        const completeShoppingbutton = shppingPathWrapper.find('#completeShoppingbutton').hostNodes();
         completeShoppingbutton.simulate('click');
         expect(onCompleteShoppingClickedSpy.called).toEqual(true);
     });
@@ -68,11 +71,12 @@ describe('<ShoppingPathComponent />', () => {
                         AppliedShoppingLists={AppliedShoppingListsSampleData}
                         onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
                         onSaveShoppingClicked={onSaveShoppingClickedSpy}
+                        history={HistoryMock}
                     />
                 </Provider>
             );
 
-        const completeShoppingbutton = shppongPathWrapper.find('#saveShoppingbutton');
+        const completeShoppingbutton = shppongPathWrapper.find('#saveShoppingbutton').hostNodes();
         completeShoppingbutton.simulate('click');
         expect(onSaveShoppingClickedSpy.called).toEqual(true);
     });
@@ -81,11 +85,13 @@ describe('<ShoppingPathComponent />', () => {
         const shoppingPathContainerWrapper =
             mount(
                 <Provider store={store}>
-                    <ShoppingPathComponentContainer />
+                    <ShoppingPathComponentContainer
+                        history={HistoryMock}
+                    />
                 </Provider>
             );
 
-        const completeShoppingbutton = shoppingPathContainerWrapper.find('#completeShoppingbutton');
+        const completeShoppingbutton = shoppingPathContainerWrapper.find('#completeShoppingbutton').hostNodes();
         completeShoppingbutton.simulate('click');
         const actions = store.getActions();
         expect(actions[0]).toEqual(completeShoppingPathAction(AppliedShoppingListsSampleData));
@@ -107,10 +113,10 @@ describe('<ShoppingPathComponent />', () => {
             );
 
         //Select a shopping list item
-        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#4');
-        shoppingItem.simulate('change', { target: { checked: true, id: '4' } });
+        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#sp4');
+        shoppingItem.simulate('change', { target: { checked: true, id: 'sp4', dataset: { id: '4' } } });
 
-        const markedItem = AppliedShoppingListsSampleData.find(si => si.Item.Id === '4');
+        const markedItem = AppliedShoppingListsSampleData.ShoppingItems.find(si => si.Item.Id === '4');
         expect(markedItem.PickedUp).toBe(true);
     });
 
@@ -130,10 +136,10 @@ describe('<ShoppingPathComponent />', () => {
             );
 
         //Select a shopping list item
-        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#4');
-        shoppingItem.simulate('change', { target: { checked: false, id: '4' } });
+        const shoppingItem = shoppingPathWrapper.find('input[type=\'checkbox\']#sp4').hostNodes();
+        shoppingItem.simulate('change', { target: { checked: false, id: 'sp4', dataset: { id: '4' } } });
 
-        const markedItem = AppliedShoppingListsSampleData.find(si => si.Item.Id === '4');
+        const markedItem = AppliedShoppingListsSampleData.ShoppingItems.find(si => si.Item.Id === '4');
         expect(markedItem.PickedUp).toBe(false);
     });
 });

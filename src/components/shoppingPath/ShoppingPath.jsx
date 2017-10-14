@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import groupby from 'lodash.groupby';
 import sortby from 'lodash.sortby';
 import styles from './ShoppingPath.scss';
@@ -10,17 +9,17 @@ import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPa
 
 // eslint-disable-next-line max-len
 const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked, history }) => {
-
     const buttonStyle = {
         margin: '10px 10px 0px 0px'
     };
 
     const onClickedShoppingItem = (event) => {
         const isSelected = event.target.checked;
-        const shoppingListitemId = event.target.id;
+        // const shoppingListitemId = event.target.id;
+        const shoppingListitemId = event.target.dataset.id;
 
         //Select the item from the shopping list and mark the chcecked state
-        const shoppingItem = AppliedShoppingLists.find(si => si.Item.Id === shoppingListitemId);
+        const shoppingItem = AppliedShoppingLists.ShoppingItems.find(si => si.Item.Id === shoppingListitemId);
         shoppingItem.PickedUp = isSelected;
     };
 
@@ -52,7 +51,8 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
                                             key={shoppingItem.Item.Id}
                                         >
                                             <input
-                                                type='checkbox' id={`${shoppingItem.Item.Id}`}
+                                                type='checkbox' id={`sp${shoppingItem.Item.Id}`}
+                                                data-id={shoppingItem.Item.Id}
                                                 onChange={onClickedShoppingItem}
                                             />
                                             <label htmlFor={`${shoppingItem.Item.Id}`}>
@@ -79,7 +79,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
                     id='completeShoppingbutton'
                     className={commonStyles.std_Button}
                     onClick={() => {
-                        onCompleteShoppingClicked();
+                        onCompleteShoppingClicked(AppliedShoppingLists);
                         history.push('/landing');
                     }}
                     style={buttonStyle}
