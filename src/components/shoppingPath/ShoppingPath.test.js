@@ -12,7 +12,6 @@ import HistoryMock from '../../../jest/historyMock';
 
 
 // setup file
-
 configure({ adapter: new Adapter() });
 
 describe('<ShoppingPathComponent />', () => {

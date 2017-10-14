@@ -1,10 +1,13 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount, shallow, configure } from 'enzyme';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
+import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import IncrementalSearchComponent, { IncrementalSearch } from './IncrementalSearch';
 
+// setup file
+configure({ adapter: new Adapter() });
 
 describe('<IncrementalSearch />', () => {
     let store;
@@ -32,8 +35,8 @@ describe('<IncrementalSearch />', () => {
         const incrementalSearchWrapper = mount(<IncrementalSearch />);
 
         //find the input element
-        const searchInput = incrementalSearchWrapper.find('#searchInput');
-        searchInput.node.value = 'David';
+        const searchInput = incrementalSearchWrapper.find('#searchInput').hostNodes();
+        searchInput.getElements().value = 'David';
         searchInput.simulate('change');
         expect(onChangeSpy.called).toEqual(true);
         onChangeSpy.restore();
@@ -59,7 +62,7 @@ describe('<IncrementalSearch />', () => {
 
         //find the input element
         const searchInput = incrementalSearchWrapper.find('#searchInput');
-        searchInput.node.value = 'David';
+        searchInput.getElements().value = 'David';
         searchInput.simulate('change', searchInput);
 
         //We want to fastfoward all timers and check if the method was called
@@ -93,7 +96,7 @@ describe('<IncrementalSearch />', () => {
 
         //find the input element
         const searchInput = incrementalSearchWrapper.find('#searchInput');
-        searchInput.node.value = 'David';
+        searchInput.getElements().value = 'David';
         searchInput.simulate('change', searchInput);
 
         expect(onPerformIncrementalSearchSpy.called).toEqual(false);
@@ -118,7 +121,7 @@ describe('<IncrementalSearch />', () => {
 
         //find the input element
         const searchInput = incrementalSearchWrapper.find('#searchInput');
-        searchInput.node.value = 'David';
+        searchInput.get(0).value = 'David';
         searchInput.simulate('change', searchInput);
         jest.runAllTimers();
         const actions = store.getActions();
