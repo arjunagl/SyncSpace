@@ -121,8 +121,8 @@ describe('<IncrementalSearch />', () => {
 
         //find the input element
         const searchInput = incrementalSearchWrapper.find('#searchInput');
-        searchInput.get(0).value = 'David';
-        searchInput.simulate('change', searchInput);
+        // searchInput.get(0).value = 'David';
+        searchInput.simulate('change', { target: { value: 'David' } });
         jest.runAllTimers();
         const actions = store.getActions();
         expect(actions[0]).toEqual(JSON.parse('{"type":"SEARCH_STORES","SearchText":"David"}'));

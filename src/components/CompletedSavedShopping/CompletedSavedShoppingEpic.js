@@ -9,7 +9,7 @@ export const completedSavedShoppingEpic = (action$, store, { incrementalSearchSe
     return action$.ofType('COMPLETED_SAVED_SHOPPING_LIST_SELECTED').mergeMap((action) => {
         const loadedShoppingPath = incrementalSearchService.loadSavedCompletedShoppingList(action.AppliedShoppingList);
         //route to the shopping path direction
-        browserHistory.push('/shopping');
+        // browserHistory.push('/shopping');
         return loadedShoppingPath.map(path => CompletedSavedShoppingPathLoaded(path));
     });
 };

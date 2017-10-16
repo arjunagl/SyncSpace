@@ -4,9 +4,9 @@ import commonStyles from '../../stylesheets/styles.scss';
 import styles from './CompletedSavedShopping.scss';
 import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActions';
 
-const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShoppingLists, onShoppingListPathSelected }) => {
+const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShoppingLists, onShoppingListPathSelected, history }) => {
     const selectedShoppingList = (completedSavedShoppingList) => {
-        console.log(completedSavedShoppingList);
+        history.push('/shopping');
         onShoppingListPathSelected(completedSavedShoppingList);
     };
 
