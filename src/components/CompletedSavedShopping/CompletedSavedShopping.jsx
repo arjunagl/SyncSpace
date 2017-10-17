@@ -13,20 +13,22 @@ const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShop
     //Completed shopping lists
     const completedShoppingPaths = CompletedShoppingLists.map(
         completedShoppingPath =>
-            <div className={styles.completedSavedShopping__link} key={completedShoppingPath.Name}>
-                <span onClick={() => selectedShoppingList(completedShoppingPath)}>
-                    {completedShoppingPath.Name} - {completedShoppingPath.UpdateDate}
-                </span>
+            <div
+                className={styles.completedSavedShopping__link} key={completedShoppingPath.Name}
+                onClick={() => selectedShoppingList(completedShoppingPath)}
+            >
+                {completedShoppingPath.Name} - {completedShoppingPath.UpdateDate}
             </div>
     );
 
     //Saved shopping lists
     const savedShoppingPaths = SavedShoppingLists.map(
         savedShoppingPath =>
-            <div className={styles.completedSavedShopping__link} key={savedShoppingPath.Name}>
-                <span onClick={() => selectedShoppingList(savedShoppingPath)}>
-                    {savedShoppingPath.Name} - {savedShoppingPath.UpdateDate}
-                </span>
+            <div
+                className={styles.completedSavedShopping__link} key={savedShoppingPath.Name}
+                onClick={() => selectedShoppingList(savedShoppingPath)}
+            >
+                {savedShoppingPath.Name} - {savedShoppingPath.UpdateDate}
             </div >
     );
     return (
@@ -60,7 +62,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     onShoppingListPathSelected: (shoppingListPath) => {
-        console.log(shoppingListPath);
         dispatch(CompletedSavedShoppingPathSelected(shoppingListPath));
     }
 });

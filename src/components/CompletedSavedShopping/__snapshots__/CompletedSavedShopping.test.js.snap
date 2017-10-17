@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CompletedSavedShoppingPathComponent /> renders the component properly 1`] = `
+<div>
+  <div>
+    <div>
+      <p>
+        Completed Shoppings
+      </p>
+      <div
+        key="CompletedList1"
+        onClick={[Function]}
+      >
+        CompletedList1
+         - 
+        5/10/2017
+      </div>
+      <div
+        key="CompletedList2"
+        onClick={[Function]}
+      >
+        CompletedList2
+         - 
+        6/10/2017
+      </div>
+      <div
+        key="CompletedList3"
+        onClick={[Function]}
+      >
+        CompletedList3
+         - 
+        7/10/2017
+      </div>
+      <div
+        key="CompletedList4"
+        onClick={[Function]}
+      >
+        CompletedList4
+         - 
+        8/10/2017
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <p>
+        Saved Shoppings
+      </p>
+      <div
+        key="SavedList1"
+        onClick={[Function]}
+      >
+        SavedList1
+         - 
+        5/8/2017
+      </div>
+      <div
+        key="SavedList2"
+        onClick={[Function]}
+      >
+        SavedList2
+         - 
+        6/8/2017
+      </div>
+      <div
+        key="SavedList3"
+        onClick={[Function]}
+      >
+        SavedList3
+         - 
+        7/8/2017
+      </div>
+      <div
+        key="SavedList4"
+        onClick={[Function]}
+      >
+        SavedList4
+         - 
+        8/8/2017
+      </div>
+    </div>
+  </div>
+</div>
+`;

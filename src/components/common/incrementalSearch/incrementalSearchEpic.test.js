@@ -7,7 +7,7 @@ import IncrementalSearchServiceMock from './incrementalSearchServiceMock';
 
 describe('incrementalSearchEpic', () => {
     let store;
-    const performIncrementalSearchSpy = sinon.spy(IncrementalSearchServiceMock, 'performIncrementalSearch');
+    sinon.spy(IncrementalSearchServiceMock, 'performIncrementalSearch');
 
     const rootEpic = combineEpics(
         incrementalSearchEpic

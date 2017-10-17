@@ -1,13 +1,9 @@
 import React from 'react';
-import { mount, shallow, configure } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
-import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import IncrementalSearchComponent, { IncrementalSearch } from './IncrementalSearch';
-
-// setup file
-configure({ adapter: new Adapter() });
 
 describe('<IncrementalSearch />', () => {
     let store;
