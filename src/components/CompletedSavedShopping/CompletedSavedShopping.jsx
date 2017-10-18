@@ -14,10 +14,13 @@ const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShop
     const completedShoppingPaths = CompletedShoppingLists.map(
         completedShoppingPath =>
             <div
+                id={completedShoppingPath.Name}
                 className={styles.completedSavedShopping__link} key={completedShoppingPath.Name}
                 onClick={() => selectedShoppingList(completedShoppingPath)}
             >
-                {completedShoppingPath.Name} - {completedShoppingPath.UpdateDate}
+                <span>
+                    {completedShoppingPath.Name} - {completedShoppingPath.UpdateDate}
+                </span>
             </div>
     );
 
@@ -25,10 +28,13 @@ const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShop
     const savedShoppingPaths = SavedShoppingLists.map(
         savedShoppingPath =>
             <div
+                id={savedShoppingPath.Name}
                 className={styles.completedSavedShopping__link} key={savedShoppingPath.Name}
                 onClick={() => selectedShoppingList(savedShoppingPath)}
             >
-                {savedShoppingPath.Name} - {savedShoppingPath.UpdateDate}
+                <span>
+                    {savedShoppingPath.Name} - {savedShoppingPath.UpdateDate}
+                </span>
             </div >
     );
     return (
