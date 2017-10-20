@@ -10,6 +10,14 @@ class LoginContainerComponent extends React.Component {
         this.login = this.login.bind(this);
     }
 
+    componentDidMount() {
+        //Set the title to login
+        this.props.setTitle({
+            windowTitle: 'Login - SyncSpace',
+            pageTitle: 'Login'
+        });
+    }
+
     register() {
     }
 
