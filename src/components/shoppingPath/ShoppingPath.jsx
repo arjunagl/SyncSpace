@@ -8,7 +8,7 @@ import commonStyles from '../../stylesheets/styles.scss';
 import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPathActions';
 
 // eslint-disable-next-line max-len
-const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked, history }) => {
+const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked, history, setTitle }) => {
     const buttonStyle = {
         margin: '10px 10px 0px 0px'
     };
@@ -22,6 +22,12 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
         const shoppingItem = AppliedShoppingLists.ShoppingItems.find(si => si.Item.Id === shoppingListitemId);
         shoppingItem.PickedUp = isSelected;
     };
+
+    //Set the title
+    setTitle({
+        windowTitle: 'Shopping Path - SyncSpace',
+        pageTitle: 'Shopping Path'
+    });
 
     if (AppliedShoppingLists === undefined) {
         return <div />;

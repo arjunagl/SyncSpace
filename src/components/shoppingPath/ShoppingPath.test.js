@@ -11,8 +11,10 @@ import HistoryMock from '../../../jest/historyMock';
 
 describe('<ShoppingPathComponent />', () => {
     let store;
+    let setTitle;
 
     beforeEach(() => {
+        setTitle = sinon.spy();
         const mockStore = configureStore();
         const getState = {
             syncSpaceReducer: {
@@ -27,9 +29,25 @@ describe('<ShoppingPathComponent />', () => {
             <ShoppingPathComponent
                 store={store}
                 AppliedShoppingLists={AppliedShoppingListsSampleData}
+                setTitle={setTitle}
             />
         );
         expect(toJson(component)).toMatchSnapshot();
+    });
+
+    it('calls settitle with the proper parameters', () => {
+        const component = shallow(
+            <ShoppingPathComponent
+                store={store}
+                AppliedShoppingLists={AppliedShoppingListsSampleData}
+                setTitle={setTitle}
+            />
+        );
+
+        expect(setTitle.calledWith({
+            windowTitle: 'Shopping Path - SyncSpace',
+            pageTitle: 'Shopping Path'
+        })).toEqual(true);
     });
 
     it('calls \'onCompleteShoppingClicked\' when the user clicks the button to complete shopping', () => {
@@ -44,6 +62,7 @@ describe('<ShoppingPathComponent />', () => {
                         onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
                         onSaveShoppingClicked={onSaveShoppingClickedSpy}
                         history={HistoryMock}
+                        setTitle={setTitle}
                     />
                 </Provider>
             );
@@ -66,6 +85,7 @@ describe('<ShoppingPathComponent />', () => {
                         onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
                         onSaveShoppingClicked={onSaveShoppingClickedSpy}
                         history={HistoryMock}
+                        setTitle={setTitle}
                     />
                 </Provider>
             );
@@ -81,6 +101,7 @@ describe('<ShoppingPathComponent />', () => {
                 <Provider store={store}>
                     <ShoppingPathComponentContainer
                         history={HistoryMock}
+                        setTitle={setTitle}
                     />
                 </Provider>
             );
@@ -102,6 +123,7 @@ describe('<ShoppingPathComponent />', () => {
                         AppliedShoppingLists={AppliedShoppingListsSampleData}
                         onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
                         onSaveShoppingClicked={onSaveShoppingClickedSpy}
+                        setTitle={setTitle}
                     />
                 </Provider>
             );
@@ -125,6 +147,7 @@ describe('<ShoppingPathComponent />', () => {
                         AppliedShoppingLists={AppliedShoppingListsSampleData}
                         onCompleteShoppingClicked={onCompleteShoppingClickedSpy}
                         onSaveShoppingClicked={onSaveShoppingClickedSpy}
+                        setTitle={setTitle}
                     />
                 </Provider>
             );

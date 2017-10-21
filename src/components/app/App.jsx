@@ -8,25 +8,17 @@ import CompletedSavedShoppingPathComponentContainer from '../CompletedSavedShopp
 
 class App extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            windowTitle: 'Login - SyncSpace',
-            pageTitle: 'Login'
-        };
-
+        super(props);        
         this.setTitle = this.setTitle.bind(this);
     }
 
-    setTitle({ windowTitle, pageTitle }) {
-        this.setState({
-            windowTitle,
-            pageTitle
-        });
+    setTitle({ windowTitle, pageTitle }) {        
+        document.title = windowTitle;
     }
 
     render() {
         return (<div>
-            <Route path="^(?!.*(/|/login)).*$" component={TopMenuComponent} />
+            <Route path="/" component={TopMenuComponent} />
             <div>
                 <Route
                     exact path="/"
@@ -40,8 +32,18 @@ class App extends React.Component {
                         <LoginContainer {...props} setTitle={this.setTitle} />
                     )}
                 />
-                <Route path='/landing' component={LandingComponent} />
-                <Route path='/shopping' component={ShoppingPathComponentContainer} />
+                <Route
+                    path='/landing'
+                    render={props => (
+                        <LandingComponent {...props} setTitle={this.setTitle} />
+                    )}
+                />
+                <Route
+                    path='/shopping'
+                    render={props => (
+                        <ShoppingPathComponentContainer {...props} setTitle={this.setTitle} />
+                    )}
+                />
                 <Route path='/completedsavedshopping' component={CompletedSavedShoppingPathComponentContainer} />
             </div>
         </div>);

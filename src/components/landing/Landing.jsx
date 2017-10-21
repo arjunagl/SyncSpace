@@ -22,6 +22,14 @@ class LandingComponent extends React.Component {
         this.onApplyShoppingListsClicked = this.onApplyShoppingListsClicked.bind(this);
     }
 
+    componentDidMount() {
+        //Set the title to login
+        this.props.setTitle({
+            windowTitle: 'Home - SyncSpace',
+            pageTitle: 'Home'
+        });
+    }
+
     componentWillReceiveProps({ history, completedActionCode }) {
         if (completedActionCode === 'APPLIED_SHOPPING_LISTS') {
             history.push('/shopping');
