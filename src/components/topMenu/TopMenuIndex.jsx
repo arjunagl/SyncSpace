@@ -1,12 +1,11 @@
 import React from 'react';
-import { browserHistory } from 'react-router';
 import LoginStatusContainer from './LoginStatusContainer';
 import styles from './TopMenuIndex.scss';
 
 class TopMenuComponent extends React.Component {
 
     constructor(props) {
-        super(props);
+        super(props);        
         this.state = { isExpanded: false };
         this.onMenuItemSelected = this.onMenuItemSelected.bind(this);
         this.expandMenu = this.expandMenu.bind(this);
@@ -30,7 +29,6 @@ class TopMenuComponent extends React.Component {
         const isExpanded = (this.state.isExpanded) ? styles.Expanded : styles.Hidden;
         return isExpanded;
     }
-
 
     render() {
         return (

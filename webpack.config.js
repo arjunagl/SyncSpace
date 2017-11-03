@@ -1,5 +1,7 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const envSettings = require('./config/dev.config');
 
 module.exports = {
     context: path.resolve('src'),
@@ -32,7 +34,7 @@ module.exports = {
                     loader: 'sass-loader?sourceMap'
                 }]
 
-            })            
+            })
         }, {
             test: /\.svg$/,
             loader: 'url-loader',
@@ -81,10 +83,13 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.css'),
+        new webpack.DefinePlugin({
+            'process.env': envSettings
+        })
     ],
     watch: false,
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.es6', '.scss']
-    },
+    }
 };
