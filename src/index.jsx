@@ -11,12 +11,14 @@ import createHistory from 'history/createBrowserHistory';
 import DevTools from './components/devTools/DevTools';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
 import { storeEpic } from './components/store/storeEpic';
+import StoreService from './components/store/storeService';
 import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
 import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
 import { completedSavedShoppingEpic } from './components/CompletedSavedShopping/CompletedSavedShoppingEpic';
 import IncrementalSearchServiceMock
     from './components/common/incrementalSearch/incrementalSearchServiceMock';
+import ConfigService from './common/configService';
 import App from './components/app/App';
 
 import './stylesheets/fonts.scss';
@@ -33,7 +35,9 @@ const rootEpic = combineEpics(
 
 const epicMiddleware = createEpicMiddleware(rootEpic, {
     dependencies: {
-        incrementalSearchService: IncrementalSearchServiceMock
+        ConfigService,
+        StoreService,
+        incrementalSearchService: IncrementalSearchServiceMock,
     }
 });
 
@@ -47,7 +51,7 @@ const enhancer = compose(
 
 //Combine the reducers
 const reducer = combineReducers({
-    syncSpaceReducer    
+    syncSpaceReducer
 });
 
 const store = createStore(reducer, enhancer);

@@ -5,7 +5,7 @@ import styles from './TopMenuIndex.scss';
 class TopMenuComponent extends React.Component {
 
     constructor(props) {
-        super(props);        
+        super(props);
         this.state = { isExpanded: false };
         this.onMenuItemSelected = this.onMenuItemSelected.bind(this);
         this.expandMenu = this.expandMenu.bind(this);
