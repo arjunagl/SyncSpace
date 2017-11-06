@@ -1,7 +1,8 @@
 const ConfigService = () => {
-    const syncGalaxyUrl = () => (
-        process.env.syncGalaxyApi
-    );
+    return {
+        syncGalaxyUrl: process.env.syncGalaxyApi,
+        storesEndPoint: process.env.storesEndPoint
+    };
 };
 
 export default ConfigService;

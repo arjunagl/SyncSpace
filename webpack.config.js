@@ -12,6 +12,9 @@ module.exports = {
         publicPath: '/public/assets',
     },
     devServer: {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+        },
         historyApiFallback: {
             index: 'index.html'
         },

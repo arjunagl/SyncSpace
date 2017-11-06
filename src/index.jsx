@@ -7,6 +7,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import handleTransitions from 'redux-history-transitions';
 import createHistory from 'history/createBrowserHistory';
+import axios from 'axios';
 
 import DevTools from './components/devTools/DevTools';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
@@ -33,10 +34,14 @@ const rootEpic = combineEpics(
     completedSavedShoppingEpic
 );
 
+const configParams = ConfigService();
+
 const epicMiddleware = createEpicMiddleware(rootEpic, {
     dependencies: {
-        ConfigService,
-        StoreService,
+        http: axios,
+        Config: configParams,
+        StoreService: StoreService(axios, configParams),
+        // StoreService: StoreService,
         incrementalSearchService: IncrementalSearchServiceMock,
     }
 });
