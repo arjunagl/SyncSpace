@@ -13,6 +13,7 @@ import DevTools from './components/devTools/DevTools';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
 import { storeEpic } from './components/store/storeEpic';
 import StoreService from './components/store/storeService';
+import StoreServiceMock from './components/store/storeServiceMock';
 import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
 import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
@@ -36,15 +37,27 @@ const rootEpic = combineEpics(
 
 const configParams = ConfigService();
 
-const epicMiddleware = createEpicMiddleware(rootEpic, {
-    dependencies: {
-        http: axios,
-        Config: configParams,
-        StoreService: StoreService(axios, configParams),
-        // StoreService: StoreService,
-        incrementalSearchService: IncrementalSearchServiceMock,
-    }
-});
+let epicMiddleware;
+if (!configParams.useMocks) {
+    epicMiddleware = createEpicMiddleware(rootEpic, {
+        dependencies: {
+            http: axios,
+            Config: configParams,
+            StoreService: StoreService(axios, configParams),
+            // StoreService: StoreService,
+            incrementalSearchService: IncrementalSearchServiceMock,
+        }
+    });
+} else {
+    epicMiddleware = createEpicMiddleware(rootEpic, {
+        dependencies: {
+            http: axios,
+            Config: configParams,
+            StoreService: StoreServiceMock(),
+            incrementalSearchService: IncrementalSearchServiceMock,
+        }
+    });
+}
 
 const transitionHistory = createHistory();
 

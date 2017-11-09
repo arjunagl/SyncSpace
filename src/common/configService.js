@@ -1,8 +1,7 @@
-const ConfigService = () => {
-    return {
-        syncGalaxyUrl: process.env.syncGalaxyApi,
-        storesEndPoint: process.env.storesEndPoint
-    };
-};
+const ConfigService = () => ({
+    syncGalaxyUrl: process.env.syncGalaxyApi,
+    storesEndPoint: process.env.storesEndPoint,
+    useMocks: process.env.useMocks
+});
 
 export default ConfigService;
