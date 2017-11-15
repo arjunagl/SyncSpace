@@ -1,4 +1,6 @@
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/map';
 import axios from 'axios';
 
 const StoreService = (http, Config) => ({
