@@ -21,7 +21,9 @@ class StoresComponent extends React.Component {
                 Name={store.Name}
                 Location={store.Location}
                 Hours={store.Hours}
-                Image={store.Image}
+
+                // The image comes base64 encoded in a byte[] arrray therefore we need to decode the byte[] array into base64
+                Image={`data:image/svg+xml;base64,${window.btoa(String.fromCharCode(...new Uint8Array(store.Image.data)))}`}
                 onApplyShoppingListClicked={this.props.onApplyShoppingListClicked}
             />
         );
@@ -31,7 +33,7 @@ class StoresComponent extends React.Component {
                 <p className={commonStyles.componentTitle}>
                     Available stores
                 </p>
-                <IncrementalSearchComponent />                
+                <IncrementalSearchComponent />
                 {storesToRender}
             </div>);
     }
