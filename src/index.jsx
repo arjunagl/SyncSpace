@@ -18,8 +18,8 @@ import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
 import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
 import { completedSavedShoppingEpic } from './components/CompletedSavedShopping/CompletedSavedShoppingEpic';
-import IncrementalSearchServiceMock
-    from './components/common/incrementalSearch/incrementalSearchServiceMock';
+import IncrementalSearchServiceMock from './components/common/incrementalSearch/incrementalSearchServiceMock';
+import IncrementalSearchService from './components/common/incrementalSearch/incrementalSearchService';
 import ConfigService from './common/configService';
 import App from './components/app/App';
 
@@ -44,8 +44,7 @@ if (!configParams.useMocks) {
             http: axios,
             Config: configParams,
             StoreService: StoreService(axios, configParams),
-            // StoreService: StoreService,
-            incrementalSearchService: IncrementalSearchServiceMock,
+            incrementalSearchService: IncrementalSearchService(axios, configParams),
         }
     });
 } else {

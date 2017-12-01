@@ -23,7 +23,9 @@ class StoresComponent extends React.Component {
                 Hours={store.Hours}
 
                 // The image comes base64 encoded in a byte[] arrray therefore we need to decode the byte[] array into base64
-                Image={`data:image/svg+xml;base64,${window.btoa(String.fromCharCode(...new Uint8Array(store.Image.data)))}`}
+                Image={store.Image
+                    ? `data:image/svg+xml;base64,${window.btoa(String.fromCharCode(...new Uint8Array(store.Image.data)))}`
+                    : null}
                 onApplyShoppingListClicked={this.props.onApplyShoppingListClicked}
             />
         );
