@@ -4,7 +4,7 @@ import { SampleStores } from '../../data/sampleData';
 
 const StoreServiceMock = () => ({
     getStores: () =>
-        Observable.of({ stores: SampleStores })
+        Observable.of({ stores: SampleStores }).delay(3000)
 });
 
 export default StoreServiceMock;

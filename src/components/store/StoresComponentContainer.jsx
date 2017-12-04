@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import commonStyles from '../../stylesheets/styles.scss';
+import storeStyles from './Store.scss';
 import { fetchStores } from './storeActions';
+
 import StoreComponent from './Store';
 import IncrementalSearchComponent from '../common/incrementalSearch/IncrementalSearch';
+import LoaderComponent from '../common/loader/loader';
 
 class StoresComponent extends React.Component {
 
@@ -13,7 +16,16 @@ class StoresComponent extends React.Component {
 
     render() {
         const stores = this.props.Stores;
+        let loaderComponent = (
+            <div className={storeStyles.loaderStyles}>
+                <LoaderComponent />
+            </div>
+        );
+        if (stores.length > 0) {
+            loaderComponent = '';
+        }
         let storesToRender = null;
+
         storesToRender = stores.map((store) =>
             <StoreComponent
                 key={store.Id}
@@ -36,8 +48,10 @@ class StoresComponent extends React.Component {
                     Available stores
                 </p>
                 <IncrementalSearchComponent />
+                {loaderComponent}
                 {storesToRender}
-            </div>);
+            </div >
+        );
     }
 
 }
