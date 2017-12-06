@@ -22,8 +22,8 @@ class LoginContainerComponent extends React.Component {
     }
 
     login(username, password) {
-        // this.props.onPerformLogin(username, password);
-        this.props.history.push('/landing');
+        this.props.onPerformLogin(username, password, this.props.history);
+        // this.props.history.push('/landing');
     }
 
     render() {
@@ -41,8 +41,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onPerformLogin: () => {
-        dispatch(performLogin('testUser', 'testpassword'));
+    onPerformLogin: (username, password, history) => {
+        dispatch(performLogin(username, password, history));
     },
     onRegisterClick: () => {
     }

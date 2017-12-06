@@ -21,6 +21,7 @@ class StoresComponent extends React.Component {
                 <LoaderComponent />
             </div>
         );
+
         if (stores.length > 0) {
             loaderComponent = '';
         }

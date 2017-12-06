@@ -15,7 +15,6 @@ const IncrementalSearchService = (http, Config) => ({
             // Create the interval to emit an item every second
             return Observable.interval(1000)
                 .take(filteredStoresAsActions.length).map(t => filteredStoresAsActions[t]);
-            
         });
     }
 });

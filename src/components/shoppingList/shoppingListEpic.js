@@ -1,17 +1,9 @@
 import 'rxjs/add/operator/mapTo';
 
-export const shoppingListEpic = action$ =>
-    action$.ofType('FETCH_SHOPPING_LISTS')
-    .mapTo({
-        type: 'FETCHED_SHOPPING_LISTS',
-        ShoppingLists: [{
-            Id: '1',
-            Name: 'Groceries',
-        }, {
-            Id: '2',
-            Name: 'Vegetables',
-        }, {
-            Id: '3',
-            Name: 'Fruits',
-        }]
-    });
+export const shoppingListEpic = (action$, store, { ShoppingListsService }) =>
+    action$.ofType('FETCH_SHOPPING_LISTS').mergeMap((action) => ShoppingListsService.getShoppingLists(store.getState().syncSpaceReducer.displayName)
+        .map(response => ({
+            type: 'FETCHED_SHOPPING_LISTS',
+            ShoppingLists: response.shoppingLists
+        })
+        ));
