@@ -1,6 +1,5 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-import { browserHistory } from 'react-router';
 import { CompletedSavedShoppingPathLoaded } from './CompletedSavedShoppingActions';
 
 // eslint-disable-next-line arrow-body-style

@@ -4,7 +4,8 @@ import App from '../components/app/App';
 import LoginContainer from '../components/login/LoginContainer';
 import LandingComponent from '../components/landing/Landing';
 import ShoppingPathComponentContainer from '../components/shoppingPath/ShoppingPath';
-import CompletedSavedShoppingPathComponentContainer from '../components/CompletedSavedShopping/CompletedSavedShopping';
+// import CompletedSavedShoppingPathComponentContainer from '../components/CompletedSavedShopping/CompletedSavedShopping';
+import CompletedSavedShoppingPathComponentContainer from '../components/CompletedSavedShopping/CompletedSavedShoppingContainer';
 
 
 export default (

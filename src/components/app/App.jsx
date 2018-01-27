@@ -4,7 +4,8 @@ import TopMenuComponent from '../topMenu/TopMenuIndex';
 import LandingComponent from '../landing/Landing';
 import LoginContainer from '../login/LoginContainer';
 import ShoppingPathComponentContainer from '../shoppingPath/ShoppingPath';
-import CompletedSavedShoppingPathComponentContainer from '../CompletedSavedShopping/CompletedSavedShopping';
+// import CompletedSavedShoppingPathComponentContainer from '../CompletedSavedShopping/CompletedSavedShopping';
+import CompletedSavedShoppingContainer from '../CompletedSavedShopping/CompletedSavedShoppingContainer';
 
 class App extends React.Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class App extends React.Component {
                         <ShoppingPathComponentContainer {...props} setTitle={this.setTitle} />
                     )}
                 />
-                <Route path='/completedsavedshopping' component={CompletedSavedShoppingPathComponentContainer} />
+                <Route path='/completedsavedshopping' component={CompletedSavedShoppingContainer} />
             </div>
         </div>);
     }
