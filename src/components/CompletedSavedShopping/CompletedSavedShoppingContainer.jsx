@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CompletedSavedShopping from './CompletedSavedShopping';
+// import CompletedSavedShopping from './CompletedSavedShopping';
+import { CompletedSavedShoppingPathComponent } from './CompletedSavedShopping';
 import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActions';
 
 class CompletedSavedShoppingContainer extends React.Component {
@@ -16,7 +17,7 @@ class CompletedSavedShoppingContainer extends React.Component {
     render() {
         console.log('render');
         return (
-            <CompletedSavedShopping />
+            <CompletedSavedShoppingPathComponent />
         );
     }
 }
