@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import CompletedSavedShopping from './CompletedSavedShopping';
 import { CompletedSavedShoppingPathComponent } from './CompletedSavedShopping';
 import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActions';
 
@@ -17,7 +16,12 @@ class CompletedSavedShoppingContainer extends React.Component {
     render() {
         console.log('render');
         return (
-            <CompletedSavedShoppingPathComponent />
+            <CompletedSavedShoppingPathComponent
+                CompletedShoppingLists={this.props.CompletedShoppingLists}
+                SavedShoppingLists={this.props.SavedShoppingLists}
+                onShoppingListPathSelected={this.props.onShoppingListPathSelected}
+                history={this.props.history}
+            />
         );
     }
 }
@@ -35,5 +39,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 const CompletedSavedShoppingPathComponentContainer = connect(mapStateToProps, mapDispatchToProps)(CompletedSavedShoppingContainer);
 export default CompletedSavedShoppingPathComponentContainer;
-
-// export default CompletedSavedShoppingContainer;

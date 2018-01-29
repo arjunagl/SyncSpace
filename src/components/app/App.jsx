@@ -9,11 +9,11 @@ import CompletedSavedShoppingContainer from '../CompletedSavedShopping/Completed
 
 class App extends React.Component {
     constructor(props) {
-        super(props);        
+        super(props);
         this.setTitle = this.setTitle.bind(this);
     }
 
-    setTitle({ windowTitle, pageTitle }) {        
+    setTitle({ windowTitle, pageTitle }) {
         document.title = windowTitle;
     }
 
@@ -45,7 +45,12 @@ class App extends React.Component {
                         <ShoppingPathComponentContainer {...props} setTitle={this.setTitle} />
                     )}
                 />
-                <Route path='/completedsavedshopping' component={CompletedSavedShoppingContainer} />
+                <Route
+                    path='/completedsavedshopping'
+                    render={props => (
+                        <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} />
+                    )}
+                />
             </div>
         </div>);
     }

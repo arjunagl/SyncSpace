@@ -4,7 +4,8 @@ import sinon from 'sinon';
 import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import CompletedSavedShoppingPathComponentContainer, { CompletedSavedShoppingPathComponent } from './CompletedSavedShopping';
+import { CompletedSavedShoppingPathComponent } from './CompletedSavedShopping';
+import CompletedSavedShoppingContainer from './CompletedSavedShoppingContainer';
 import { AppliedShoppingListsSampleData, CompletedShoppingListsSampleData, SavedShoppingListsSampleData } from '../../data/sampleData';
 import HistoryMock from '../../../jest/historyMock';
 import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActions';
@@ -65,9 +66,10 @@ describe('<CompletedSavedShoppingPathComponent />', () => {
 
         const shoppingPathWrapper =
             mount(
-                <CompletedSavedShoppingPathComponentContainer
+                <CompletedSavedShoppingContainer
                     store={store}
                     history={HistoryMock}
+                    setTitle={(windowTitle, pageTitle) => { }}
                 />
             );
 
@@ -76,6 +78,6 @@ describe('<CompletedSavedShoppingPathComponent />', () => {
 
         const actions = store.getActions();
         const completedSampleDataList = CompletedShoppingListsSampleData.find(completedList => completedList.Name === 'CompletedList1');
-        expect(actions[0]).toEqual(CompletedSavedShoppingPathSelected(completedSampleDataList));        
+        expect(actions[0]).toEqual(CompletedSavedShoppingPathSelected(completedSampleDataList));
     });
 });
