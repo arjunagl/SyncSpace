@@ -27,10 +27,7 @@ class TextBox extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    // onClick: () => {
-    //     alert('clicked');
-    // },
+const mapDispatchToProps = () => ({
 });
 
 const TextBoxComponent = connect(mapDispatchToProps)(TextBox);

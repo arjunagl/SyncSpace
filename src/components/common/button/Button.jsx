@@ -27,10 +27,7 @@ class ButtonComponent extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    // onClick: () => {
-    //     alert('clicked');
-    // },
+const mapDispatchToProps = () => ({
 });
 
 const ButtonContainer = connect(mapDispatchToProps)(ButtonComponent);

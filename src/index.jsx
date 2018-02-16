@@ -46,9 +46,7 @@ if (!configParams.useMocks) {
             http: axios,
             Config: configParams,
             StoreService: StoreService(axios, configParams),
-            // StoreService: StoreServiceMock(),
             incrementalSearchService: IncrementalSearchService(axios, configParams),
-            // incrementalSearchService: IncrementalSearchServiceMock,
             ShoppingListsService: ShoppingListsService(axios, configParams)
         }
     });
@@ -83,7 +81,7 @@ render(
     <Provider store={store}>
         <div>
             <BrowserRouter>
-                <App />
+                <App config={configParams} />
             </BrowserRouter>
         </div>
     </Provider>,

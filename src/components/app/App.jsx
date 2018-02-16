@@ -1,10 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router';
+import { HttpLink, createHttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import TopMenuComponent from '../topMenu/TopMenuIndex';
 import LandingComponent from '../landing/Landing';
 import LoginContainer from '../login/LoginContainer';
 import ShoppingPathComponentContainer from '../shoppingPath/ShoppingPath';
-// import CompletedSavedShoppingPathComponentContainer from '../CompletedSavedShopping/CompletedSavedShopping';
 import CompletedSavedShoppingContainer from '../CompletedSavedShopping/CompletedSavedShoppingContainer';
 
 class App extends React.Component {
@@ -14,6 +17,7 @@ class App extends React.Component {
     }
 
     setTitle({ windowTitle, pageTitle }) {
+        console.log(pageTitle);
         document.title = windowTitle;
     }
 
@@ -47,9 +51,23 @@ class App extends React.Component {
                 />
                 <Route
                     path='/completedsavedshopping'
-                    render={props => (
-                        <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} />
-                    )}
+                    render={props => {
+                        const corsHttpLink = createHttpLink({
+                            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint,
+                            mode: 'cors'
+                        });
+                        // const httpLink = new HttpLink({ uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint });
+
+                        const client = new ApolloClient({
+                            link: corsHttpLink,
+                            cache: new InMemoryCache()
+                        });
+                        return (
+                            <ApolloProvider client={client}>
+                                <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} />
+                            </ApolloProvider>
+                        );
+                    }}
                 />
             </div>
         </div>);

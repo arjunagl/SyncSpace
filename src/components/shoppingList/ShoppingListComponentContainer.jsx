@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchShoppingLists } from './shoppingListActions';
 import commonStyles from '../../stylesheets/styles.scss';
