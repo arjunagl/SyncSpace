@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router';
-import { HttpLink, createHttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { InMemoryCache } from 'apollo-cache-inmemory';
@@ -54,7 +54,7 @@ class App extends React.Component {
                     render={props => {
                         const corsHttpLink = createHttpLink({
                             uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint,
-                            mode: 'cors'
+                            mode: 'no-cors'
                         });
                         // const httpLink = new HttpLink({ uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint });
 

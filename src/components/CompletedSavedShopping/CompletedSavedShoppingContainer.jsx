@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
-import axios from 'axios';
+// import axios from 'axios';
 import gql from 'graphql-tag';
 import { CompletedSavedShoppingPathComponent } from './CompletedSavedShopping';
 import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActions';
@@ -56,11 +56,12 @@ const getSavedcompletedShoppingPathsQuery = gql`
 `;
 
 export default graphql(getSavedcompletedShoppingPathsQuery, {
-    options: {
-        fetchPolicy: 'cache-and-network',
+    props: ({ data: { loading, ShoppingPaths } }) => {
+        console.log(loading);
+        console.log(ShoppingPaths);
+        return ({
+            loading,
+            ShoppingPaths,
+        });
     },
-    props: ({ data: { loading, ShoppingPaths } }) => ({
-        loading,
-        ShoppingPaths,
-    }),
 })(CompletedSavedShoppingPathComponentContainer);
