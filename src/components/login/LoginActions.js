@@ -1,9 +1,8 @@
-import { browserHistory } from 'react-router';
-
 function loginSucceeded() {
     return {
         type: 'LOGIN_SUCCEEDED',
-        UserDisplayName: 'albert'
+        UserDisplayName: 'albert',
+        userId: 'user1'
     };
 }
 

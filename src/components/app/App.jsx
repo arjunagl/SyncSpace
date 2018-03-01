@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router';
+import { connect } from 'react-redux';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
@@ -12,6 +13,7 @@ import CompletedSavedShoppingContainer from '../CompletedSavedShopping/Completed
 
 class App extends React.Component {
     constructor(props) {
+        console.log('App Constructor');
         super(props);
         this.setTitle = this.setTitle.bind(this);
     }
@@ -64,7 +66,7 @@ class App extends React.Component {
                         });
                         return (
                             <ApolloProvider client={client}>
-                                <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} />
+                                <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} userId={this.props.userId} />
                             </ApolloProvider>
                         );
                     }}
@@ -74,4 +76,11 @@ class App extends React.Component {
     }
 }
 
-export default App;
+
+// export default App;
+const mapStateToProps = (state) => ({
+    userId: state.syncSpaceReducer.userId
+});
+
+const AppContainer = connect(mapStateToProps)(App);
+export default AppContainer;

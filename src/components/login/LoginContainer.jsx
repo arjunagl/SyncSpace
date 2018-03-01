@@ -23,7 +23,6 @@ class LoginContainerComponent extends React.Component {
 
     login(username, password) {
         this.props.onPerformLogin(username, password, this.props.history);
-        // this.props.history.push('/landing');
     }
 
     render() {

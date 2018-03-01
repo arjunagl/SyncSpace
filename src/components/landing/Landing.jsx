@@ -6,15 +6,10 @@ import StoresComponentContainer from '../store/StoresComponentContainer';
 import ShoppingListsComponentContainer from '../shoppingList/ShoppingListComponentContainer';
 import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
 
-/**
- * 
- * 
- * @class LandingComponent
- * @extends {React.Component}
- */
 class LandingComponent extends React.Component {
 
     constructor(props) {
+        console.log('inside landing');
         super(props);
         this.state = { selectedShoppingLists: [] };
         this.onShoppingListClicked = this.onShoppingListClicked.bind(this);

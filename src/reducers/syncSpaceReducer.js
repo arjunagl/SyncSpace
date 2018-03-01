@@ -1,9 +1,7 @@
 import { AppliedShoppingListsSampleData, CompletedShoppingListsSampleData, SavedShoppingListsSampleData } from '../data/sampleData';
 
-/**
- * Initial state of the store, used to set default values
- */
 const initialState = {
+    userId: 'user1',
     Stores: [],
     ShoppingLists: [],
     Processing: {
@@ -26,7 +24,8 @@ const syncSpaceReducer = (state = initialState, action) => {
             return {
                 ...state,
                 LoginStatus: true,
-                displayName: action.UserDisplayName
+                displayName: action.UserDisplayName,
+                userId: action.userId
             };
         case 'FETCHED_STORES':
             return {
