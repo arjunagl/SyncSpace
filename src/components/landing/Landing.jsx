@@ -9,7 +9,6 @@ import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
 class LandingComponent extends React.Component {
 
     constructor(props) {
-        console.log('inside landing');
         super(props);
         this.state = { selectedShoppingLists: [] };
         this.onShoppingListClicked = this.onShoppingListClicked.bind(this);

@@ -7,7 +7,7 @@ import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActi
 
 class CompletedSavedShoppingContainer extends React.Component {
     componentDidMount() {
-        //Set the title to login
+        //Set the title
         this.props.setTitle({
             windowTitle: 'Completed/Saved Shopping Paths - SyncSpace',
             pageTitle: 'Completed/Saved Shopping Paths'
@@ -54,3 +54,5 @@ export default graphql(getSavedcompletedShoppingPathsQuery, {
         ShoppingPaths,
     }),
 })(CompletedSavedShoppingPathComponentContainer);
+
+export const shoppingPathcontainerQuery = getSavedcompletedShoppingPathsQuery;

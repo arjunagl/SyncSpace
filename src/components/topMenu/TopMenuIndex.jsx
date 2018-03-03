@@ -39,7 +39,9 @@ class TopMenuComponent extends React.Component {
                             <li className={styles.expando}>
                                 <a href="#1" onClick={this.expandMenu}>☰</a>
                             </li>
-                            <li className={this.isExpanded()}><a href="">Home</a></li>
+                            <li className={this.isExpanded()}>
+                                <a href="" onClick={this.onMenuItemSelected} data-href='/landing'>Home</a>
+                            </li>
                             <li className={this.isExpanded()}><a href="">About</a></li>
                             <li className={this.isExpanded()}>
                                 <a href="" onClick={this.onMenuItemSelected} data-href='/completedsavedshopping'>Saved Items</a>

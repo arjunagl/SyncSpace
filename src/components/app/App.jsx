@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
@@ -13,7 +13,6 @@ import CompletedSavedShoppingContainer from '../CompletedSavedShopping/Completed
 
 class App extends React.Component {
     constructor(props) {
-        console.log('App Constructor');
         super(props);
         this.setTitle = this.setTitle.bind(this);
     }
@@ -29,14 +28,14 @@ class App extends React.Component {
             <div>
                 <Route
                     exact path="/"
-                    render={props => (
-                        <LoginContainer {...props} setTitle={this.setTitle} />
+                    render={() => (
+                        <LoginContainer setTitle={this.setTitle} />
                     )}
                 />
                 <Route
                     path="/login"
-                    render={props => (
-                        <LoginContainer {...props} setTitle={this.setTitle} />
+                    render={() => (
+                        <LoginContainer setTitle={this.setTitle} />
                     )}
                 />
                 <Route
@@ -58,7 +57,6 @@ class App extends React.Component {
                             uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint,
                             mode: 'no-cors'
                         });
-                        // const httpLink = new HttpLink({ uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint });
 
                         const client = new ApolloClient({
                             link: corsHttpLink,
@@ -82,5 +80,5 @@ const mapStateToProps = (state) => ({
     userId: state.syncSpaceReducer.userId
 });
 
-const AppContainer = connect(mapStateToProps)(App);
+const AppContainer = withRouter(connect(mapStateToProps)(App));
 export default AppContainer;
