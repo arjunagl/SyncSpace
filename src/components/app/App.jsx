@@ -54,8 +54,7 @@ class App extends React.Component {
                     path='/completedsavedshopping'
                     render={props => {
                         const corsHttpLink = createHttpLink({
-                            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint,
-                            mode: 'no-cors'
+                            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint
                         });
 
                         const client = new ApolloClient({

@@ -16,6 +16,10 @@ const IncrementalSearchService = (http, Config) => ({
             return Observable.interval(1000)
                 .take(filteredStoresAsActions.length).map(t => filteredStoresAsActions[t]);
         });
+    },
+
+    loadSavedCompletedShoppingList: (savedCompletedShopping) => {
+        console.log(JSON.stringify(savedCompletedShopping));
     }
 });
 

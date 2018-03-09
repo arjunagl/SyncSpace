@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import groupby from 'lodash.groupby';
 import sortby from 'lodash.sortby';
 import styles from './ShoppingPath.scss';
@@ -15,7 +17,6 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
 
     const onClickedShoppingItem = (event) => {
         const isSelected = event.target.checked;
-        // const shoppingListitemId = event.target.id;
         const shoppingListitemId = event.target.dataset.id;
 
         //Select the item from the shopping list and mark the chcecked state
@@ -124,4 +125,22 @@ const mapDispatchToProps = (dispatch) => ({
 const ShoppingPathComponentContainer =
     connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
 
-export default ShoppingPathComponentContainer;
+const ShoppingPathByIdQuery = gql`
+  query ShoppingPathById($Id: String!) {
+    ShoppingPathById(Id: $Id) {
+        Id
+        name
+        userId
+        storeId
+        completed
+        dateCreated
+      }
+  }
+`;
+export default graphql(ShoppingPathByIdQuery, {
+    options: () => ({ variables: { Id: '1' } }),
+    props: ({ data: { loading, ShoppingPaths } }) => ({
+        loading,
+        ShoppingPaths,
+    }),
+})(ShoppingPathComponentContainer);

@@ -15,12 +15,16 @@ class CompletedSavedShoppingContainer extends React.Component {
     }
 
     render() {
+        if (this.props.loading) { //Still loading the data
+            return <div>Loading</div>;
+        }
         return (
             <CompletedSavedShoppingPathComponent
-                CompletedShoppingLists={this.props.CompletedShoppingLists}
-                SavedShoppingLists={this.props.SavedShoppingLists}
+                CompletedShoppingLists={this.props.ShoppingPaths.filter(shoppingPath => shoppingPath.completed === true)}
+                SavedShoppingLists={this.props.ShoppingPaths.filter(shoppingPath => shoppingPath.completed === false)}
                 onShoppingListPathSelected={this.props.onShoppingListPathSelected}
                 history={this.props.history}
+                loading={this.props.loading}
             />
         );
     }
@@ -42,7 +46,12 @@ const CompletedSavedShoppingPathComponentContainer = connect(mapStateToProps, ma
 const getSavedcompletedShoppingPathsQuery = gql`
   query currentUserSavedCompletedShoppingPaths($userId: String!) {
     ShoppingPaths(userId: $userId) {
+        Id
         name
+        userId
+        storeId
+        completed
+        dateCreated
       }
   }
 `;
