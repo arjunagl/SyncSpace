@@ -46,9 +46,22 @@ class App extends React.Component {
                 />
                 <Route
                     path='/shopping'
-                    render={props => (
-                        <ShoppingPathComponentContainer {...props} setTitle={this.setTitle} />
-                    )}
+                    render={props => {
+                        const corsHttpLink = createHttpLink({
+                            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint
+                        });
+
+                        const client = new ApolloClient({
+                            link: corsHttpLink,
+                            cache: new InMemoryCache()
+                        });
+
+                        return (
+                            <ApolloProvider client={client}>
+                                <ShoppingPathComponentContainer {...props} setTitle={this.setTitle} />
+                            </ApolloProvider>
+                        );
+                    }}
                 />
                 <Route
                     path='/completedsavedshopping'

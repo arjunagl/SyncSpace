@@ -19,7 +19,8 @@ const IncrementalSearchService = (http, Config) => ({
     },
 
     loadSavedCompletedShoppingList: (savedCompletedShopping) => {
-        console.log(JSON.stringify(savedCompletedShopping));
+        return Observable.from(['a', 'b', 'c', 'd']);
+        // console.log(JSON.stringify(savedCompletedShopping));
     }
 });
 

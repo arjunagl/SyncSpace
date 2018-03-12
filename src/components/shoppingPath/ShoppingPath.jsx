@@ -126,8 +126,8 @@ const ShoppingPathComponentContainer =
     connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
 
 const ShoppingPathByIdQuery = gql`
-  query ShoppingPathById($Id: String!) {
-    ShoppingPathById(Id: $Id) {
+  query shoppingPathByIdQuery($userId: String!) {
+    ShoppingPathById(Id: $shoppingPathId) {
         Id
         name
         userId
@@ -138,7 +138,7 @@ const ShoppingPathByIdQuery = gql`
   }
 `;
 export default graphql(ShoppingPathByIdQuery, {
-    options: () => ({ variables: { Id: '1' } }),
+    options: props => ({ variables: { shoppingPathId: '1' } }),
     props: ({ data: { loading, ShoppingPaths } }) => ({
         loading,
         ShoppingPaths,
