@@ -99,6 +99,12 @@ const syncSpaceReducer = (state = initialState, action) => {
                 SavedShoppingLists: savedShoppingLists
             };
         }
+        case 'COMPLETED_SAVED_SHOPPING_LIST_SELECTED': {
+            return {
+                ...state,
+                AppliedShoppingPathId: action.AppliedShoppingList.Id
+            };
+        }
         default:
             return state;
     }

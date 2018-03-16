@@ -5,7 +5,11 @@ import styles from './CompletedSavedShopping.scss';
 
 const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShoppingLists, onShoppingListPathSelected, history }) => {
     const selectedShoppingList = (completedSavedShoppingList) => {
-        history.push('/shopping');
+        const state = {
+            pathname: '/shopping',
+            selectedShoppingPathId: completedSavedShoppingList.Id
+        };
+        history.push(state);
         onShoppingListPathSelected(completedSavedShoppingList);
     };
 
@@ -36,6 +40,7 @@ const CompletedSavedShoppingPathComponent = ({ CompletedShoppingLists, SavedShop
                 </span>
             </div >
     );
+
     return (
         <div className={styles.completedSavedShopping__Wrapper}>
             <div className={styles.completedSavedShopping__Separation}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { graphql } from 'react-apollo';
+import _get from 'lodash/get';
 import gql from 'graphql-tag';
 import groupby from 'lodash.groupby';
 import sortby from 'lodash.sortby';
@@ -10,7 +11,7 @@ import commonStyles from '../../stylesheets/styles.scss';
 import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPathActions';
 
 // eslint-disable-next-line max-len
-const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked, onSaveShoppingClicked, history, setTitle }) => {
+const ShoppingPathComponent = ({ ShoppingPaths, onCompleteShoppingClicked, onSaveShoppingClicked, history, setTitle, location: { selectedShoppingPathId }, loading }) => {
     const buttonStyle = {
         margin: '10px 10px 0px 0px'
     };
@@ -20,7 +21,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
         const shoppingListitemId = event.target.dataset.id;
 
         //Select the item from the shopping list and mark the chcecked state
-        const shoppingItem = AppliedShoppingLists.ShoppingItems.find(si => si.Item.Id === shoppingListitemId);
+        const shoppingItem = ShoppingPaths.find(si => si.Item.Id === shoppingListitemId);
         shoppingItem.PickedUp = isSelected;
     };
 
@@ -30,12 +31,12 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
         pageTitle: 'Shopping Path'
     });
 
-    if (AppliedShoppingLists === undefined) {
+    if (loading) {
         return <div />;
     }
 
     //First sort and then group based on the location    
-    const sortedShoppingPathOnLocation = sortby(AppliedShoppingLists.ShoppingItems, (shoppingPathItem) => shoppingPathItem.Location.Name);
+    const sortedShoppingPathOnLocation = sortby(ShoppingPaths, (shoppingPathItem) => shoppingPathItem.Location.Name);
 
     //Group based on the location
     const sortedAndGroupedShoppingPathOnLocation = groupby(sortedShoppingPathOnLocation,
@@ -86,7 +87,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
                     id='completeShoppingbutton'
                     className={commonStyles.std_Button}
                     onClick={() => {
-                        onCompleteShoppingClicked(AppliedShoppingLists);
+                        onCompleteShoppingClicked(selectedShoppingPathId);
                         history.push('/landing');
                     }}
                     style={buttonStyle}
@@ -96,7 +97,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
                     id='saveShoppingbutton'
                     className={commonStyles.std_Button}
                     onClick={() => {
-                        onSaveShoppingClicked(AppliedShoppingLists);
+                        onSaveShoppingClicked(selectedShoppingPathId);
                         history.push('/landing');
                     }}
                     style={buttonStyle}
@@ -110,7 +111,7 @@ const ShoppingPathComponent = ({ AppliedShoppingLists, onCompleteShoppingClicked
 export { ShoppingPathComponent };
 
 const mapStateToProps = (state) => ({
-    AppliedShoppingLists: state.syncSpaceReducer.AppliedShoppingLists
+    AppliedShoppingPathId: state.syncSpaceReducer.AppliedShoppingPathId
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -122,11 +123,10 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const ShoppingPathComponentContainer =
-    connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
+const ShoppingPathComponentContainer = connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
 
 const ShoppingPathByIdQuery = gql`
-  query shoppingPathByIdQuery($userId: String!) {
+  query shoppingPathById($shoppingPathId: String!) {
     ShoppingPathById(Id: $shoppingPathId) {
         Id
         name
@@ -134,13 +134,22 @@ const ShoppingPathByIdQuery = gql`
         storeId
         completed
         dateCreated
+        shoppingItems {
+            name
+        }
       }
   }
 `;
 export default graphql(ShoppingPathByIdQuery, {
-    options: props => ({ variables: { shoppingPathId: '1' } }),
-    props: ({ data: { loading, ShoppingPaths } }) => ({
-        loading,
-        ShoppingPaths,
-    }),
+    options: props => {
+        console.log('props');
+        return ({ variables: { shoppingPathId: _get(props, 'location.selectedShoppingPathId', null) } });
+    },
+    props: ({ data: { loading, ShoppingPathById } }) => {
+        console.log(JSON.stringify(ShoppingPathById));
+        return ({
+            loading,
+            ShoppingPaths: ShoppingPathById,
+        });
+    },
 })(ShoppingPathComponentContainer);
