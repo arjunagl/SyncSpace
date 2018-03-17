@@ -135,7 +135,9 @@ const ShoppingPathByIdQuery = gql`
         completed
         dateCreated
         shoppingItems {
-            name
+            id,
+            name,
+            pickedUp
         }
       }
   }
