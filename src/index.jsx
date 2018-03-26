@@ -17,7 +17,6 @@ import StoreServiceMock from './components/store/storeServiceMock';
 import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
 import { landingEpic } from './components/landing/landingEpic';
 import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
-import { completedSavedShoppingEpic } from './components/CompletedSavedShopping/CompletedSavedShoppingEpic';
 import IncrementalSearchServiceMock from './components/common/incrementalSearch/incrementalSearchServiceMock';
 import IncrementalSearchService from './components/common/incrementalSearch/incrementalSearchService';
 import ShoppingListsService from './components/shoppingList/ShoppingListsService';
@@ -34,8 +33,7 @@ const rootEpic = combineEpics(
     storeEpic,
     shoppingListEpic,
     landingEpic,
-    incrementalSearchEpic,
-    completedSavedShoppingEpic
+    incrementalSearchEpic
 );
 
 const configParams = ConfigService();

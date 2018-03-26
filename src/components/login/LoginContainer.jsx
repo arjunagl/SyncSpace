@@ -14,7 +14,6 @@ class LoginContainerComponent extends React.Component {
 
     componentDidMount() {
         //Set the title to login
-        console.log(this.props);
         this.props.setTitle({
             windowTitle: 'Login - SyncSpace',
             pageTitle: 'Login'

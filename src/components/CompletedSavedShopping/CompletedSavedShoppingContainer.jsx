@@ -4,6 +4,7 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { CompletedSavedShoppingPathComponent } from './CompletedSavedShopping';
 import { CompletedSavedShoppingPathSelected } from './CompletedSavedShoppingActions';
+import LoaderComponent from '../common/loader/loader';
 
 class CompletedSavedShoppingContainer extends React.Component {
     componentDidMount() {
@@ -16,7 +17,11 @@ class CompletedSavedShoppingContainer extends React.Component {
 
     render() {
         if (this.props.loading) { //Still loading the data
-            return <div>Loading</div>;
+            return (
+                <div>
+                    <LoaderComponent />
+                </div>
+            );
         }
         return (
             <CompletedSavedShoppingPathComponent

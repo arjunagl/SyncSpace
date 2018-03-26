@@ -1,3 +1,5 @@
+//NOTE: This class is no longer being used.
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 // import { CompletedSavedShoppingPathLoaded } from './CompletedSavedShoppingActions';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import _get from 'lodash/get';
 import gql from 'graphql-tag';
 import groupby from 'lodash.groupby';
@@ -9,104 +9,128 @@ import styles from './ShoppingPath.scss';
 import ButtonContainer from '../common/button/Button';
 import commonStyles from '../../stylesheets/styles.scss';
 import { completeShoppingPathAction, saveShoppingPathAction } from './ShoppingPathActions';
+import LoaderComponent from '../common/loader/loader';
 
-// eslint-disable-next-line max-len
-const ShoppingPathComponent = ({ ShoppingPaths, onCompleteShoppingClicked, onSaveShoppingClicked, history, setTitle, location: { selectedShoppingPathId }, loading }) => {
-    const buttonStyle = {
-        margin: '10px 10px 0px 0px'
-    };
 
-    const onClickedShoppingItem = (event) => {
+class ShoppingPathComponent extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.onClickedShoppingItem = this.onClickedShoppingItem.bind(this);
+        this.onCompleteShoppingPath = this.onCompleteShoppingPath.bind(this);
+        this.state = {
+            shoppingPath: this.props.ShoppingPath
+        };
+    }
+
+    componentWillReceiveProps(props) {
+        this.state.shoppingPath = props.ShoppingPath;
+    }
+
+    onClickedShoppingItem = (event) => {
         const isSelected = event.target.checked;
         const shoppingListitemId = event.target.dataset.id;
 
         //Select the item from the shopping list and mark the chcecked state
-        const shoppingItem = ShoppingPaths.find(si => si.Item.Id === shoppingListitemId);
-        shoppingItem.PickedUp = isSelected;
+        const shoppingItem = this.state.shoppingPath.shoppingItems.find(si => si.id === shoppingListitemId);
+        this.setState({
+            shoppingPath: this.state.shoppingPath
+        });
+        shoppingItem.pickedUp = isSelected;
     };
 
-    //Set the title
-    setTitle({
-        windowTitle: 'Shopping Path - SyncSpace',
-        pageTitle: 'Shopping Path'
-    });
-
-    if (loading) {
-        return <div />;
+    onCompleteShoppingPath = (shoppingPath) => {
+        this.props.updateShoppingPath(shoppingPath);
     }
 
-    //First sort and then group based on the location    
-    const sortedShoppingPathOnLocation = sortby(ShoppingPaths, (shoppingPathItem) => shoppingPathItem.Location.Name);
+    render() {
+        const buttonStyle = {
+            margin: '10px 10px 0px 0px'
+        };
 
-    //Group based on the location
-    const sortedAndGroupedShoppingPathOnLocation = groupby(sortedShoppingPathOnLocation,
-        (shoppingPathItem) => (shoppingPathItem.Location.Name));
+        if (this.props.loading) {
+            return (
+                <div>
+                    <LoaderComponent />
+                </div>
+            );
+        }
 
-    // eslint-disable-next-line arrow-body-style
-    const shoppingPathToRender = Object.keys(sortedAndGroupedShoppingPathOnLocation).map(locationKey => {
+        //First sort and then group based on the location    
+        const sortedShoppingPathOnLocation = sortby(this.state.shoppingPath.shoppingItems, (shoppingPathItem) => shoppingPathItem.locationOrder);
+
+        //Group based on the location
+        const sortedAndGroupedShoppingPathOnLocation = groupby(sortedShoppingPathOnLocation,
+            (shoppingPathItem) => (shoppingPathItem.location));
+
+        // eslint-disable-next-line arrow-body-style
+        const shoppingPathToRender = Object.keys(sortedAndGroupedShoppingPathOnLocation).map(locationKey => {
+            return (
+                <div key={locationKey}>
+                    <div className={styles.ShoppingPathLocation}>
+                        {locationKey}
+                        {
+                            <div>
+                                {
+                                    // eslint-disable-next-line arrow-body-style
+                                    sortedAndGroupedShoppingPathOnLocation[locationKey].map(shoppingItem => {
+                                        return (
+                                            <div
+                                                className={styles.ShoppingItem}
+                                                key={shoppingItem.id}
+                                            >
+                                                <input
+                                                    type='checkbox' id={`sp${shoppingItem.id}`}
+                                                    checked={shoppingItem.pickedUp}
+                                                    data-id={shoppingItem.id}
+                                                    onChange={this.onClickedShoppingItem}
+                                                />
+                                                <label htmlFor={`${shoppingItem.id}`}>
+                                                    {shoppingItem.name}
+                                                    <span className={styles.ItemLocationHint}>
+                                                        {shoppingItem.locationHint}
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        );
+                                    })
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            );
+        });
         return (
-            <div key={locationKey}>
-                <div className={styles.ShoppingPathLocation}>
-                    {locationKey}
-                    {
-                        <div>
-                            {
-                                // eslint-disable-next-line arrow-body-style
-                                sortedAndGroupedShoppingPathOnLocation[locationKey].map(shoppingItem => {
-                                    return (
-                                        <div
-                                            className={styles.ShoppingItem}
-                                            key={shoppingItem.Item.Id}
-                                        >
-                                            <input
-                                                type='checkbox' id={`sp${shoppingItem.Item.Id}`}
-                                                data-id={shoppingItem.Item.Id}
-                                                onChange={onClickedShoppingItem}
-                                            />
-                                            <label htmlFor={`${shoppingItem.Item.Id}`}>
-                                                {shoppingItem.Item.Name}
-                                                <span className={styles.ItemLocationHint}>
-                                                    {shoppingItem.Location.Description}
-                                                </span>
-                                            </label>
-                                        </div>
-                                    );
-                                })
-                            }
-                        </div>
-                    }
+            <div>
+                {shoppingPathToRender}
+                <div className={styles.CompleteShopping}>
+                    <ButtonContainer
+                        id='completeShoppingbutton'
+                        className={commonStyles.std_Button}
+                        onClick={() => {
+                            // this.props.onCompleteShoppingClicked(this.state.shoppingPath);
+                            // this.props.history.push('/landing');
+                            this.onCompleteShoppingPath(this.state.shoppingPath);
+                        }}
+                        style={buttonStyle}
+                        content='Complete shopping'
+                    />
+                    <ButtonContainer
+                        id='saveShoppingbutton'
+                        className={commonStyles.std_Button}
+                        onClick={() => {
+                            this.props.onSaveShoppingClicked(this.state.shoppingPath);
+                            this.props.history.push('/landing');
+                        }}
+                        style={buttonStyle}
+                        content='Save for later'
+                    />
                 </div>
             </div>
         );
-    });
-    return (
-        <div>
-            {shoppingPathToRender}
-            <div className={styles.CompleteShopping}>
-                <ButtonContainer
-                    id='completeShoppingbutton'
-                    className={commonStyles.std_Button}
-                    onClick={() => {
-                        onCompleteShoppingClicked(selectedShoppingPathId);
-                        history.push('/landing');
-                    }}
-                    style={buttonStyle}
-                    content='Complete shopping'
-                />
-                <ButtonContainer
-                    id='saveShoppingbutton'
-                    className={commonStyles.std_Button}
-                    onClick={() => {
-                        onSaveShoppingClicked(selectedShoppingPathId);
-                        history.push('/landing');
-                    }}
-                    style={buttonStyle}
-                    content='Save for later'
-                />
-            </div>
-        </div>
-    );
-};
+    }
+}
 
 export { ShoppingPathComponent };
 
@@ -137,21 +161,45 @@ const ShoppingPathByIdQuery = gql`
         shoppingItems {
             id,
             name,
-            pickedUp
+            pickedUp,
+            location,
+            locationHint,
+            locationOrder
         }
       }
-  }
+  }`;
+
+const updateShoppingPathQuery = gql`
+mutation updateShoppingPath($shoppingPath: String!){
+    UpdateShoppingPath(shoppingPath: $shoppingPath){
+        Id
+        name
+    }
+}
 `;
-export default graphql(ShoppingPathByIdQuery, {
-    options: props => {
-        console.log('props');
-        return ({ variables: { shoppingPathId: _get(props, 'location.selectedShoppingPathId', null) } });
-    },
-    props: ({ data: { loading, ShoppingPathById } }) => {
-        console.log(JSON.stringify(ShoppingPathById));
-        return ({
-            loading,
-            ShoppingPaths: ShoppingPathById,
-        });
-    },
-})(ShoppingPathComponentContainer);
+
+export default compose(
+    graphql(
+        ShoppingPathByIdQuery, {
+            options: props => ({ variables: { shoppingPathId: _get(props, 'location.selectedShoppingPathId', null) } }),
+            props: ({ data: { loading, ShoppingPathById } }) => ({
+                loading,
+                ShoppingPath: ShoppingPathById,
+            }),
+        }
+    ),
+    graphql(
+        updateShoppingPathQuery, {
+            options: props => {
+                console.log(props);
+                return { variables: { shoppingPath: '1' } };
+            },
+            props: ({ mutate }) => ({
+                updateShoppingPath: (shoppingPath) => {
+                    console.log(`Shopping Path = ${JSON.stringify(shoppingPath)}`);
+                    mutate(shoppingPath);
+                }
+            })
+        }
+    ),
+)(ShoppingPathComponentContainer);
