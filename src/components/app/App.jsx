@@ -53,7 +53,8 @@ class App extends React.Component {
 
                         const client = new ApolloClient({
                             link: corsHttpLink,
-                            cache: new InMemoryCache()
+                            cache: new InMemoryCache(),
+                            addTypename: false
                         });
 
                         return (

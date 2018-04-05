@@ -170,7 +170,7 @@ const ShoppingPathByIdQuery = gql`
   }`;
 
 const updateShoppingPathQuery = gql`
-mutation updateShoppingPath($shoppingPath: String!){
+mutation updateShoppingPath($shoppingPath: ShoppingPathInput!){
     UpdateShoppingPath(shoppingPath: $shoppingPath){
         Id
         name
@@ -190,14 +190,14 @@ export default compose(
     ),
     graphql(
         updateShoppingPathQuery, {
-            options: props => {
-                console.log(props);
-                return { variables: { shoppingPath: '1' } };
-            },
             props: ({ mutate }) => ({
                 updateShoppingPath: (shoppingPath) => {
-                    console.log(`Shopping Path = ${JSON.stringify(shoppingPath)}`);
-                    mutate(shoppingPath);
+                    const { __typename, shoppingItems, ...shoppingPathInput } = shoppingPath;
+                    shoppingPathInput.shoppingItems = shoppingPath.shoppingItems.map(shoppingItem => {
+                        const { __typename, ...shoppingItemInput } = shoppingItem;
+                        return shoppingItemInput;
+                    });
+                    mutate({ variables: { shoppingPath: shoppingPathInput } });
                 }
             })
         }
