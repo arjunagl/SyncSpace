@@ -103,14 +103,16 @@ class ShoppingPathComponent extends React.Component {
         });
         return (
             <div>
+                <div className={styles.ShoppingPathDetailsSection}>
+                    {this.state.shoppingPath.name} <br />
+                    Shopped at: {this.state.shoppingPath.storeId} on {this.state.shoppingPath.dateCreated}
+                </div>
                 {shoppingPathToRender}
                 <div className={styles.CompleteShopping}>
                     <ButtonContainer
                         id='completeShoppingbutton'
                         className={commonStyles.std_Button}
                         onClick={() => {
-                            // this.props.onCompleteShoppingClicked(this.state.shoppingPath);
-                            // this.props.history.push('/landing');
                             this.onCompleteShoppingPath(this.state.shoppingPath);
                         }}
                         style={buttonStyle}
@@ -174,6 +176,18 @@ mutation updateShoppingPath($shoppingPath: ShoppingPathInput!){
     UpdateShoppingPath(shoppingPath: $shoppingPath){
         Id
         name
+        userId
+        storeId
+        completed
+        dateCreated
+        shoppingItems {
+            id,
+            name,
+            pickedUp,
+            location,
+            locationHint,
+            locationOrder
+        }
     }
 }
 `;

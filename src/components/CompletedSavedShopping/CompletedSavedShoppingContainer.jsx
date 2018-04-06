@@ -18,8 +18,10 @@ class CompletedSavedShoppingContainer extends React.Component {
     render() {
         if (this.props.loading) { //Still loading the data
             return (
-                <div>
-                    <LoaderComponent />
+                <div style={{ textAlign: 'center' }}>
+                    <div style={{ display: 'inline-block' }}>
+                        <LoaderComponent />
+                    </div>
                 </div>
             );
         }
