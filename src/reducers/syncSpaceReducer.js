@@ -84,11 +84,21 @@ const syncSpaceReducer = (state = initialState, action) => {
             };
         }
         case 'COMPLETE_SHOPPING': {
-            const completedShoppingLists = Array.of(...state.CompletedShoppingLists);
-            completedShoppingLists.push(action.appliedShoppingList);
             return {
                 ...state,
-                CompletedShoppingLists: completedShoppingLists
+                Processing: {
+                    State: 'Processing',
+                    Message: 'Updating your shopping list...'
+                }
+            };
+        }
+        case 'COMPLETE_SAVE_SHOPPING_COMPLETE': {
+            return {
+                ...state,
+                Processing: {
+                    State: 'Idle',
+                    Message: null
+                }
             };
         }
         case 'SAVE_SHOPPING': {

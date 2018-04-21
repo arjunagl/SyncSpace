@@ -8,3 +8,7 @@ export const saveShoppingPathAction = (appliedShoppingList) => ({
     appliedShoppingList
 });
 
+export const completeSaveShoppingPathComplete = () => ({
+    type: 'COMPLETE_SAVE_SHOPPING_COMPLETE'
+});
+

@@ -8,7 +8,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import TopMenuComponent from '../topMenu/TopMenuIndex';
 import LandingComponent from '../landing/Landing';
 import LoginContainer from '../login/LoginContainer';
-import ShoppingPathComponentContainer from '../shoppingPath/ShoppingPath';
+// import ShoppingPathComponentContainer from '../shoppingPath/ShoppingPath';
+import { ShoppingPathContainerComponent } from '../shoppingPath/ShoppingPath';
 import CompletedSavedShoppingContainer from '../CompletedSavedShopping/CompletedSavedShoppingContainer';
 
 class App extends React.Component {
@@ -59,7 +60,7 @@ class App extends React.Component {
 
                         return (
                             <ApolloProvider client={client}>
-                                <ShoppingPathComponentContainer {...props} setTitle={this.setTitle} />
+                                <ShoppingPathContainerComponent {...props} setTitle={this.setTitle} />
                             </ApolloProvider>
                         );
                     }}
