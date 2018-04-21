@@ -11,7 +11,7 @@ import commonStyles from '../../stylesheets/styles.scss';
 import { completeShoppingPathAction, saveShoppingPathAction, completeSaveShoppingPathComplete } from './ShoppingPathActions';
 import LoaderComponent from '../common/loader/loader';
 import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
-import {ShoppingPathComponent} from './ShoppingPath';
+import { ShoppingPathComponent } from './ShoppingPath';
 
 
 const ShoppingPathByIdQuery = gql`
@@ -82,12 +82,12 @@ export class ShoppingPathContainerComponent extends React.Component {
                             </div>
                         );
                     } else {
-
                         <ShoppingPathComponent shoppingPath={shoppingPath}>
                         </ShoppingPathComponent>
                     }
                 }}
             </Query>
+
         );
     }
 }
