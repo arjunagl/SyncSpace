@@ -9,7 +9,7 @@ import TopMenuComponent from '../topMenu/TopMenuIndex';
 import LandingComponent from '../landing/Landing';
 import LoginContainer from '../login/LoginContainer';
 // import ShoppingPathComponentContainer from '../shoppingPath/ShoppingPath';
-import { ShoppingPathContainerComponent } from '../shoppingPath/ShoppingPath';
+import { ShoppingPathContainerComponent } from '../shoppingPath/ShoppingPathContainer';
 import CompletedSavedShoppingContainer from '../CompletedSavedShopping/CompletedSavedShoppingContainer';
 
 class App extends React.Component {

@@ -1,4 +1,38 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { graphql, compose, Query } from 'react-apollo';
+import _get from 'lodash/get';
+import gql from 'graphql-tag';
+import groupby from 'lodash.groupby';
+import sortby from 'lodash.sortby';
+import styles from './ShoppingPath.scss';
+import ButtonContainer from '../common/button/Button';
+import commonStyles from '../../stylesheets/styles.scss';
+import { completeShoppingPathAction, saveShoppingPathAction, completeSaveShoppingPathComplete } from './ShoppingPathActions';
+import LoaderComponent from '../common/loader/loader';
+import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
+import {ShoppingPathComponent} from './ShoppingPath';
+
+
+const ShoppingPathByIdQuery = gql`
+  query shoppingPathById($shoppingPathId: String!) {
+    ShoppingPathById(Id: $shoppingPathId) {
+        Id
+        name
+        userId
+        storeId
+        completed
+        dateCreated
+        shoppingItems {
+            id,
+            name,
+            pickedUp,
+            location,
+            locationHint,
+            locationOrder
+        }
+      }
+  }`;
 
 export class ShoppingPathContainerComponent extends React.Component {
 
