@@ -49,17 +49,17 @@ export class ShoppingPathContainerComponent extends React.Component {
     //     this.state.shoppingPath = props.ShoppingPath;
     // }
 
-    onClickedShoppingItem = (event) => {
-        const isSelected = event.target.checked;
-        const shoppingListitemId = event.target.dataset.id;
+    // onClickedShoppingItem = (event) => {
+    //     const isSelected = event.target.checked;
+    //     const shoppingListitemId = event.target.dataset.id;
 
-        //Select the item from the shopping list and mark the chcecked state
-        const shoppingItem = this.state.shoppingPath.shoppingItems.find(si => si.id === shoppingListitemId);
-        this.setState({
-            shoppingPath: this.state.shoppingPath
-        });
-        shoppingItem.pickedUp = isSelected;
-    };
+    //     //Select the item from the shopping list and mark the chcecked state
+    //     const shoppingItem = this.state.shoppingPath.shoppingItems.find(si => si.id === shoppingListitemId);
+    //     this.setState({
+    //         shoppingPath: this.state.shoppingPath
+    //     });
+    //     shoppingItem.pickedUp = isSelected;
+    // };
 
     onCompleteShoppingPath = (shoppingPath) => {
         this.props.updateShoppingPath(shoppingPath);
@@ -82,8 +82,10 @@ export class ShoppingPathContainerComponent extends React.Component {
                             </div>
                         );
                     } else {
-                        <ShoppingPathComponent shoppingPath={shoppingPath}>
-                        </ShoppingPathComponent>
+                        return (
+                            <ShoppingPathComponent shoppingPath={shoppingPath}>
+                            </ShoppingPathComponent>
+                        );
                     }
                 }}
             </Query>

@@ -36,7 +36,34 @@ mutation updateShoppingPath($shoppingPath: ShoppingPathInput!){
 `;
 
 export class ShoppingPathComponent extends React.Component {
-    render(){
+
+    constructor(props) {
+        super(props);
+        this.onClickedShoppingItem = this.onClickedShoppingItem.bind(this);
+        // this.onCompleteShoppingPath = this.onCompleteShoppingPath.bind(this);
+        // this.state = {
+        //     shoppingPath: null
+        // };
+    }
+
+
+    onClickedShoppingItem = (event) => {
+        const isSelected = event.target.checked;
+        const shoppingListitemId = event.target.dataset.id;
+
+        //Select the item from the shopping list and mark the chcecked state
+        const shoppingItem = this.state.shoppingPath.shoppingItems.find(si => si.id === shoppingListitemId);
+        this.setState({
+            shoppingPath: this.state.shoppingPath
+        });
+        shoppingItem.pickedUp = isSelected;
+    };
+
+    render() {
+        const buttonStyle = {
+            margin: '10px 10px 0px 0px'
+        };
+        
         const shoppingPath = this.props.shoppingPath;
 
         //First sort and then group based on the location    
@@ -66,7 +93,7 @@ export class ShoppingPathComponent extends React.Component {
                                                     type='checkbox' id={`sp${shoppingItem.id}`}
                                                     checked={shoppingItem.pickedUp}
                                                     data-id={shoppingItem.id}
-                                                    onChange={onClickedShoppingItem}
+                                                    onChange={this.onClickedShoppingItem}
                                                 />
                                                 <label htmlFor={`${shoppingItem.id}`}>
                                                     {shoppingItem.name}
