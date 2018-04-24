@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { graphql, compose, Query } from 'react-apollo';
+import { graphql, compose, Query, Mutation } from 'react-apollo';
 import _get from 'lodash/get';
 import gql from 'graphql-tag';
 import groupby from 'lodash.groupby';
@@ -14,25 +14,7 @@ import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
 import { ShoppingPathComponent } from './ShoppingPath';
 
 
-const ShoppingPathByIdQuery = gql`
-  query shoppingPathById($shoppingPathId: String!) {
-    ShoppingPathById(Id: $shoppingPathId) {
-        Id
-        name
-        userId
-        storeId
-        completed
-        dateCreated
-        shoppingItems {
-            id,
-            name,
-            pickedUp,
-            location,
-            locationHint,
-            locationOrder
-        }
-      }
-  }`;
+
 
 export class ShoppingPathContainerComponent extends React.Component {
 
@@ -70,26 +52,77 @@ export class ShoppingPathContainerComponent extends React.Component {
             margin: '10px 10px 0px 0px'
         };
 
-        return (
-            // This uses react render props approahc https://reactjs.org/docs/render-props.html
-            <Query query={ShoppingPathByIdQuery} variables={{ shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) }}>
-                {({ loading, error, data: { ShoppingPathById: shoppingPath } }) => {
-
-                    if (loading) {
-                        return (
-                            <div>
-                                <LoaderComponent />
-                            </div>
-                        );
-                    } else {
-                        return (
-                            <ShoppingPathComponent shoppingPath={shoppingPath}>
-                            </ShoppingPathComponent>
-                        );
+        const ShoppingPathByIdQuery = gql`
+            query shoppingPathById($shoppingPathId: String!) {
+                ShoppingPathById(Id: $shoppingPathId) {
+                    Id
+                    name
+                    userId
+                    storeId
+                    completed
+                    dateCreated
+                    shoppingItems {
+                        id,
+                        name,
+                        pickedUp,
+                        location,
+                        locationHint,
+                        locationOrder
                     }
-                }}
-            </Query>
+                }
+            }`;
 
-        );
+        const updateShoppingPathQuery = gql`
+            mutation updateShoppingPath($shoppingPath: ShoppingPathInput!){
+                UpdateShoppingPath(shoppingPath: $shoppingPath){
+                    Id
+                    name
+                    userId
+                    storeId
+                    completed
+                    dateCreated
+                    shoppingItems {
+                        id,
+                        name,
+                        pickedUp,
+                        location,
+                        locationHint,
+                        locationOrder
+                    }
+                }
+            }
+            `;
+
+        return (
+            // This uses react render props approahc https://reactjs.org/docs/render-props.html        
+            <Query query={ShoppingPathByIdQuery} variables={{ shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) }}>
+                {({ loading, error, data: { ShoppingPathById: shoppingPath } }) => (
+                    <Mutation mutation={updateShoppingPathQuery}>
+                        {(updateShoppingPathMutation, { data }) => {
+
+                            const updateShoppingPath = (shoppingPathToUpdate) => {
+                                console.log(shoppingPathToUpdate);
+                                updateShoppingPathMutation({ variables: { shoppingPath: shoppingPath } }).then(updateResult => {
+                                    console.log('Shopping path updaed => ', updateResult);
+                                });
+                            }
+
+                            if (loading) {
+                                return (
+                                    <div>
+                                        <LoaderComponent />
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <ShoppingPathComponent shoppingPath={shoppingPath} updateShoppingPath={updateShoppingPath}>
+                                    </ShoppingPathComponent>
+                                );
+                            }
+                        }
+                        }
+                    </Mutation>
+                )}
+            </Query>);
     }
 }

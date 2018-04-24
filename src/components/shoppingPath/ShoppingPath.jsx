@@ -40,10 +40,14 @@ export class ShoppingPathComponent extends React.Component {
     constructor(props) {
         super(props);
         this.onClickedShoppingItem = this.onClickedShoppingItem.bind(this);
-        // this.onCompleteShoppingPath = this.onCompleteShoppingPath.bind(this);
-        // this.state = {
-        //     shoppingPath: null
-        // };
+        this.state = {
+            shoppingPath: props.shoppingPath
+        };
+    }
+
+    componentWillReceiveProps(props) {
+        console.log('receiving props');
+        this.setState({ shoppingPath: props.ShoppingPath });
     }
 
 
@@ -53,18 +57,18 @@ export class ShoppingPathComponent extends React.Component {
 
         //Select the item from the shopping list and mark the chcecked state
         const shoppingItem = this.state.shoppingPath.shoppingItems.find(si => si.id === shoppingListitemId);
+        shoppingItem.pickedUp = isSelected;
         this.setState({
             shoppingPath: this.state.shoppingPath
         });
-        shoppingItem.pickedUp = isSelected;
     };
 
     render() {
         const buttonStyle = {
             margin: '10px 10px 0px 0px'
         };
-        
-        const shoppingPath = this.props.shoppingPath;
+
+        const shoppingPath = this.state.shoppingPath;
 
         //First sort and then group based on the location    
         const sortedShoppingPathOnLocation = sortby(shoppingPath.shoppingItems, (shoppingPathItem) => shoppingPathItem.locationOrder);
@@ -124,7 +128,8 @@ export class ShoppingPathComponent extends React.Component {
                         id='completeShoppingbutton'
                         className={commonStyles.std_Button}
                         onClick={() => {
-                            this.onCompleteShoppingPath(shoppingPath);
+                            this.props.updateShoppingPath(shoppingPath);
+                            // this.props.history.push('/landing');
                         }}
                         style={buttonStyle}
                         content='Complete shopping'
@@ -133,8 +138,8 @@ export class ShoppingPathComponent extends React.Component {
                         id='saveShoppingbutton'
                         className={commonStyles.std_Button}
                         onClick={() => {
-                            this.props.onSaveShoppingClicked(shoppingPath);
-                            this.props.history.push('/landing');
+                            this.props.updateShoppingPath(shoppingPath);
+                            // this.props.history.push('/landing');
                         }}
                         style={buttonStyle}
                         content='Save for later'
