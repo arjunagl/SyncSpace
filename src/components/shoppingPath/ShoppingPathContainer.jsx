@@ -13,35 +13,7 @@ import LoaderComponent from '../common/loader/loader';
 import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
 import { ShoppingPathComponent } from './ShoppingPath';
 
-
-
-
 export class ShoppingPathContainerComponent extends React.Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.onClickedShoppingItem = this.onClickedShoppingItem.bind(this);
-    //     this.onCompleteShoppingPath = this.onCompleteShoppingPath.bind(this);
-    //     this.state = {
-    //         shoppingPath: null
-    //     };
-    // }
-
-    // componentWillReceiveProps(props) {
-    //     this.state.shoppingPath = props.ShoppingPath;
-    // }
-
-    // onClickedShoppingItem = (event) => {
-    //     const isSelected = event.target.checked;
-    //     const shoppingListitemId = event.target.dataset.id;
-
-    //     //Select the item from the shopping list and mark the chcecked state
-    //     const shoppingItem = this.state.shoppingPath.shoppingItems.find(si => si.id === shoppingListitemId);
-    //     this.setState({
-    //         shoppingPath: this.state.shoppingPath
-    //     });
-    //     shoppingItem.pickedUp = isSelected;
-    // };
 
     onCompleteShoppingPath = (shoppingPath) => {
         this.props.updateShoppingPath(shoppingPath);
@@ -98,8 +70,7 @@ export class ShoppingPathContainerComponent extends React.Component {
             <Query query={ShoppingPathByIdQuery} variables={{ shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) }}>
                 {({ loading, error, data: { ShoppingPathById: shoppingPath } }) => (
                     <Mutation mutation={updateShoppingPathQuery}>
-                        {(updateShoppingPathMutation, { data }) => {
-                            console.log(data);
+                        {(updateShoppingPathMutation, { loading: updatingShoppingPath, error }) => {
                             const updateShoppingPath = (shoppingPathToUpdate) => {
                                 console.log(shoppingPathToUpdate);
                                 const { __typename, shoppingItems, ...shoppingPathInput } = shoppingPathToUpdate;
@@ -112,7 +83,7 @@ export class ShoppingPathContainerComponent extends React.Component {
                                 });
                             }
 
-                            if (loading) {
+                            if (loading || updatingShoppingPath) {
                                 return (
                                     <div>
                                         <LoaderComponent />

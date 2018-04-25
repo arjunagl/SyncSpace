@@ -158,39 +158,6 @@ export class ShoppingPathComponent extends React.Component {
     }
 }
 
-// const composedQueries = compose(
-//     graphql(
-//         ShoppingPathByIdQuery, {
-//             options: props => ({ variables: { shoppingPathId: _get(props, 'location.selectedShoppingPathId', null) } }),
-//             props: ({ data: { loading, ShoppingPathById } }) => ({
-//                 loading,
-//                 ShoppingPath: ShoppingPathById,
-//             }),
-//         }
-//     ),
-//     graphql(
-//         updateShoppingPathQuery, {
-//             props: ({ mutate, ownProps: { onCompleteShoppingClicked, onUpdateShoppingListComplete } }) => ({
-//                 updateShoppingPath: (shoppingPath) => {
-//                     const { __typename, shoppingItems, ...shoppingPathInput } = shoppingPath;
-//                     shoppingPathInput.shoppingItems = shoppingPath.shoppingItems.map(shoppingItem => {
-//                         const { __typename, ...shoppingItemInput } = shoppingItem;
-//                         return shoppingItemInput;
-//                     });
-//                     mutate({ variables: { shoppingPath: shoppingPathInput } }).then(updateResult => {
-//                         //Dispatch an action to say completed updating the shopping path
-//                         onUpdateShoppingListComplete();
-
-//                         //Make the component update itself
-
-//                     });
-//                     onCompleteShoppingClicked(shoppingPath);
-//                 }
-//             })
-//         }
-//     ),
-// )(ShoppingPathComponent);
-
 const mapStateToProps = (state) => ({
     AppliedShoppingPathId: state.syncSpaceReducer.AppliedShoppingPathId
 });
@@ -206,6 +173,3 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(saveShoppingPathAction(appliedShoppingList));
     }
 });
-
-// const ShoppingPathComponentContainer = connect(mapStateToProps, mapDispatchToProps)(ShoppingPathComponent);
-// export default ShoppingPathComponentContainer;
