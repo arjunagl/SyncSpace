@@ -69,6 +69,13 @@ export class ShoppingPathComponent extends React.Component {
         };
 
         const shoppingPath = this.state.shoppingPath;
+        if (shoppingPath === undefined || null) {
+            return (
+                <div >
+                    Cannot load shopping path
+                </div>
+            );
+        }
 
         //First sort and then group based on the location    
         const sortedShoppingPathOnLocation = sortby(shoppingPath.shoppingItems, (shoppingPathItem) => shoppingPathItem.locationOrder);

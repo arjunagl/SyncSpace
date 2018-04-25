@@ -99,10 +99,15 @@ export class ShoppingPathContainerComponent extends React.Component {
                 {({ loading, error, data: { ShoppingPathById: shoppingPath } }) => (
                     <Mutation mutation={updateShoppingPathQuery}>
                         {(updateShoppingPathMutation, { data }) => {
-
+                            console.log(data);
                             const updateShoppingPath = (shoppingPathToUpdate) => {
                                 console.log(shoppingPathToUpdate);
-                                updateShoppingPathMutation({ variables: { shoppingPath: shoppingPath } }).then(updateResult => {
+                                const { __typename, shoppingItems, ...shoppingPathInput } = shoppingPathToUpdate;
+                                shoppingPathInput.shoppingItems = shoppingPath.shoppingItems.map(shoppingItem => {
+                                    const { __typename, ...shoppingItemInput } = shoppingItem;
+                                    return shoppingItemInput;
+                                });
+                                updateShoppingPathMutation({ variables: { shoppingPath: shoppingPathInput } }).then(updateResult => {
                                     console.log('Shopping path updaed => ', updateResult);
                                 });
                             }
