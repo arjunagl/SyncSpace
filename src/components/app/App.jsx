@@ -24,6 +24,17 @@ class App extends React.Component {
     }
 
     render() {
+        const apolloClientCache = new InMemoryCache();
+
+        const corsHttpLink = createHttpLink({
+            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint
+        });
+
+        const client = new ApolloClient({
+            link: corsHttpLink,
+            cache: apolloClientCache,
+            addTypename: false
+        });
         return (<div>
             <Route path="/" component={TopMenuComponent} />
             <div>
@@ -48,15 +59,6 @@ class App extends React.Component {
                 <Route
                     path='/shopping'
                     render={props => {
-                        const corsHttpLink = createHttpLink({
-                            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint
-                        });
-
-                        const client = new ApolloClient({
-                            link: corsHttpLink,
-                            cache: new InMemoryCache(),
-                            addTypename: false
-                        });
 
                         return (
                             <ApolloProvider client={client}>
@@ -68,14 +70,7 @@ class App extends React.Component {
                 <Route
                     path='/completedsavedshopping'
                     render={props => {
-                        const corsHttpLink = createHttpLink({
-                            uri: this.props.config.syncGalaxyUrl + this.props.config.shoppingPathsEndPoint
-                        });
 
-                        const client = new ApolloClient({
-                            link: corsHttpLink,
-                            cache: new InMemoryCache()
-                        });
                         return (
                             <ApolloProvider client={client}>
                                 <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} userId={this.props.userId} />

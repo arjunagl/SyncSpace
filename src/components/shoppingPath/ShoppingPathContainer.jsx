@@ -62,14 +62,25 @@ export class ShoppingPathContainerComponent extends React.Component {
                         locationOrder
                     }
                 }
-            }
-            `;
+            } `;
+
+
 
         return (
             // This uses react render props approahc https://reactjs.org/docs/render-props.html        
             <Query query={ShoppingPathByIdQuery} variables={{ shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) }}>
                 {({ loading, error, data: { ShoppingPathById: shoppingPath } }) => (
-                    <Mutation mutation={updateShoppingPathQuery}>
+                    <Mutation
+                        mutation={updateShoppingPathQuery}
+                        update={(cache, { data: { UpdateShoppingPath } }) => {
+                            const readValue = cache.readQuery({ query: ShoppingPathByIdQuery, variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) } });
+                            //Update the cache
+                            cache.writeQuery({
+                                query: ShoppingPathByIdQuery, variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) },
+                                data: { UpdateShoppingPath }
+                            });
+                        }}
+                    >
                         {(updateShoppingPathMutation, { loading: updatingShoppingPath, error }) => {
                             const updateShoppingPath = (shoppingPathToUpdate) => {
                                 console.log(shoppingPathToUpdate);
@@ -95,8 +106,7 @@ export class ShoppingPathContainerComponent extends React.Component {
                                     </ShoppingPathComponent>
                                 );
                             }
-                        }
-                        }
+                        }}
                     </Mutation>
                 )}
             </Query>);
