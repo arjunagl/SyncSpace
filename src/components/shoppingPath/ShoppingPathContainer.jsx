@@ -72,12 +72,15 @@ export class ShoppingPathContainerComponent extends React.Component {
                 {({ loading, error, data: { ShoppingPathById: shoppingPath } }) => (
                     <Mutation
                         mutation={updateShoppingPathQuery}
-                        update={(cache, { data: { UpdateShoppingPath } }) => {
-                            const readValue = cache.readQuery({ query: ShoppingPathByIdQuery, variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) } });
-                            //Update the cache
+                        update={(cache, { data: { UpdateShoppingPath: updatedShoppingPath } }) => {
+
+                            //For the moment I'm not doing anything with the data I read, but I'm keeping this as a reference.
+                            const { ShoppingPathById } = cache.readQuery({ query: ShoppingPathByIdQuery, variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) } });
+
+                            //Update the cache, this will automatically call the render method of the react component
                             cache.writeQuery({
                                 query: ShoppingPathByIdQuery, variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) },
-                                data: { UpdateShoppingPath }
+                                data: { ShoppingPathById: updatedShoppingPath }
                             });
                         }}
                     >
