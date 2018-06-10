@@ -8,7 +8,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import TopMenuComponent from '../topMenu/TopMenuIndex';
 import LandingComponent from '../landing/Landing';
 import LoginContainer from '../login/LoginContainer';
-// import ShoppingPathComponentContainer from '../shoppingPath/ShoppingPath';
+import RegisterPage from '../register/registerPage';
 import { ShoppingPathContainerComponent } from '../shoppingPath/ShoppingPathContainer';
 import CompletedSavedShoppingContainer from '../CompletedSavedShopping/CompletedSavedShoppingContainer';
 
@@ -48,6 +48,12 @@ class App extends React.Component {
                     path="/login"
                     render={() => (
                         <LoginContainer setTitle={this.setTitle} />
+                    )}
+                />
+                <Route
+                    path="/register"
+                    render={() => (
+                        <RegisterPage setTitle={this.setTitle} />
                     )}
                 />
                 <Route
