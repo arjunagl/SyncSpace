@@ -1,7 +1,8 @@
 @import "../../stylesheets/variables";
 .registerAlign {
-    width: 50%;
-    height: 50%;
+    width: 25%;
+    min-width: 240px;
+    height: 340px;
     position: absolute;
     left: 0;
     right: 0;

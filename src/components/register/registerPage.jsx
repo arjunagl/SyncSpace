@@ -8,7 +8,7 @@ import styles from './RegisterPage.scss';
 const RegisterPage = (props) => {
     return (
         <Paper className={styles.registerAlign}>
-            <Grid container direction="column" alignItems="center" justify="center">
+            <Grid id="gridContainer" container direction="column" alignItems="center" justify="center" style={{height:"100%"}}>
                 <Grid item>
                     <TextField
                         id="firstName"
@@ -22,6 +22,14 @@ const RegisterPage = (props) => {
                         id="lastName"
                         label="Last name"
                         placeholder="Last Name"
+                        margin="normal"
+                    />
+                </Grid>
+                <Grid item>
+                    <TextField
+                        id="email"
+                        label="Email"
+                        placeholder="Email"
                         margin="normal"
                     />
                 </Grid>
