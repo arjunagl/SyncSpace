@@ -1,11 +1,32 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import styles from './RegisterPage.scss';
 
-const RegisterPage = () => {
+
+const RegisterPage = (props) => {
     return (
-        <Button variant="contained" color="primary">
-            Hello World
-        </Button>
+        <Paper className={styles.registerAlign}>
+            <Grid container direction="column" alignItems="center" justify="center">
+                <Grid item>
+                    <TextField
+                        id="firstName"
+                        label="First name"
+                        placeholder="First Name"
+                        margin="normal"
+                    />
+                </Grid>
+                <Grid item>
+                    <TextField
+                        id="lastName"
+                        label="Last name"
+                        placeholder="Last Name"
+                        margin="normal"
+                    />
+                </Grid>
+            </Grid>
+        </Paper>
     );
 }
 

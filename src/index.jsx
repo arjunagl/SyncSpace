@@ -22,7 +22,6 @@ import IncrementalSearchService from './components/common/incrementalSearch/incr
 import ShoppingListsService from './components/shoppingList/ShoppingListsService';
 import ShoppingListServiceMock from './components/shoppingList/ShoppingListServiceMock';
 import ConfigService from './common/configService';
-// import App from './components/app/App';
 import AppContainer from './components/app/App';
 
 import './stylesheets/fonts.scss';

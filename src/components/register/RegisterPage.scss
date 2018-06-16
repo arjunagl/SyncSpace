@@ -1,0 +1,12 @@
+@import "../../stylesheets/variables";
+.registerAlign {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translateY(-50%);
+}
