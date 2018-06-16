@@ -2,13 +2,14 @@ import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import styles from './RegisterPage.scss';
 
 
-const RegisterPage = (props) => {
+const RegisterPage = () => {
     return (
         <Paper className={styles.registerAlign}>
-            <Grid id="gridContainer" container direction="column" alignItems="center" justify="center" style={{height:"100%"}}>
+            <Grid id="gridContainer" container direction="column" alignItems="center" justify="center" style={{ height: "100%", backgroundColor: "aquamarine" }}>
                 <Grid item>
                     <TextField
                         id="firstName"
@@ -33,6 +34,12 @@ const RegisterPage = (props) => {
                         margin="normal"
                     />
                 </Grid>
+                <Grid item style={{ marginTop: "40px", marginBottom: "40px" }}>
+                    <Button variant="contained" color="primary" >
+                        Register
+                    </Button>
+                </Grid>
+
             </Grid>
         </Paper>
     );
