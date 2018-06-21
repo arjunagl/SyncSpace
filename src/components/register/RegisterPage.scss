@@ -1,5 +1,5 @@
 @import "../../stylesheets/variables";
-.registerAlign {
+.register {
     width: 25%;
     min-width: 240px;
     position: absolute;
@@ -9,4 +9,10 @@
     transform: translateX(-50%);
     top: 50%;
     transform: translateY(-50%);
+    &__wrapper {
+        height: 100%;
+    }
+    &__submit {
+        margin: 40px 0;
+    }
 }
