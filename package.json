@@ -78,9 +78,10 @@
     "redux-devtools-log-monitor": "^1.2.0",
     "redux-history-transitions": "^2.2.0",
     "redux-mock-store": "^1.2.3",
-    "redux-observable": "^0.16.0",
+    "redux-observable": "1.0.0",
     "redux-thunk": "^2.2.0",
-    "rxjs": "^5.2.0",
+    "rxjs": "6",
+    "rxjs-compat": "6",
     "sinon": "^4.0.1",
     "webpack": "^3.6.0"
   },

@@ -1,39 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { graphql, compose, Query } from 'react-apollo';
-import _get from 'lodash/get';
-import gql from 'graphql-tag';
 import groupby from 'lodash.groupby';
 import sortby from 'lodash.sortby';
-import styles from './ShoppingPath.scss';
-import ButtonContainer from '../common/button/Button';
+import React from 'react';
 import commonStyles from '../../stylesheets/styles.scss';
-import { completeShoppingPathAction, saveShoppingPathAction, completeSaveShoppingPathComplete } from './ShoppingPathActions';
-import LoaderComponent from '../common/loader/loader';
+import ButtonContainer from '../common/button/Button';
 import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
-
-
-
-const updateShoppingPathQuery = gql`
-mutation updateShoppingPath($shoppingPath: ShoppingPathInput!){
-    UpdateShoppingPath(shoppingPath: $shoppingPath){
-        Id
-        name
-        userId
-        storeId
-        completed
-        dateCreated
-        shoppingItems {
-            id,
-            name,
-            pickedUp,
-            location,
-            locationHint,
-            locationOrder
-        }
-    }
-}
-`;
+import styles from './ShoppingPath.scss';
 
 export class ShoppingPathComponent extends React.Component {
 
@@ -157,19 +128,3 @@ export class ShoppingPathComponent extends React.Component {
         );
     }
 }
-
-const mapStateToProps = (state) => ({
-    AppliedShoppingPathId: state.syncSpaceReducer.AppliedShoppingPathId
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    onCompleteShoppingClicked: (appliedShoppingList) => {
-        dispatch(completeShoppingPathAction(appliedShoppingList));
-    },
-    onUpdateShoppingListComplete: () => {
-        dispatch(completeSaveShoppingPathComplete());
-    },
-    onSaveShoppingClicked: (appliedShoppingList) => {
-        dispatch(saveShoppingPathAction(appliedShoppingList));
-    }
-});

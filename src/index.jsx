@@ -1,29 +1,28 @@
+import axios from 'axios';
+import createHistory from 'history/createBrowserHistory';
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import thunkMiddleware from 'redux-thunk';
-import { combineEpics, createEpicMiddleware } from 'redux-observable';
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import handleTransitions from 'redux-history-transitions';
-import createHistory from 'history/createBrowserHistory';
-import axios from 'axios';
-
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import thunkMiddleware from 'redux-thunk';
+import ConfigService from './common/configService';
+import AppContainer from './components/app/App';
+import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
+import IncrementalSearchService from './components/common/incrementalSearch/incrementalSearchService';
+import IncrementalSearchServiceMock from './components/common/incrementalSearch/incrementalSearchServiceMock';
 import DevTools from './components/devTools/DevTools';
-import syncSpaceReducer from './reducers/syncSpaceReducer';
+import { landingEpic } from './components/landing/landingEpic';
+import { registerEpic } from './components/register/registerEpic';
+import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
+import ShoppingListServiceMock from './components/shoppingList/ShoppingListServiceMock';
+import ShoppingListsService from './components/shoppingList/ShoppingListsService';
 import { storeEpic } from './components/store/storeEpic';
 import StoreService from './components/store/storeService';
 import StoreServiceMock from './components/store/storeServiceMock';
-import { shoppingListEpic } from './components/shoppingList/shoppingListEpic';
-import { landingEpic } from './components/landing/landingEpic';
-import { incrementalSearchEpic } from './components/common/incrementalSearch/incrementalSearchEpic';
-import IncrementalSearchServiceMock from './components/common/incrementalSearch/incrementalSearchServiceMock';
-import IncrementalSearchService from './components/common/incrementalSearch/incrementalSearchService';
-import ShoppingListsService from './components/shoppingList/ShoppingListsService';
-import ShoppingListServiceMock from './components/shoppingList/ShoppingListServiceMock';
-import ConfigService from './common/configService';
-import AppContainer from './components/app/App';
-
+import syncSpaceReducer from './reducers/syncSpaceReducer';
 import './stylesheets/fonts.scss';
 import './stylesheets/styles.scss';
 
@@ -32,14 +31,15 @@ const rootEpic = combineEpics(
     storeEpic,
     shoppingListEpic,
     landingEpic,
-    incrementalSearchEpic
+    incrementalSearchEpic,
+    registerEpic
 );
 
 const configParams = ConfigService();
 
 let epicMiddleware;
 if (!configParams.useMocks) {
-    epicMiddleware = createEpicMiddleware(rootEpic, {
+    epicMiddleware = createEpicMiddleware({
         dependencies: {
             http: axios,
             Config: configParams,
@@ -49,7 +49,7 @@ if (!configParams.useMocks) {
         }
     });
 } else {
-    epicMiddleware = createEpicMiddleware(rootEpic, {
+    epicMiddleware = createEpicMiddleware({
         dependencies: {
             http: axios,
             Config: configParams,
@@ -74,6 +74,7 @@ const reducer = combineReducers({
 });
 
 const store = createStore(reducer, enhancer);
+epicMiddleware.run(rootEpic);
 
 render(
     <Provider store={store}>

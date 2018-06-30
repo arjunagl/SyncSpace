@@ -4,5 +4,5 @@ module.exports = {
     storesEndPoint: JSON.stringify('Stores'),
     shoppingListsEndPoint: JSON.stringify('ShoppingLists'),
     shoppingPathsEndPoint: JSON.stringify('ShoppingPaths'),
-    useMocks: false
+    useMocks: true
 };

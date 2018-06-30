@@ -70,10 +70,6 @@ class LandingComponent extends React.Component {
     }
 }
 
-/**
- * 
- * @param {*} dispatch 
- */
 const mapDispatchToProps = (dispatch) => ({
     onApplyShoppingLists: (storeId, shoppingLists) => {
         dispatch(applyShoppingLists(shoppingLists, storeId));

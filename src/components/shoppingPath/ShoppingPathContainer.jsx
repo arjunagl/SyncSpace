@@ -1,16 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { graphql, compose, Query, Mutation } from 'react-apollo';
-import _get from 'lodash/get';
 import gql from 'graphql-tag';
-import groupby from 'lodash.groupby';
-import sortby from 'lodash.sortby';
-import styles from './ShoppingPath.scss';
-import ButtonContainer from '../common/button/Button';
-import commonStyles from '../../stylesheets/styles.scss';
-import { completeShoppingPathAction, saveShoppingPathAction, completeSaveShoppingPathComplete } from './ShoppingPathActions';
+import _get from 'lodash/get';
+import React from 'react';
+import { Mutation, Query } from 'react-apollo';
 import LoaderComponent from '../common/loader/loader';
-import ProcessingMessageContainer from '../processingMessage/ProcessingMessage';
 import { ShoppingPathComponent } from './ShoppingPath';
 
 export class ShoppingPathContainerComponent extends React.Component {
