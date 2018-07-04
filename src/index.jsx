@@ -21,6 +21,7 @@ import ShoppingListServiceMock from './components/shoppingList/ShoppingListServi
 import ShoppingListsService from './components/shoppingList/ShoppingListsService';
 import { storeEpic } from './components/store/storeEpic';
 import StoreService from './components/store/storeService';
+import RegisterServiceMock from './components/register/RegisterServiceMock';
 import StoreServiceMock from './components/store/storeServiceMock';
 import syncSpaceReducer from './reducers/syncSpaceReducer';
 import './stylesheets/fonts.scss';
@@ -44,6 +45,7 @@ if (!configParams.useMocks) {
             http: axios,
             Config: configParams,
             StoreService: StoreService(axios, configParams),
+            RegisterService: RegisterServiceMock(axios, configParams),
             incrementalSearchService: IncrementalSearchService(axios, configParams),
             ShoppingListsService: ShoppingListsService(axios, configParams)
         }
@@ -54,6 +56,7 @@ if (!configParams.useMocks) {
             http: axios,
             Config: configParams,
             StoreService: StoreServiceMock(),
+            RegisterService: RegisterServiceMock(),
             incrementalSearchService: IncrementalSearchServiceMock,
             ShoppingListsService: ShoppingListServiceMock()
         }

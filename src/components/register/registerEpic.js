@@ -1,34 +1,21 @@
 import { ofType } from 'redux-observable';
-import { concat, mapTo } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of';
-import { map } from '../../../node_modules/rxjs-compat/operator/map';
+import { merge, of } from 'rxjs';
+import { concatMap } from 'rxjs/operators';
 
 // eslint-disable-next-line arrow-body-style
-export const registerEpic = (action$) => {
-    // return action$.pipe(
-    //     ofType('REGISTER_USER'),
-    //     concat(
-    //         of({
-    //             type: 'APPLYING_SHOPPING_LISTS'
-    //         }),
-    //         of({
-    //             type: 'REGISTERING_USER_COMPLETE'
-    //         })
-    //     )
-    // );
-
-    // return action$.pipe(
-    //     ofType('REGISTER_USER'),
-    //     of({
-    //         type: 'APPLYING_SHOPPING_LISTS'
-    //     })
-    // );
-
+export const registerEpic = (action$, store, { RegisterService }) => {
     return action$.pipe(
         ofType('REGISTER_USER'),
-        mapTo(action => {
-            console.log(JSON.stringify(action));
-            return { a: 'a' };
+        concatMap(value => {
+            console.log(RegisterService);
+            const messagesToDispatch = merge(
+                of({ type: 'REGISTERING_USER' }),
+                RegisterService.registerUser(value.firstName, value.lastName, value.email).map(registerResult => {
+                    console.log(registerResult);
+                    return Object.assign({ type: 'REGISTERING_USER_COMPLETE' }, registerResult);
+                })
+            );
+            return messagesToDispatch;
         })
     );
 };

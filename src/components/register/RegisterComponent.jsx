@@ -6,8 +6,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
-import styles from './RegisterPage.scss';
 import { registerUser } from './registerActions';
+import styles from './RegisterPage.scss';
 
 export class RegisterComponent extends React.Component {
 
