@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
@@ -25,7 +26,7 @@ export class RegisterComponent extends React.Component {
     componentDidMount() {
         //Acting as the Observer
         this.subscription = this.onKeyUp$
-            .debounceTime(300)
+            .debounceTime(200)
             .subscribe(({ key, value }) => {
                 switch (key) {
                     case 'firstName': {
@@ -132,12 +133,13 @@ export class RegisterComponent extends React.Component {
                         />
                     </Grid>
                     <Grid item className={styles.register__submit}>
-                        <Button variant="contained" color="primary" disabled={!this.isFormValid()} onClick={this.onRegisterClicked}>
+                        <Button variant="contained" color="primary" disabled={(!this.isFormValid() || ((this.props.state || {}).State === 'Processing'))} onClick={this.onRegisterClicked}>
                             Register
+                            {(this.props.state || {}).State === 'Processing' && <CircularProgress size={24} style={{ position: 'absolute', left: '0px', right: '0px', margin: 'auto' }} />}
                         </Button>
                     </Grid>
                 </Grid>
-            </Paper>
+            </Paper >
         );
     }
 }
@@ -148,6 +150,10 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
+const mapStateToProps = (state) => ({
+    state: state.syncSpaceReducer.Processing
+});
 
-const RegisterComponentContainer = connect(null, mapDispatchToProps)(RegisterComponent);
+
+const RegisterComponentContainer = connect(mapStateToProps, mapDispatchToProps)(RegisterComponent);
 export default RegisterComponentContainer;
