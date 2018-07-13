@@ -56,8 +56,6 @@ export class ShoppingPathContainerComponent extends React.Component {
                 }
             } `;
 
-
-
         return (
             // This uses react render props approahc https://reactjs.org/docs/render-props.html        
             <Query query={ShoppingPathByIdQuery} variables={{ shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) }}>
@@ -71,7 +69,8 @@ export class ShoppingPathContainerComponent extends React.Component {
 
                             //Update the cache, this will automatically call the render method of the react component
                             cache.writeQuery({
-                                query: ShoppingPathByIdQuery, variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) },
+                                query: ShoppingPathByIdQuery,
+                                variables: { shoppingPathId: _get(this.props, 'location.selectedShoppingPathId', null) },
                                 data: { ShoppingPathById: updatedShoppingPath }
                             });
                         }}
@@ -95,12 +94,10 @@ export class ShoppingPathContainerComponent extends React.Component {
                                         <LoaderComponent />
                                     </div>
                                 );
-                            } else {
-                                return (
-                                    <ShoppingPathComponent shoppingPath={shoppingPath} updateShoppingPath={updateShoppingPath}>
-                                    </ShoppingPathComponent>
-                                );
                             }
+                            return (
+                                <ShoppingPathComponent shoppingPath={shoppingPath} updateShoppingPath={updateShoppingPath} />
+                            );
                         }}
                     </Mutation>
                 )}

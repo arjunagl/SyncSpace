@@ -10,10 +10,10 @@ export const registerEpic = (action$, store, { RegisterService }) => {
             console.log(RegisterService);
             const messagesToDispatch = merge(
                 of({ type: 'REGISTERING_USER' }),
-                // RegisterService.registerUser(value.firstName, value.lastName, value.email).map(registerResult => {
-                //     console.log(registerResult);
-                //     return Object.assign({ type: 'REGISTERING_USER_COMPLETE' }, registerResult);
-                // })
+                RegisterService.registerUser(value.firstName, value.lastName, value.email).map(registerResult => {
+                    console.log(registerResult);
+                    return Object.assign({ type: 'REGISTERING_USER_COMPLETE' }, registerResult);
+                })
             );
             return messagesToDispatch;
         })

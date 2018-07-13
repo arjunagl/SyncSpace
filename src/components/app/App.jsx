@@ -45,54 +45,47 @@ class App extends React.Component {
                             <RegisterPage setTitle={this.setTitle} />
                         )}
                     />
-                    <Route path="/"
-                        render={() => {
-                            return (
-                                <div>
-                                    <Route path="/" component={TopMenuComponent} />
-                                    <Route
-                                        exact path="/"
-                                        render={() => (
-                                            <LoginContainer setTitle={this.setTitle} />
-                                        )}
-                                    />
-                                    <Route
-                                        path="/login"
-                                        render={() => (
-                                            <LoginContainer setTitle={this.setTitle} />
-                                        )}
-                                    />
-                                    <Route
-                                        path='/landing'
-                                        render={props => (
-                                            <LandingComponent {...props} setTitle={this.setTitle} />
-                                        )}
-                                    />
-                                    <Route
-                                        path='/shopping'
-                                        render={props => {
-
-                                            return (
-                                                <ApolloProvider client={client}>
-                                                    <ShoppingPathContainerComponent {...props} setTitle={this.setTitle} />
-                                                </ApolloProvider>
-                                            );
-                                        }}
-                                    />
-                                    <Route
-                                        path='/completedsavedshopping'
-                                        render={props => {
-
-                                            return (
-                                                <ApolloProvider client={client}>
-                                                    <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} userId={this.props.userId} />
-                                                </ApolloProvider>
-                                            );
-                                        }}
-                                    />
-                                </div>
-                            );
-                        }
+                    <Route
+                        path="/"
+                        render={() => (
+                            <div>
+                                <Route path="/" component={TopMenuComponent} />
+                                <Route
+                                    exact path="/"
+                                    render={() => (
+                                        <LoginContainer setTitle={this.setTitle} />
+                                    )}
+                                />
+                                <Route
+                                    path="/login"
+                                    render={() => (
+                                        <LoginContainer setTitle={this.setTitle} />
+                                    )}
+                                />
+                                <Route
+                                    path='/landing'
+                                    render={props => (
+                                        <LandingComponent {...props} setTitle={this.setTitle} />
+                                    )}
+                                />
+                                <Route
+                                    path='/shopping'
+                                    render={props => (
+                                        <ApolloProvider client={client}>
+                                            <ShoppingPathContainerComponent {...props} setTitle={this.setTitle} />
+                                        </ApolloProvider>
+                                    )}
+                                />
+                                <Route
+                                    path='/completedsavedshopping'
+                                    render={props => (
+                                        <ApolloProvider client={client}>
+                                            <CompletedSavedShoppingContainer {...props} setTitle={this.setTitle} userId={this.props.userId} />
+                                        </ApolloProvider>
+                                    )}
+                                />
+                            </div>
+                        )
                         }
                     />
                 </Switch>

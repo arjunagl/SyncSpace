@@ -3,6 +3,7 @@ const ConfigService = () => ({
     storesEndPoint: process.env.storesEndPoint,
     shoppingListsEndPoint: process.env.shoppingListsEndPoint,
     shoppingPathsEndPoint: process.env.shoppingPathsEndPoint,
+    usersEndPoint: process.env.usersEndPoint,
     useMocks: process.env.useMocks
 });
 
