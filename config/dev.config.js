@@ -4,6 +4,6 @@ module.exports = {
     storesEndPoint: JSON.stringify('Stores'),
     shoppingListsEndPoint: JSON.stringify('ShoppingLists'),
     shoppingPathsEndPoint: JSON.stringify('ShoppingPaths'),
-    usersEndPoint: JSON.stringify('https://nbtu7phfg7.execute-api.us-east-1.amazonaws.com/Stage/SyncGalaxy/Users'),
+    usersEndPoint: JSON.stringify('https://68lk0dokf2.execute-api.us-east-1.amazonaws.com/Stage/users/graphql'),
     useMocks: false
 };

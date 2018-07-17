@@ -10,16 +10,16 @@ const RegisterService = (_http, Config) => ({
         });
 
         client.mutate({
+            variables: { userDetails: { Id: '1', firstName, lastName, email } },
             mutation: gql`
-            mutation RegisterUser($userDetails: UserDetailsInput!){
-                RegisterUser(userDetails: $userDetails){
+            mutation RegisterUser($userDetails: UserInput!){
+                registerUser(userDetails: $userDetails){
                     Id
                     firstName
                     lastName
                     email                    
                 }
             } `,
-            variables: { userDetails: { firstName, lastName, email } }
         })
             .then(data => console.log(data))
             .catch(error => console.log(error));
