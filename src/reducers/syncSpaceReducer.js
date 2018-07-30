@@ -64,6 +64,14 @@ const syncSpaceReducer = (state = initialState, action) => {
                     Message: 'Registering user...'
                 }
             };
+        case 'REGISTER_USER_FAIL':
+            return {
+                ...state,
+                Processing: {
+                    State: 'REGISTER_USER_FAIL',
+                    Message: action.error
+                }
+            };
         case 'APPLYING_SHOPPING_LISTS':
             return {
                 ...state,

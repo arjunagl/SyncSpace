@@ -1,7 +1,9 @@
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -9,6 +11,7 @@ import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
 import { registerUser } from './registerActions';
 import styles from './RegisterPage.scss';
+import MaterialTextBox from '../common/materialTextBox/MaterialTextBox';
 
 export class RegisterComponent extends React.Component {
 
@@ -84,62 +87,24 @@ export class RegisterComponent extends React.Component {
             !(this.state.email.error !== undefined ? this.state.email.error : true)
         );
 
-        const isFirstNameValid = this.state.firstName.error !== undefined ? this.state.firstName.error : true;
-        const isLastNameValid = this.state.lastName.error !== undefined ? this.state.lastName.error : true;
-        const isEmailValid = this.state.email.error !== undefined ? this.state.email.error : true;
-        console.log('isValid ', isFirstNameValid, isLastNameValid, isEmailValid, isFormValid);
+        // const isFirstNameValid = this.state.firstName.error !== undefined ? this.state.firstName.error : true;
+        // const isLastNameValid = this.state.lastName.error !== undefined ? this.state.lastName.error : true;
+        // const isEmailValid = this.state.email.error !== undefined ? this.state.email.error : true;
+        // console.log('isValid ', isFirstNameValid, isLastNameValid, isEmailValid, isFormValid);
         return isFormValid;
     }
 
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        this.setState({ open: false });
+    };
+
     render() {
         return (
-            <Paper className={styles.register}>
-                <Grid id="gridContainer" container direction="column" alignItems="center" justify="center" className={styles.register__wrapper}>
-                    <Grid item>
-                        <TextField
-                            required
-                            error={this.state.firstName.error}
-                            id="firstName"
-                            label="First name"
-                            placeholder="First Name"
-                            margin="normal"
-                            value={((this.state.firstName || {}).value || '')}
-                            onKeyUp={(event) => this.onKeyUp('firstName', event)}
-                            onChange={(event) => this.setState(Object.assign({}, this.state, { firstName: { value: event.target.value } }))}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <TextField
-                            required
-                            error={this.state.lastName.error}
-                            id="lastName"
-                            label="Last name"
-                            placeholder="Last Name"
-                            margin="normal"
-                            onKeyUp={(event) => this.onKeyUp('lastName', event)}
-                            onChange={(event) => this.setState(Object.assign({}, this.state, { lastName: { value: event.target.value } }))}
-                        />
-                    </Grid>
-                    <Grid item>
-                        <TextField
-                            required
-                            error={this.state.email.error}
-                            id="email"
-                            label="Email"
-                            placeholder="Email"
-                            margin="normal"
-                            onKeyUp={(event) => this.onKeyUp('email', event)}
-                            onChange={(event) => this.setState(Object.assign({}, this.state, { email: { value: event.target.value } }))}
-                        />
-                    </Grid>
-                    <Grid item className={styles.register__submit}>
-                        <Button variant="contained" color="primary" disabled={(!this.isFormValid() || ((this.props.state || {}).State === 'Processing'))} onClick={this.onRegisterClicked}>
-                            Register
-                            {(this.props.state || {}).State === 'Processing' && <CircularProgress size={24} style={{ position: 'absolute', left: '0px', right: '0px', margin: 'auto' }} />}
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Paper >
+            <MaterialTextBox />           
         );
     }
 }
