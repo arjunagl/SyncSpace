@@ -32,7 +32,7 @@ module.exports = {
             test: /\.scss$/,
             use: ExtractTextPlugin.extract({
                 use: [{
-                    loader: 'css-loader?modules&localIdentName=[name]__[local]___[hash:base64:6]&sourceMap'
+                    loader: 'css-loader?modules&localIdentName=[local]___[hash:base64:6]&sourceMap'
                 }, {
                     loader: 'sass-loader?sourceMap'
                 }]

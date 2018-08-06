@@ -1,17 +1,9 @@
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import TextField from '@material-ui/core/TextField';
 import React from 'react';
 import { connect } from 'react-redux';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
-import { registerUser } from './registerActions';
-import styles from './RegisterPage.scss';
 import MaterialTextBox from '../common/materialTextBox/MaterialTextBox';
+import { registerUser } from './registerActions';
 
 export class RegisterComponent extends React.Component {
 

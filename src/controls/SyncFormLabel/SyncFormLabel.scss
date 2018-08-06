@@ -1,0 +1,10 @@
+.SyncFormControl {
+    &__Label {
+        border: solid;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0, 30px);
+        transition: transform 200ms ease-in
+    }
+}
