@@ -1,36 +1,22 @@
 .SyncFormControl {
-    &__InputWrapper {
-        position: relative;
-        top: 32px;
-        &:before {
-            left: 0;
-            right: 0;
-            bottom: 0;
-            content: "\00a0";
-            position: absolute;
-            transition: border-bottom-color 200ms ease-in;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.42);
-            pointer-events: none
-        }
-        &:after {
-            left: 0;
-            right: 0;
-            bottom: 0;
-            content: "\00a0";
-            position: absolute;
-            transition: transform 200ms ease-in;
-            border-bottom: 2px solid #1976d2;
-            transform: scaleX(0);
-            pointer-events: none
-        }
-        &:focus-within:after {
-            transform: scaleX(1)
-        }
-    }
     &__Input {
+        padding: 6px;
+        position: relative;
         border: 0px;
-        outline: 0px;
         width: 100%;
-        padding: 6px 0px 7px;
+        outline: none;
+        border-bottom: 1px solid #000;
+        &Border {
+            position: absolute;
+            bottom: 0;
+            transform: scaleX(0);
+            transition: transform 200ms ease-in;
+            border: 1px solid black;
+            width: 100%;
+        }
+        &:focus+&Border {
+            border: 1px solid blue;
+            transform: scaleX(1);
+        }
     }
 }

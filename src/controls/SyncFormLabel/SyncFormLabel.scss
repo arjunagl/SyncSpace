@@ -1,10 +1,25 @@
 .SyncFormControl {
     &__Label {
-        border: solid;
         position: absolute;
         top: 0;
         left: 0;
-        transform: translate(0, 30px);
+        // transform: translate(0, 36px);
         transition: transform 200ms ease-in
+    } // &__InputWrapper:focus-within+&__Label {
+    //     border: solid;
+    //     transform-origin: top left;
+    //     transform: translate(0, 0) scale(0.75)
+    // }
+    input:focus~label {
+        transform-origin: top left;
+        transform: translate(0, 0) scale(0.75);
+        border: solid;
     }
+
+    // &:valid, &:focus{
+    //     & ~ .material-form-field-label{
+    //       top: $material-labelOffset - ($material-textInputPaddingTopBottom + 5);
+    //       font-size:12px;
+    //     }
+    // }
 }
