@@ -1,6 +1,13 @@
 {
-    "extends": "rallycoding", 
+    "extends": "rallycoding",
     "globals": {
-        "document": true
+        "document": true,
+        "window": true
+    },
+    "env": {
+        "jest": true
+    },
+    "rules": {
+        "max-len": "off"
     }
 }

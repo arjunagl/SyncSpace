@@ -1,18 +1,15 @@
 @import "../../stylesheets/styles";
-
-.landingPageWrapper{
+.landingPageWrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     @media screen and (min-width: 481px) {
+        flex-direction: row;
+        align-items: initial;
     }
 }
 
-.stores{
-
-    @media screen and (min-width: 481px) {
-
-    }
-}
-
-.recentList{
-
+.landingPageSeparation {
+    width: 100%;
+    margin: 0 2rem 0 2rem;
 }

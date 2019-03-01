@@ -1,0 +1,23 @@
+$searchImage: url('../../../stylesheets/images/Search.svg');
+.srchBoxContaner {
+    padding: 1.5rem 1.5rem 0rem 1.5rem;
+}
+
+.incSrchTextBox {
+    box-sizing: border-box;
+    line-height: 1.5rem;
+    padding: .5rem;
+    width: 130px;
+    border-radius: 25px;
+    background-image: $searchImage;
+    background-repeat: no-repeat;
+    background-position: right;
+    transition: width 0.4s ease-in-out;
+    &:focus {
+        width: 100%;
+    }
+}
+
+input[type='checkbox']#a{
+
+}

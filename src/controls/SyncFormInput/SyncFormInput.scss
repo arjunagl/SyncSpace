@@ -1,0 +1,22 @@
+.SyncFormControl {
+    &__Input {
+        padding: 6px;
+        position: relative;
+        border: 0px;
+        width: 100%;
+        outline: none;
+        border-bottom: 1px solid #000;
+        &Border {
+            position: absolute;
+            bottom: 0;
+            transform: scaleX(0);
+            transition: transform 200ms ease-in;
+            border: 1px solid black;
+            width: 100%;
+        }
+        &:focus+&Border {
+            border: 1px solid blue;
+            transform: scaleX(1);
+        }
+    }
+}

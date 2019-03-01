@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <style>
+        .textField {
+            position: relative;
+            margin: 16px 8px 8px;
+        }
+
+        .textfield__textInput {
+            border: 0px;
+            outline: 0px;
+            width: 100%;
+            padding: 6px 0px 7px;
+        }
+
+        .textfield__input {
+            position: relative;
+            top: 32px;
+        }
+
+        .textfield__input:before {
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: "\00a0";
+            position: absolute;
+            transition: border-bottom-color 200ms ease-in;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+            pointer-events: none
+        }
+
+        .textfield__input:after {
+            left: 0;
+            right: 0;
+            bottom: 0;
+            content: "\00a0";
+            position: absolute;
+            transition: transform 200ms ease-in;
+            border-bottom: 2px solid #1976d2;
+            transform: scaleX(0);
+            pointer-events: none
+        }
+
+        .textfield__input:focus-within:after {
+            transform: scaleX(1)
+        }
+
+        .textField__label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(0, 30px);
+            transition: transform 200ms ease-in
+        }
+
+        .textfield__input:focus-within+.textField__label {
+            transform-origin: top left;
+            transform: translate(0, 0) scale(0.75)
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="textField">
+        <div class="textfield__input">
+            <input type="text" value="" class="textfield__textInput" />
+        </div>
+        <label class="textField__label">First name</label>
+    </div>
+</body>
+
+</html>

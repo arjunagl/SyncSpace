@@ -1,15 +1,8 @@
-import {
-    browserHistory
-} from 'react-router';
-
-/**
- *
- * @returns {{type: string}}
- */
 function loginSucceeded() {
     return {
         type: 'LOGIN_SUCCEEDED',
-        UserDisplayName: 'tim tam'
+        UserDisplayName: 'albert',
+        userId: 'user1'
     };
 }
 
@@ -19,24 +12,13 @@ function loginFailed() {
     };
 }
 
-
-/**
- *
- * @returns {{type: string}}
- */
 function performingLogin() {
     return {
         type: 'LOGIN_PROGRESS'
     };
 }
 
-/**
- *
- * @param userName
- * @param password
- * @returns {Function}
- */
-export function performLogin(userName, password) {
+export function performLogin(userName, password, history) {
     return function (dispatch) {
         dispatch(performingLogin());
 
@@ -46,7 +28,7 @@ export function performLogin(userName, password) {
         loginResult.then((res) => {
             if (res) {
                 dispatch(loginSucceeded());
-                browserHistory.push('/landing');
+                history.push('/landing');
             } else {
                 dispatch(loginFailed());
             }

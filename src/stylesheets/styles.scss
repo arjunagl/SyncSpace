@@ -1,7 +1,5 @@
 @import "./variables";
-
 .std_Button {
-  border-radius: 3px;
   background-color: cornflowerblue;
   text-align: center;
   font-family: $standard-font;
@@ -12,7 +10,6 @@
 }
 
 .std_Button_Secondary {
-  border-radius: 3px;
   background-color: cadetblue;
   text-align: center;
   font-family: $standard-font;
@@ -22,10 +19,38 @@
   padding: 10px 40px;
 }
 
+.secondary_Button{
+  background-color: cadetblue;
+  text-align: center;
+  font-family: $standard-font;
+  font-size: $secondary-button-font-size;
+  color: #FFF;
+  border-radius: 25px;
+  padding: 10px 10px;
+}
+
 .pageTitleText {
   font-size: 36px;
 }
 
-body {
-  font-family: $standard-font;
+.pageTitle {
+  font-size: 24px;
+}
+
+.componentWrapper {
+  margin-top: 2em;
+  border: solid cadetblue;
+  border-radius: 40px;
+  position: relative;
+  padding: 10px;
+  width: 95%;
+}
+
+.componentTitle {
+  font-size: 18px;
+  //When a component is positioned absolute it will position itself relative to its parent ancestor 
+  //which is not static positioned (which is the default), this is why we are setting the .componentWrapper position to relative
+  position: absolute; 
+  background-color: $background-color;
+  top: -35px;
 }

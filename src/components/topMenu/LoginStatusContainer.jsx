@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 const LoginStatusContainer = ({ displayName }) => {
     let welcomeMessage = 'Sign In';
     if (displayName) {
-        welcomeMessage = `Welcome ${displayName}`;
+        welcomeMessage = `Hello ${displayName}`;
     }
     return (
         <LoginStatus displayName={welcomeMessage} />

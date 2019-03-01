@@ -1,0 +1,21 @@
+@import "../../stylesheets/variables";
+.register {
+    width: 25%;
+    min-width: 240px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translateY(-50%);
+    &__wrapper {
+        height: 100%;
+    }
+    &__submit {
+        margin: 40px 0;
+    }
+    &__message {
+        margin-top: 10px;
+    }
+}

@@ -13,8 +13,7 @@
         padding: .5em 0;
         font-weight: bold;
         text-align: center;
-        text-decoration: none;
-        text-transform: uppercase;
+        text-decoration: none;        
         background: cadetblue;
         color: white;
         &:hover {
@@ -29,7 +28,7 @@
       }
       li {
         display: block;
-        height: auto;
+        max-height: inherit;
         opacity: 1;
         &.expando {
           display: none;

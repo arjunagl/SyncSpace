@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ShoppingPathComponent /> renders the component properly 1`] = `
+<div>
+  <div
+    key="Isle 1"
+  >
+    <div>
+      Isle 1
+      <div>
+        <div
+          key="1"
+        >
+          <input
+            data-id="1"
+            id="sp1"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="1"
+          >
+            Apples
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+        <div
+          key="2"
+        >
+          <input
+            data-id="2"
+            id="sp2"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="2"
+          >
+            Pears
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+        <div
+          key="4"
+        >
+          <input
+            data-id="4"
+            id="sp4"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="4"
+          >
+            Grapes
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    key="Isle 2"
+  >
+    <div>
+      Isle 2
+      <div>
+        <div
+          key="3"
+        >
+          <input
+            data-id="3"
+            id="sp3"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="3"
+          >
+            Oranges
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    key="Isle 3"
+  >
+    <div>
+      Isle 3
+      <div>
+        <div
+          key="6"
+        >
+          <input
+            data-id="6"
+            id="sp6"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="6"
+          >
+            Apricots
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    key="Isle 4"
+  >
+    <div>
+      Isle 4
+      <div>
+        <div
+          key="5"
+        >
+          <input
+            data-id="5"
+            id="sp5"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <label
+            htmlFor="5"
+          >
+            Carrots
+            <span>
+              Next to Oranges
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <Connect(ButtonComponent)
+      content="Complete shopping"
+      id="completeShoppingbutton"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "10px 10px 0px 0px",
+        }
+      }
+    />
+    <Connect(ButtonComponent)
+      content="Save for later"
+      id="saveShoppingbutton"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "10px 10px 0px 0px",
+        }
+      }
+    />
+  </div>
+</div>
+`;

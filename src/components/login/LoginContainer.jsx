@@ -1,72 +1,61 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import LoginComponent from './Login';
 import { performLogin } from './LoginActions';
 
-export class LoginContainerComponent extends React.Component {
+class LoginContainerComponent extends React.Component {
 
-    /**
-     *
-     * @param props
-     */
     constructor(props) {
         super(props);
         this.login = this.login.bind(this);
+        this.checkRedirect = this.checkRedirect.bind(this);
     }
 
-    /**
-     *
-     */
+    componentDidMount() {
+        //Set the title to login
+        this.props.setTitle({
+            windowTitle: 'Login - SyncSpace',
+            pageTitle: 'Login'
+        });
+    }
+
     register() {
     }
 
-    /**
-     *
-     * @param username
-     * @param password
-     */
     login(username, password) {
-        this.props.onPerformLogin(username, password);
+        this.props.onPerformLogin(username, password, this.props.history);
     }
 
-    /**
-     * 
-     * 
-     * @returns 
-     * 
-     * @memberOf LoginContainerComponent
-     */
+    checkRedirect() {
+        this.props.history.push('/completedsavedshopping');
+    }
+
     render() {
         return (
-            <LoginComponent
-                onRegisterClick={this.register}
-                onLoginClick={this.login}
-            />
+            <div>
+                <LoginComponent
+                    onRegisterClick={this.register}
+                    onLoginClick={this.login}
+                />
+            </div>
         );
     }
 }
 
-/**
- *
- * @param state
- * @returns {{currentState: string}}
- */
+const withRouterLoginContainerComponent = withRouter(LoginContainerComponent);
+
 const mapStateToProps = (state) => ({
-    currentState: state.LoginStatus
+    currentState: state.syncSpaceReducer.LoginStatus,
 });
 
-/**
- *
- * @param dispatch
- * @returns {{onLoginClick: (function()), onRegisterClick: (function())}}
- */
 const mapDispatchToProps = (dispatch) => ({
-    onPerformLogin: () => {
-        dispatch(performLogin('testUser', 'testpassword'));
+    onPerformLogin: (username, password, history) => {
+        dispatch(performLogin(username, password, history));
     },
     onRegisterClick: () => {
     }
 });
 
-const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(LoginContainerComponent);
+const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(withRouterLoginContainerComponent);
 export default LoginContainer;

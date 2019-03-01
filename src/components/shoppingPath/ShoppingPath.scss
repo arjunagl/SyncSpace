@@ -1,0 +1,30 @@
+@import "../../stylesheets/variables";
+.ShoppingItem {
+    display: inline-block;
+    border-radius: 25px;
+    border: solid;
+    padding: 1rem;
+    margin: .5rem;
+}
+
+.ShoppingPathLocation {
+    display: block;
+    border-radius: 25px;
+    border: solid;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.ItemLocationHint {
+    font-size: $small-font-size;
+    display: block;
+}
+
+.CompleteShopping {
+    margin: 1rem;
+}
+
+.ShoppingPathDetailsSection {
+    padding: 1rem;
+    margin: 1rem;
+}
